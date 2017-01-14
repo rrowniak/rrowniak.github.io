@@ -37,6 +37,8 @@ struct DataGen
 
 std::vector<Data> Generate(size_t amount)
 {
+    std::cout << "Generating " << amount << " records...\n";
+    Timer t;
     DataGen<std::minstd_rand> generator;
     std::vector<Data> d(amount);
     std::generate(std::begin(d), std::end(d), generator);
@@ -61,7 +63,13 @@ int main(int, char**)
         std::sort(std::begin(data), std::end(data), cmp);
     }
 
-   volatile bool sorted = std::is_sorted(std::begin(data), std::end(data), cmp);
-   assert(sorted);
+    {
+        std::cout << "Checking whether the collection is sorted...\n";
+        Timer t;
+        bool sorted = std::is_sorted(std::begin(data), std::end(data), cmp);
+        if (!sorted) {
+            std::cout << "Collection is not sorted!\n";
+        }
+    }
     return 0;
 }
