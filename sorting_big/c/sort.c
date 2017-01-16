@@ -57,7 +57,7 @@ int main(int argc, char** argv)
     start = clock();
     qsort(d, RecordsNum, sizeof(struct Data), cmp);
     sec = (clock() - start) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %d\n s", sec);
+    printf("Time elapsed: %d\n s\n", sec);
 
     printf("Checking whether the collection is sorted\n");
     start = clock();
@@ -69,6 +69,8 @@ int main(int argc, char** argv)
     }
     sec = (clock() - start) / CLOCKS_PER_SEC;
     printf("Time elapsed: %d s\n", sec);
+
+    //printf("%ld\n", d[12345].value);
 
     free(d);
     return 0;
