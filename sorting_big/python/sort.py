@@ -1,12 +1,14 @@
 import time
 
+
 class Data:
-    def __init__(self, id, val):
-        self.id = long(id)
+    def __init__(self, id_=0, val=0):
+        self.id = long(id_)
         self.value = long(val)
 
     def __cmp__(self, other):
         return self.value < other.value
+
 
 class Generator:
     def __init__(self):
@@ -20,28 +22,28 @@ class Generator:
         return self.prev
 
 
-#RecordsNum = 1000
 RecordsNum = 100000000
 
 print ('Building {0} records...'.format(RecordsNum))
 start = time.time()
-d = []
+d = [None] * RecordsNum
 gen = Generator()
+
 for i in xrange(0, RecordsNum):
     v = gen.gen()
-    d.append(Data(v, v))
+    d[i] = Data(v, v)
+
 print ('Elapsed time: {0} s'.format(int(time.time() - start)))
 
 print ('Sorting {0} records...'.format(RecordsNum))
 start = time.time()
-d.sort(key=lambda v: v.value, reverse=True)
+d.sort(key=lambda item: item.value)
 print ('Elapsed time: {0} s'.format(int(time.time() - start)))
 
 print ('Checking whether the collection is sorted...')
 start = time.time()
 for i in xrange(0, RecordsNum - 1):
-    if d[i] > d[i+1]:
+    if d[i].value > d[i + 1].value:
         print ('Not sorted!')
         break
 print ('Elapsed time: {0} s'.format(int(time.time() - start)))
-
