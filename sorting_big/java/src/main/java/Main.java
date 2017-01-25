@@ -6,7 +6,8 @@ import java.util.Collections;
  */
 public class Main {
 
-    private static final int RecordsNum = 1000000000 / 2;
+//    private static final int RecordsNum = 1000000000 / 2;
+    private static final int RecordsNum = 1000000000;
 
     public static void main(String[] args) {
         Timer t = new Timer();
