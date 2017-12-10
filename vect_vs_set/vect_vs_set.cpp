@@ -62,6 +62,7 @@ constexpr std::size_t up_to = 1000000;
 int main(int, char**)
 {
     std::cout << "Lookup performance comparison between std::vector and std::set" << std::endl;
+    std::cout << "Optimization flag: " << OPT_FLAG << std::endl;
 
     for (std::size_t i = 1; i <= up_to; i *= 10) {
         std::cout << "--------------------------------------------------------------------------" << std::endl;
@@ -74,10 +75,11 @@ int main(int, char**)
         std::vector<std::size_t> req = Generate(2 * i, 4 * i);
         // make a test
         volatile std::size_t result; // prevent from optimizing out test code
+        std::size_t inner_loop = 2 * up_to / req.size();
         {
             std::cout << "Testing lookup for unsorted std::vector..." << std::endl;
             Timer t;
-            for (size_t j = 0; j < up_to / i; ++j) {
+            for (size_t j = 0; j < inner_loop; ++j) {
                 for (std::size_t item : req) {
                     auto it = std::find(v.begin(), v.end(), item);
                     if (it != v.end()) {
@@ -86,10 +88,25 @@ int main(int, char**)
                 }
             }
         }
+
+        {
+            std::cout << "Testing lookup for sorted std::vector..." << std::endl;
+            std::sort(v.begin(), v.end());
+            Timer t;
+            for (size_t j = 0; j < inner_loop; ++j) {
+                for (std::size_t item : req) {
+                    auto it = std::lower_bound(v.begin(), v.end(), item);
+                    if (it != v.end() && *it == item) {
+                        result = *it;
+                    }
+                }
+            }
+        }
+
         {
             std::cout << "Testing lookup for std::set..." << std::endl;
             Timer t;
-            for (size_t j = 0; j < up_to / i; ++j) {
+            for (size_t j = 0; j < inner_loop; ++j) {
                 for (std::size_t item : req) {
                     auto it = s.find(item);
                     if (it != s.end()) {
@@ -98,6 +115,9 @@ int main(int, char**)
                 }
             }
         }
+
+        // prevent from compiler warning
+        result = result;
     }
 
     return 0;
