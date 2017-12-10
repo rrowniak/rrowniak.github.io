@@ -54,7 +54,6 @@ void Generate(std::size_t amount, std::size_t max_val,
     out_v.swap(v_tmp);
     std::set<std::size_t> s_tmp(std::begin(out_v), std::end(out_v));
     out_s.swap(s_tmp);
-    // std::copy(std::begin(out_v), std::end(out_v), )
 }
 
 constexpr std::size_t up_to = 1000000;
@@ -75,7 +74,10 @@ int main(int, char**)
         std::vector<std::size_t> req = Generate(2 * i, 4 * i);
         // make a test
         volatile std::size_t result; // prevent from optimizing out test code
+
         std::size_t inner_loop = 2 * up_to / req.size();
+
+        if (i < 100000) // skip this test for bigger numbers
         {
             std::cout << "Testing lookup for unsorted std::vector..." << std::endl;
             Timer t;
