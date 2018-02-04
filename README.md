@@ -1,10 +1,10 @@
-# Examples discussed on my blog https://rrowniak.wordpress.com/
+# Examples discussed on my blog www.rrowniak.com
 
 ## Blog posts
 
-sorting_big: https://rrowniak.wordpress.com/2017/01/25/new-word-order-sorting/
+sorting_big: http://rrowniak.com/programming/new-word-order-sorting/
 
-vect_vs_set: under construction
+vect_vs_set: http://rrowniak.com/programming/stdvector-vs-sorted-stdvector-vs-stdset/
 
 ## License
 
