@@ -13,7 +13,7 @@ public:
     ~Timer() {
         auto diff = clock::now() - beg;
         std::cout << "Time elapsed: " 
-            << std::chrono::duration_cast<std::chrono::seconds>(diff).count() << " s\n";
+            << std::chrono::duration_cast<std::chrono::milliseconds>(diff).count() << " ms\n";
     }
 private:
     using clock = std::chrono::high_resolution_clock;
@@ -38,7 +38,7 @@ struct DataGen
 
 std::vector<Data> Generate(size_t amount)
 {
-    std::cout << "Generating " << amount << " records...\n";
+    std::cout << "Building " << amount << " records...\n";
     Timer t;
     DataGen<std::minstd_rand> generator;
     std::vector<Data> d(amount);
@@ -53,10 +53,13 @@ struct Cmp
     }
 };
 
-constexpr size_t RecordsNum = 1000000000;
+size_t RecordsNum = 100000000;
 
-int main(int, char**)
+int main(int argc, char** argv)
 {
+    if (argc > 1) {
+        RecordsNum = atol(argv[1]);
+    }
     /*auto cmp =  [](const Data& d1, const Data& d2) {
         return d1.value < d2.value;
     };*/
@@ -64,7 +67,7 @@ int main(int, char**)
 
     auto data = Generate(RecordsNum);
 
-    assert(!std::is_sorted(std::begin(data), std::end(data), cmp));
+    // assert(!std::is_sorted(std::begin(data), std::end(data), cmp));
 
     {
         std::cout << "Sorting " << data.size() << " elements...\n";
@@ -81,6 +84,5 @@ int main(int, char**)
             std::cout << "Collection is not sorted!\n";
         }
     }
-    //std::cout << "Element 12345: " << data[12345].value << "\n";
     return 0;
 }

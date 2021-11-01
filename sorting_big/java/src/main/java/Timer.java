@@ -15,6 +15,6 @@ public class Timer {
 
     public void Report() {
         long diff = System.currentTimeMillis() - start;
-        System.out.println("Elapsed time: " + Long.toString(diff / 1000) + " s");
+        System.out.println("Time elapsed: " + Long.toString(diff) + " ms");
     }
 }

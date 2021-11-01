@@ -34,10 +34,14 @@ int cmp(const void* d1, const void*d2) {
     return 1;
 }
 
-const size_t RecordsNum = 1000000000;
+size_t RecordsNum = 100000000;
 
 int main(int argc, char** argv)
 {
+    if (argc > 1) {
+        RecordsNum = atol(argv[1]);
+    }
+
     struct RndData rng_data = {
         .prev = 1
     };
@@ -48,16 +52,19 @@ int main(int argc, char** argv)
     struct Data* d = (struct Data*)malloc(sizeof(struct Data) * RecordsNum);
 
     for (size_t i = 0; i < RecordsNum; ++i) {
-        d[i].id = d[i].value = gen_num(&rng_data);
+        d[i].value = gen_num(&rng_data);
+        d[i].id = d[i].value + 10;
     }
-    int sec = (clock() - start) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %d s\n", sec);
+
+    const clock_t clk_per_msec = CLOCKS_PER_SEC / 1000;
+    int msec = (clock() - start) / clk_per_msec;
+    printf("Time elapsed: %d ms\n", msec);
 
     printf("Sorting %ld elements...\n", RecordsNum);
     start = clock();
     qsort(d, RecordsNum, sizeof(struct Data), cmp);
-    sec = (clock() - start) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %d\n s\n", sec);
+    msec = (clock() - start) / clk_per_msec;
+    printf("Time elapsed: %d ms\n", msec);
 
     printf("Checking whether the collection is sorted\n");
     start = clock();
@@ -67,10 +74,8 @@ int main(int argc, char** argv)
             break;
         }
     }
-    sec = (clock() - start) / CLOCKS_PER_SEC;
-    printf("Time elapsed: %d s\n", sec);
-
-    //printf("%ld\n", d[12345].value);
+    msec = (clock() - start) / clk_per_msec;
+    printf("Time elapsed: %d ms\n", msec);
 
     free(d);
     return 0;

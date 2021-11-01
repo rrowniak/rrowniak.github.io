@@ -3,13 +3,16 @@ import java.util.Collections;
 
 /**
  * Created by rr on 11.01.17.
+ * Modified by rr on 01.11.22.
  */
 public class Main {
-
-//    private static final int RecordsNum = 1000000000 / 2;
-    private static final int RecordsNum = 1000000000;
+    private static int RecordsNum = 100000000;
 
     public static void main(String[] args) {
+
+        if (args.length > 1) {
+            RecordsNum = Integer.parseInt(args[1]);
+        }
         Timer t = new Timer();
 
         t.Start("Building " + Integer.toString(RecordsNum) + " records...");
@@ -30,7 +33,7 @@ public class Main {
         Generator gen = new Generator();
         for (int i = 0; i < RecordsNum; ++i) {
             long g = gen.gen();
-            d.add(new Data(g, g));
+            d.add(new Data(g + 10, g));
         }
     }
 
