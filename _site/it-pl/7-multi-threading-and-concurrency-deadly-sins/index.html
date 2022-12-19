@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>7 multi-threading and concurrency deadly sins | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="7 multi-threading and concurrency deadly sins" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Let’s see what kind of pitfalls are common in multi-threading &amp; concurrency world. This kind of code is simply hard to write and even harder to maintain. I’m going to share what can go wrong and how to avoid many traps." />
+<meta property="og:description" content="Let’s see what kind of pitfalls are common in multi-threading &amp; concurrency world. This kind of code is simply hard to write and even harder to maintain. I’m going to share what can go wrong and how to avoid many traps." />
+<link rel="canonical" href="/_posts/it-pl/7-multi-threading-and-concurrency-deadly-sins/" />
+<meta property="og:url" content="/_posts/it-pl/7-multi-threading-and-concurrency-deadly-sins/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:image" content="/_posts/wp-content/uploads/2018/07/close-up-colors-design-small.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-16T20:29:49+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/_posts/wp-content/uploads/2018/07/close-up-colors-design-small.jpg" />
+<meta property="twitter:title" content="7 multi-threading and concurrency deadly sins" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2019-03-16T20:29:49+01:00","datePublished":"2019-03-16T20:29:49+01:00","description":"Let’s see what kind of pitfalls are common in multi-threading &amp; concurrency world. This kind of code is simply hard to write and even harder to maintain. I’m going to share what can go wrong and how to avoid many traps.","headline":"7 multi-threading and concurrency deadly sins","image":"/_posts/wp-content/uploads/2018/07/close-up-colors-design-small.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/it-pl/7-multi-threading-and-concurrency-deadly-sins/"},"url":"/_posts/it-pl/7-multi-threading-and-concurrency-deadly-sins/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">7 multi-threading and concurrency deadly sins</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-03-16T20:29:49+01:00" itemprop="datePublished">Mar 16, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Let’s see what kind of pitfalls are common in multi-threading &amp; concurrency world. This kind of code is simply hard to write and even harder to maintain. I’m going to share what can go wrong and how to avoid many traps.</p>
+
+<h2 id="-7-home-cooking-lock-free-and-wait-free-data-structures"># 7 Home cooking lock-free and wait-free data structures</h2>
+
+<p>Do not develop your own <a href="https://en.wikipedia.org/wiki/Non-blocking_algorithm">lock-free</a> or wait-free data structures intended to be used on production unless you are expert in this field. There are several reasons behind that advice. First of all, it’s really hard to develop lock-free/wait-free data structures that are <strong>error-free</strong>. Even harder if those are supposed to be cross-platform. If you have a good reason to use such structures take a look at e.g. <a href="http://www.boost.org/doc/libs/1_63_0/doc/html/lockfree.html">Boost.Lockfree</a>.</p>
+
+<p>Another problem with those structures is a common belief that they will always be faster by an order of magnitude than corresponding „classic” structures. That does not have to be the truth, moreover, in some extreme cases it could be quite the opposite.</p>
+
+<h2 id="-6-calling-unknown-code"># 6 Calling unknown code</h2>
+
+<p>Do not call unknown code from <a href="https://en.wikipedia.org/wiki/Critical_section">a critical section</a>. Doing so is a simple recipe to <a href="https://en.wikipedia.org/wiki/Deadlock">deadlocks</a> and <a href="https://en.wikipedia.org/wiki/Race_condition">race conditions</a>. Unknown code may call back your code, may use the same synchronization primitives, may share data with another threads. And who knows what else.</p>
+
+<p>If you really have to do so, make unknown code a known code. However, later on I’ll provide some rationale on why this idea (calling any code inside a critical section) is still totally wrong.</p>
+
+<h2 id="-5-copypaste-methodology"># 5 Copy&amp;paste methodology</h2>
+
+<p>Do not blindly copy-paste code snippets found in <a href="https://stackoverflow.com/">the Internet</a>. This advice applies not only to multi-threading though it is especially important here.</p>
+
+<p>Code snippets found elsewhere may be correct and well prepared but this is not a guarantee for the success in your code. You need to be aware of the runtime context, the underlying hardware and specific assumptions. This is especially true if the finding is a heavily optimized piece of code, sometimes with assembly. It is almost always platform specific solution which may not work for you.</p>
+
+<p>What’s the advice here? It’s as simple as that – first understand the code then apply it.</p>
+
+<h2 id="-4-golden-hammer-for-performance"># 4 Golden hammer for performance</h2>
+
+<p>Concurrent code not always means „faster”. But it’s always more complex and error prone. Also a linear scalability is usually not the case.</p>
+
+<p>If you decide to go into mutli-threading <del>heaven</del>hell you’d better have a good reason to do so. This is a complex piece of engineering with many obstacles, traps and hidden difficulties which might yield with the performance below the expectations. I’ll list a few of them to give you some idea what I’m talking about: <a href="https://en.wikipedia.org/wiki/Context_switch">context switching</a>, <a href="https://en.wikipedia.org/wiki/False_sharing">false sharing</a>, <a href="https://en.wikipedia.org/wiki/Consistency_model">memory synchronization</a>, <a href="https://en.wikipedia.org/wiki/System_call">system calls</a>, <a href="https://en.wikipedia.org/wiki/Deadlock#Livelock">live locks</a>, <a href="https://en.wikipedia.org/wiki/Starvation_(computer_science)">starvation</a>, <a href="https://en.wikipedia.org/wiki/Priority_inversion">priority inversion</a>, <a href="https://en.wikipedia.org/wiki/Resource_contention">CPU contention</a>, <a href="https://en.wikipedia.org/wiki/Pipeline_stall">CPU stalling</a>. Do you know all of them? This is only a top of the iceberg. Nothing but deep understanding of the matter is your friend. You should know how the things work under the hood and what are the consequences of using particular tools. <em>Naive</em> thinking simple does not work here. For example, have a look at my <a href="http://rrowniak.com/en/programming/ethereal-stuff-volatile/">article</a> about <em>volatiles</em> – it seems to be a simple and well suited tool for multi-threading but it’s not.</p>
+
+<h2 id="-3-concurrency-poker"># 3 Concurrency poker</h2>
+
+<p>Do not play with the probability, if something is unlikely but possible – it’ll happen, usually at least expected moment. If you are mathematician (hopefully not) like me you already know that – <a href="https://en.wikipedia.org/wiki/Borel%E2%80%93Cantelli_lemma">Borel–Cantelli lemma</a>. If your concurrency code has at least one possibility to go wrong, even very unlikely, you will be notified by a client/support guy that your system has suddenly broken down or even crashed randomly. We call such situation <em>race condition</em>. A race condition doesn’t have to be harmful but in many cases it is.</p>
+
+<p>If you are aware of introducing a race condition – simply do not do that. And this advice is like any other of this kind – trivial to state, difficult to apply. People very often don’t realize that they’re introducing a race condition. What I’d advice here? There is no a single trick which makes you immortal. But you can follow a few rules like:</p>
+
+<ul>
+  <li>Make any synchronization explicit and readable</li>
+  <li>Avoid any „<em>clever</em>” tricks (people think they’re more clever than they really are)</li>
+  <li>Use immutable and const data as much as possible (no modifications no problems)</li>
+  <li>Minimize a scope of any critical section and hold locks as little time as necessary</li>
+  <li>Avoid any micro-optimizations</li>
+  <li>All the others described in this article</li>
+</ul>
+
+<h2 id="-2-using-global-synchronization-primitives"># 2 Using global synchronization primitives</h2>
+
+<p>Using a global lock (e.g. mutex) is almost always asking for troubles. Sometimes that design comes from the situation where the code not designed to be multi-thread safe is being quickly transformed to concurrency word. By quickly I mean „as fast as possible, no time to think”. The consequences are usually catastrophic. Maintenance becomes a nightmare, deadlocks are on daily basis, random failures don’t surprise, refactoring is almost impossible. Sometimes people responsible for the design can’t forecast the consequence of this pattern.</p>
+
+<p>Advice? Change the code or job.</p>
+
+<h2 id="-1-protecting-code"># 1 Protecting code</h2>
+
+<p>Is that really a sin? Protecting code against multi-threaded access is a good idea, isn’t it? No, it’s a sin, deadly sin, deadliest one!</p>
+
+<p><strong>Always protect data instead of code</strong>. Without exceptions. Ever. What does it mean? When you’re writing code and are about to acquire a mutex, ask yourself what data or resource are you going to protect. Dispose of your natural temptation that <em>some piece of code</em> needs to be protected. Protecting code makes no sense as the problem is always with accessing data which can be modified at the same time. If any code is not touching your data, it should be moved off the critical section.</p>
+
+<p>This advice seems to be obvious but it’s a bit tricky. It must be tricky because I have seen a massive amount of violations of this law. Interestingly, most of these cases were made by senior engineers! Why is that? I don’t know but I’ve heart quite interesting yet controversial theory explaining that. The theory is saying that some people were born having potential for understanding multi-threading, the others were born with no such potential.</p>
+
+<p>You may assert this advice saying that sometimes there is a need to use certain <em>not-thread-safe-API</em> from different threads. Then you have to synchronize a piece of code instead of data. Well, in fact the API is nothing less and nothing more but resource which needs to be protected.</p>
+
+<p>Another <em>odd</em> case seems to be when one routine is waiting for some other tasks to be completed. That scenario can be realized using specialized tool called <em>condition variables</em>. You may ask what kind of resources we shall protect here? Well, this is a different problem but it’s still not about protecting code. It’s about synchronization (e.g. <a href="https://en.wikipedia.org/wiki/Happened-before">happened-before</a> relationship) and that’s something different. So multi-threading is not only about protecting resources but also about synchronization.</p>
+
+<p>Despite everything, what if you’d follow <a href="https://en.wikipedia.org/wiki/Ovid">Ovid’s</a> advice: <em>I see better things, and approve, but I follow worse</em>? Let’s see what Ovid kept in silence about protecting the code:</p>
+
+<ul>
+  <li>Larger critical sections</li>
+  <li>Hard to reason what is really protected</li>
+  <li>Easier to make a mistake (e.g. race condition or deadlock)</li>
+  <li>Maintenance nightmare</li>
+  <li>Temptation to follow the broken window theory (<a href="http://rrowniak.com/it-pl/syndrom-wybitej-szyby/">my article on that PL</a>, <a href="https://en.wikipedia.org/wiki/Broken_windows_theory">wiki</a>)</li>
+</ul>
+
+  </div><a class="u-url" href="/_posts/it-pl/7-multi-threading-and-concurrency-deadly-sins/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

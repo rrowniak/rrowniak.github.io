@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SOLID czyli zestaw solidnych reguł | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="SOLID czyli zestaw solidnych reguł" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Jednym z najbardziej rozpoznawalnych akronimów w inżynierii oprogramowania jest SOLID. Jednak po przeprowadzeniu setek rozmów rekrutacyjnych mogę stwierdzić, że z tą rozpoznawalnością bywa bardzo różnie. A szkoda, bo jest to zestaw reguł o dużym znaczeniu, warto więc wyjaśnić co to jest i dlaczego na rozmowach kwalifikacyjnych tak często pada pytanie o SOLID." />
+<meta property="og:description" content="Jednym z najbardziej rozpoznawalnych akronimów w inżynierii oprogramowania jest SOLID. Jednak po przeprowadzeniu setek rozmów rekrutacyjnych mogę stwierdzić, że z tą rozpoznawalnością bywa bardzo różnie. A szkoda, bo jest to zestaw reguł o dużym znaczeniu, warto więc wyjaśnić co to jest i dlaczego na rozmowach kwalifikacyjnych tak często pada pytanie o SOLID." />
+<link rel="canonical" href="/_posts/dobre-praktyki/solid-czyli-zestaw-solidnych-regul/" />
+<meta property="og:url" content="/_posts/dobre-praktyki/solid-czyli-zestaw-solidnych-regul/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:image" content="/_posts/wp-content/uploads/2018/03/giammarco-boscaro-small-unsplash.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-03-23T16:12:12+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/_posts/wp-content/uploads/2018/03/giammarco-boscaro-small-unsplash.jpg" />
+<meta property="twitter:title" content="SOLID czyli zestaw solidnych reguł" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2018-03-23T16:12:12+01:00","datePublished":"2018-03-23T16:12:12+01:00","description":"Jednym z najbardziej rozpoznawalnych akronimów w inżynierii oprogramowania jest SOLID. Jednak po przeprowadzeniu setek rozmów rekrutacyjnych mogę stwierdzić, że z tą rozpoznawalnością bywa bardzo różnie. A szkoda, bo jest to zestaw reguł o dużym znaczeniu, warto więc wyjaśnić co to jest i dlaczego na rozmowach kwalifikacyjnych tak często pada pytanie o SOLID.","headline":"SOLID czyli zestaw solidnych reguł","image":"/_posts/wp-content/uploads/2018/03/giammarco-boscaro-small-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/dobre-praktyki/solid-czyli-zestaw-solidnych-regul/"},"url":"/_posts/dobre-praktyki/solid-czyli-zestaw-solidnych-regul/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">SOLID czyli zestaw solidnych reguł</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-03-23T16:12:12+01:00" itemprop="datePublished">Mar 23, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Jednym z najbardziej rozpoznawalnych akronimów w inżynierii oprogramowania jest SOLID. Jednak po przeprowadzeniu setek rozmów rekrutacyjnych mogę stwierdzić, że z tą rozpoznawalnością bywa bardzo różnie. A szkoda, bo jest to zestaw reguł o dużym znaczeniu, warto więc wyjaśnić co to jest i dlaczego na rozmowach kwalifikacyjnych tak często pada pytanie o SOLID.</p>
+
+<p>Powstało wiele opracowań na temat SOLID (możesz je bez problemu znaleźć w sieci) w odróżnieniu natomiast od znakomitej ich części my zastanowimy się czy można przedawkować SOLID i jakie będą tego efekty.</p>
+
+<h5 id="czym-jest-solid-i-dlaczego-o-niego-pytamy">Czym jest SOLID i dlaczego o niego pytamy?</h5>
+
+<p>Pod nazwą SOLID kryje się pięć zasad związanych z inżynierią oprogramowania, w szczególności z programowaniem obiektowym. Jest to zlepek pierwszych liter pochodzących od nazw tych reguł. Są one uniwersalne i nie są przypisane do konkretnego języka programowania lub technologii, chociaż większość z nich odnosi się bezpośrednio do programowania obiektowego.</p>
+
+<p>Na rozmowach rekrutacyjnych bardzo często pada pytanie o SOLID i nie chodzi o sprawdzenie wiedzy encyklopedycznej czy wyrywkową weryfikację znajomości formułek. To zagadnienie ma wymiar praktyczny. Po pierwsze jeśli znasz ten akronim, to z dużym prawdopodobieństwem żywo interesujesz się inżynierią oprogramowania, a w szczególności dobrymi praktykami, bo te reguły to zbiór właśnie takich praktyk. Punkt dla Ciebie! Kolejna ważna sprawa to dyskusja o poszczególnych zasadach. Tu możemy wymienić się spostrzeżeniami i sprawdzić jak dobrze czujesz się w roli inżyniera oprogramowania, jak rozumiesz dane prawidła. Dodatkowym plusem jest to, że temat ten jest dosyć luźny w przeciwieństwie do np. pytań natury algorytmicznej.</p>
+
+<p>Jak już wspomniałem SOLID to zestaw dobrych praktyk i warto je mieć na uwadze podczas tworzenia oprogramowania. Jednak w skrajnych przypadkach mamy do czynienia z czymś w rodzaju religii. Istnieje grupa ludzi, która wyznaje te zasady w sposób dogmatyczny, a jak nietrudno zgadnąć każdy rodzaj fundamentalizmu jest szkodliwy. I ten przypadek nie jest wyjątkiem.</p>
+
+<p>Przyjrzyjmy się więc tym zasadom.</p>
+
+<h5 id="single-responsibility">Single responsibility</h5>
+
+<p><em>Jedna odpowiedzialność</em> – tak byśmy mogli przetłumaczyć tę regułę na nasz rodzimy język. Chodzi o coś bardzo elementarnego, a mianowicie każdy fragment oprogramowania taki jak funkcja lub klasa powinien być odpowiedzialny tylko za jedną czynność. Jest to dosyć intuicyjna zasada w myśl powiedzenia, że jak coś jest od wszystkiego to jest do niczego. Więc jeśli projektujemy oprogramowanie, to powinniśmy wydzielić takie bloki funkcjonalne, które są skupione na konkretnych dobrze zdefiniowanych zadaniach, każdy blok to realizacja jednego zadania, każda klasa reprezentuje jeden spójny byt, każda funkcja implementuje dokładnie jedną czynność. Można również powiedzieć, że nie powinno być więcej niż jednego powodu do modyfikacji danej klasy lub funkcji.</p>
+
+<p>Co dostajemy w nagrodę? Benefitów jest wiele. Jak choćby dobra struktura kodu, klarowność intencji programisty, prostszy kod, łatwość pisania i utrzymywania testów jednostkowych. Oczywiście do osiągnięcia tych precjozów sama zasada jednej odpowiedzialności nie wystarczy, ale z pewnością jest to krok w dobrym kierunku.</p>
+
+<p>A teraz o przedawkowaniu. Cóż złego może się tu wydarzyć? Ano może i to dużo! Zasada ta doprowadzona do absurdu może skutkować bardzo poważnymi konsekwencjami takimi jak nieczytelny i zagmatwany kod, trudność w utrzymywaniu takiego dzieła. Dodatkowym skutkiem ubocznym jest mnożenie bytów ponad miarę. Jednym z najczęstszych przykładów takich nadużyć, co o zgrozo można często zobaczyć czytając wpisy ekspertów wyjaśniających właśnie tę zasadę, jest nadmierna komplikacja prostego problemu w imię tej zasady (i innych). Być może są to celowo przejaskrawione przykłady, aby pokazać sens reguły, ale problem w tym, że początkujący adept sztuki programowania może o tym nie wiedzieć. Tak więc prosty przykład składający się z kilku linijek kodu zamienia się w kilka lub kilkanaście klas, rozrasta się do kilku plików. Nie tędy droga!</p>
+
+<h5 id="open-close">Open-close</h5>
+
+<p>Mówiąc w skrócie, kod powinien być otwarty na rozszerzanie, a zamknięty na modyfikacje. A co to oznacza? Zacznijmy od końca, kod zamknięty na modyfikacje oznacza to, że jedynym powodem aby go modyfikować powinna być naprawa znalezionych błędów czyli bug-fixing. Dobra powiesz, a co jeśli klient chce wprowadzić zmiany samej funkcjonalności? Przecież musimy to jakoś zaimplementować czyli zmienić kod… Otóż niekoniecznie. I o tym mówi pierwsza część, czyli otwartość na rozszerzanie. Zatem nie modyfikujemy istniejących klas, a rozszerzamy je. Paradygmat programowania obiektowego dostarcza nam kilku narzędzi takich jak dziedziczenie lub kompozycja, które możemy wykorzystać do tego celu.</p>
+
+<p>Zalety są mocnymi argumentami przemawiającymi za tą regułą, sprawdźmy więc co możemy zyskać.</p>
+
+<ul>
+  <li>Nie modyfikujesz istniejącego kodu, więc nie musisz zmieniać powiązanych unit testów co bywa kosztowne i błędogenne. Rozjazd kodu z unit testami to chyba najczęstszy widok w starszych projektach.</li>
+  <li>Podczas rozszerzania będziesz prawdopodobnie wykorzystywał istniejący i (miejmy nadzieję) przetestowany kod.</li>
+  <li>Również ktoś może już korzystać z fragmentu, który normalnie byłby kandydatem do modyfikacji. Na szczęści nie mamy zamiaru tego robić, więc nie sprawimy niespodzianki w innym miejscu.</li>
+</ul>
+
+<p>Wszystko pięknie, ale jak to wygląda w praktyce? Niestety, nieciekawie. Chyba wszystkie projekty, które wchodzą w fazę utrzymania (<em>maintenance</em>) stają się ofiarą notorycznego łamania tej reguły. Mógłbyś zapytać: ale jak to możliwe skoro to takie dobre prawidło? Wytłumaczenie jest bardzo proste. W projektach takich programiści często pracują pod presją czasową, zazwyczaj osoby decyzyjne preferują szybkie rozwiązania obarczone długiem technologicznym aniżeli rozwiązania solidne, ale bardziej czasochłonne. Niestety więc niesławny sposób zwany w branżowym żargonie „<em>quick-fix</em>” cieszy się sporą popularnością. Drugi powód to kod który jest (sic!) otwarty na modyfikację i zamknięty na rozszerzanie. I tutaj bez fundamentalnego refaktoringu się nie obejdzie. A na to mało kto się zgodzi. I tak koło się zamyka.</p>
+
+<h5 id="liskov-substitution">Liskov substitution</h5>
+
+<p>Jest to reguła związana bezpośrednio z polimorfizmem. Zwykle klasa bazowa jest początkiem bardziej złożonej hierarchii. Wiele klas może dziedziczyć z tej samej klasy bazowej. Często klasa bazowa stanowi interfejs, to znaczy nie musimy znać konkretnej implementacji tego interfejsu, ale opieramy się na tym interfejsie który niejako stanowi pewien kontrakt. Brzmi to dość dziwnie, ale jest to w gruncie rzeczy prosta zasada, którą można sparafrazować słowami „nie obchodzi mnie kto to zrobi i w jaki sposób, ma być zrobione”.</p>
+
+<p>Wracając do sedna, zasada ta mówi, że zdefiniowany kontrakt nie powinien zostać semantycznie złamany. Czyli jeśli w pewnym fragmencie kodu korzystam z interfejsu to jakakolwiek implementacja tegoż interfejsu nie powinna skutkować nieoczekiwanym działaniem programu. Implementacja może realizować dany interfejs na różne sposoby, ale nie może wpłynąć negatywnie na aplikację która z niego korzysta. Czyli jeśli <em>podstawimy</em> lub zamienimy jedną implementację danego interfejsu inną implementacją tego samego interfejsu to program powinien zachować wszystkie niezmienniki (<em>invariants)</em>, czyli powinien się wykonać poprawnie.</p>
+
+<h5 id="interface-segregation">Interface segregation</h5>
+
+<p>Interfejsy powinny być posegregowane w logicznie spójne fragmenty. Pod słowem interfejs należy rozumieć i te niskopoziomowe konstrukcje jak interfejsy na poziomie klas jak i te wysokopoziomowe jak np. WebServices. Zamiast jednego interfejsu zawierającego wszystkie metody i funkcje powinniśmy wprowadzić podział. Innymi słowy nie powinno dojść do sytuacji, w której część funkcji danego interfejsu jest nieużywana, ponieważ akurat tej funkcjonalności nie wykorzystujemy lub odwrotnie nie implementujemy danego fragmentu, ponieważ nie jest to nam potrzebne w konkretnym przypadku. Oznaczałoby to, że interfejs skupia zbyt dużo luźno powiązanych (lub wcale niepowiązanych) funkcjonalności.</p>
+
+<p>Jednak przesadne rozdrobnienie powoduje nadmierną komplikację i paradoksalnie wprowadza chaos zamiast porządku. Wystarczy sobie wyobrazić osobny interfejs dla każdej metody. Widziałem już realizacje takich pomysłów i uwierzcie mi, nie jest to ani wygodne w używaniu, ani łatwe w utrzymaniu. A mówiąc wprost – koszmar!</p>
+
+<h5 id="dependency-inversion">Dependency inversion</h5>
+
+<p>Klasyczna topologia oprogramowania zakłada, że warstwy wyższego poziomu zależą od warstw niższego poziomu, a te znowu zależą od warstw jeszcze niższego poziomu i tak dalej. Brzmi logicznie i spora cześć oprogramowania właśnie tak funkcjonuje. Mamy więc drzewo zależności (a w praktyce jest to najczęściej graf). Oprogramowanie takie jest mocno spięte (<em>tightly coupled</em>), czyli zależności wszyte są w oprogramowanie, nie ma możliwości łatwej zmiany, a czasami taka możliwość byłaby bardzo pożądana, np. po to aby wyciągnąć dany fragment i przetestować go w izolacji lub użyć go w innej aplikacji, lub zastąpić go tymczasowo innym modułem.</p>
+
+<p>Czy istnieje jakiś sposób, aby to osiągnąć? Istnieje. Ale trzeba przyjąć dwa założenia. Po pierwsze warstwy wyższego poziomu nie powinny zależeć od warstw niższego poziomu. A przynajmniej nie powinny zależeć w sposób bezpośredni. Wspólnym mianownikiem powinny być abstrakcyjne interfejsy. Wtedy warstwy nie muszą nic wiedzieć o sobie, ponieważ jedynym łącznikiem są interfejsy. Pewnie już domyślasz się dlaczego zasada <em>Liskov substitution</em> jest tutaj tak ważna. Drugie założenie mówi, że abstrakcyjne interfejsy nie powinny zależeć od implementacji, ale odwrotnie. To implementacja zależy od tych interfejsów, bo je implementuje.</p>
+
+<p>Reguła ta niejako odwraca klasyczny sposób myślenia o zależnościach pomiędzy warstwami. Warstwy nie zależą od siebie, ale od abstrakcyjnych interfejsów.</p>
+
+<p>Ale jest też ciemna strona tej reguły. Wyobraź sobie, że lądujesz w projekcie gdzie każda klasa posiada odpowiadający interfejs (osobny byt), widzisz mnóstwo tworów wyglądających mniej więcej tak: <em>ISomething</em>. Każda zależność pomiędzy klasami zrealizowana jest poprzez odpowiadający interfejs. Projekt taki staje się bardzo skomplikowany, kod jest bardzo złożony i zależności między klasami nie są już tak oczywiste. A cała rzecz polega na redukcji skomplikowania i wyrażania idei w sposób najprostszy. Znowu coś poszło nie tak. Oczywiście fanatyczni zwolennicy tej reguły będą jej bronić i będziesz słyszał wiele argumentów przekonywujących, że taki stan jest dobry i tak właśnie oprogramowanie powinno wyglądać. Ale nie daj się zwieść!</p>
+
+<h5 id="podsumowanie">Podsumowanie</h5>
+
+<p>Zasady te są bardzo przydatne w programowaniu i powinny znaleźć się w skrzynce narzędziowej każdego programisty. Jednak podczas stosowania tej reguły należy korzystać ze zdrowego rozsądku, bo dogmatyczne stosownie się do tych prawideł może być równie szkodliwe co notoryczne łamanie tych reguł.</p>
+
+<p>Niestety praktyka pokazuje, że z dużym prawdopodobieństwem będziesz miał (lub już masz) do czynienia z kodem, który w mniejszym lub większym stopniu łamie te reguły. Takie są realia i nie powinno to nikogo bulwersować, ponieważ napisanie kodu, który nie łamie żadnych reguł SOLID jest bardzo trudne, jeśli w ogóle możliwe. Co więcej, takie romantyczne myślenie jest utopią i może być znacznym problemem, ponieważ zawsze stoi w opozycji do zdrowego rozsądku. Tworzenie oprogramowania to zawsze jakiś kompromis, ktoś złośliwy mógłby powiedzieć, że ten kompromis to wybór pomiędzy dżumą a cholerą.</p>
+
+  </div><a class="u-url" href="/_posts/dobre-praktyki/solid-czyli-zestaw-solidnych-regul/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

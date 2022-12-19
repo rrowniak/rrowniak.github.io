@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Architektura serwerów – wydajność przetwarzania zapytań cz.1 | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Architektura serwerów – wydajność przetwarzania zapytań cz.1" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych." />
+<meta property="og:description" content="Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych." />
+<link rel="canonical" href="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
+<meta property="og:url" content="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:image" content="/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-12-22T09:09:51+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
+<meta property="twitter:title" content="Architektura serwerów – wydajność przetwarzania zapytań cz.1" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2019-12-22T09:09:51+01:00","datePublished":"2019-12-22T09:09:51+01:00","description":"Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych.","headline":"Architektura serwerów – wydajność przetwarzania zapytań cz.1","image":"/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"},"url":"/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Architektura serwerów &amp;#8211; wydajność przetwarzania zapytań cz.1</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-12-22T09:09:51+01:00" itemprop="datePublished">Dec 22, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych.</p>
+
+<h3 id="wstęp">Wstęp</h3>
+
+<p>Zająłem się tą tematyką z dwóch powodów. Po pierwsze temat ten obrósł w liczne mity, które często są powtarzane w środowisku inżynierskim przy porannej kawie. Więc najwyższy czas obalić pewne mylne wyobrażenia takie jak np. <em>zawsze wielowątkowość przyspiesza</em>, <em>optymalizacje to samo zło</em>, <em>prędkość = więcej ramu</em>, <em>aby coś przyspieszyć musisz poznać więcej ficzerów danego języka</em>, <em>kopiowanie spowalnia</em> itp.</p>
+
+<p>Drugi powód to fakt, że przymierzam się do pewnego projektu open-source, gdzie tego typu zagadnienia to chleb powszedni. Więc warto nieco poeksperymentować w kontrolowanym środowisku i przy okazji podzielić się wynikami.</p>
+
+<h3 id="eksperyment">Eksperyment</h3>
+
+<p>Zdefiniujmy problem. Mamy do przetworzenia 100 tys. niezależnych zapytań. Dla uproszczenia problematyki każde zapytanie składa się tylko z identyfikatora i generowanie polega na zwiększaniu wartości o jeden:</p>
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+bool RequestGenerator::GetNext(Request&amp; req)
+{
+    req.id = current++;
+
+    if (current &gt; N) {
+        return false;
+    }
+
+    return true;
+}
+```
+
+&lt;/div&gt;Każde zapytanie zostanie przetworzone zgodnie z poniższą procedurą:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+void RequestProcessor::Process(const Request&amp; req, Response&amp; r) const
+{
+    cnt_requests.inc();
+    
+    auto tmp = req.id * 13;
+    double tmpd = static_cast<double>(tmp);
+    tmpd = sqrt(tmpd*tmpd + 3.1415 * sin(tmpd * 2 * M_1_PI));
+    snprintf(r.text, RespTextSize, "Resp: %f", tmpd);
+    r.result = tmpd;
+    r.req = req;
+
+    // simulate io operations
+    using namespace std::chrono_literals;
+
+    if (req.id % 10000 == 0) {
+        cnt_sleep_total.inc_by(1000);
+        
+        // IOBegin();
+        std::this_thread::sleep_for(1s);
+        // IOEnd();
+    } else if (req.id % 1000 == 0) {
+        cnt_sleep_total.inc_by(88);
+        
+        // IOBegin();
+        std::this_thread::sleep_for(88ms);
+        // IOEnd();
+    } else if (req.id % 500 == 0) {
+        cnt_sleep_total.inc_by(10);
+        
+        // IOBegin();
+        std::this_thread::sleep_for(10ms);
+        // IOEnd();
+    } else if (req.id % 2 == 0) {
+        cnt_yield.inc();
+        
+        // IOBegin();
+        std::this_thread::yield();
+        // IOEnd();
+    }
+
+    // do some copying and text transformations
+    r.textSize = std::min(data.size(), RespTextSize);
+    std::copy_n(std::begin(data), r.textSize, r.text);
+    // replace "v" with "V"
+    std::replace(std::begin(r.text), std::begin(r.text) + r.textSize, 'v', 'V');
+}
+```
+
+&lt;/div&gt;Powyższy kod nie robi nic użytecznego. Został on zdefiniowany specjalnie na potrzeby tego eksperymentu. Mamy więc kilka obliczeń zmiennoprzecinkowych, operacje na większym bloku tekstu – `r.textSize` wynosi 12386 bajtów, kopiowanie bloku pamięci i wywoływanie funkcji systemowych poprzez funkcje z biblioteki standardowej `std::this_thread::sleep_for()` i `std::this_thread::yield()` które to mają symulować operacje IO (np. odczyt z dysku, zapytanie do bazy danych, itp) i przełączanie kontekstu (*context switching*). Jak to w praktyce bywa, operacje IO bywają kapryśne toteż nasza procedura wywołuje je z różną częstotliwością. Nie będziemy optymalizować tego kodu – nie taka jest idea.
+
+Powyższy eksperyment ma za zadanie symulować zadania z jakimi może spotkać się serwer aplikacji (np. serwer http, zmq, procesor transakcji itp).
+
+Naszym zadaniem jest wykonać 100 tysięcy zapytań (czyli 100 tysięcy wywołań powyższej procedury) w jak najszybszym czasie.
+
+Testy będę przeprowadzał na maszynie wyposażonej w procesor Intel Core i7-6820HK CPU @ 2.70GHz i 64 GB pamięci RAM.
+
+Pełny kod źródłowy z eksperymentami dostępny jest [tutaj](https://github.com/rrowniak/blog/tree/master/processing_pipeline).
+
+### Rozwiązanie 1
+
+Najprostsze rozwiązanie to sekwencyjne procesowanie zapytań jak w poniższym pseudokodzie:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+for_each request in 100k_requests:
+    RequestProcessor::Process(request)
+```
+
+&lt;/div&gt;Implementacja taka jest bardzo prosta i chyba zawsze warto od tego zacząć co najmniej z kilku powodów: prostsza implementacja – mniej błędów, dostaniemy początkowe wyniki do późniejszego porównania, sekwencyjna, jednowątkowa implementacja jest łatwa do badania i profilowania.
+
+Wykonanie takiego programu daje następujące rezultaty:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ /usr/bin/time -v ./processing_pipeline 1
+Running Experiment_1_single_threaded
+Control result: 6.49994e+10
+Total sleep: 18920 ms, # yield: 49800, # requests: 100000
+Waited 24367.9 ms, avg 4103.76 trans/sec
+	Command being timed: "./processing_pipeline 1"
+	User time (seconds): 5.39
+	System time (seconds): 0.02
+	Percent of CPU this job got: 22%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:24.36
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3984
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 147
+	Voluntary context switches: 201
+	Involuntary context switches: 39
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+```
+
+&lt;/div&gt;Pierwsze trzy linijki to informacje podane przez sam program wykonujący eksperyment:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+Running Experiment_1_single_threaded
+Control result: 6.49994e+10
+Total sleep: 18920 ms, # yield: 49800, # requests: 100000
+Waited 24367.9 ms, avg 4103.76 trans/sec
+```
+
+&lt;/div&gt;Najważniejsze informacje to sumaryczny czas spędzony w funkcji *sleep* (~19s) i ilość wywołań funkcji *yield*. Czyli wykonując sekwencyjnie wszystkie zapytania (100k) program będzie się wykonywał co najmniej 18 920 milisekund. Potem mamy zmierzony czas eksperymentu i wynosi on ok 24 sekundy. I dalej mamy podaną średnią liczbę transakcji wykonanych w czasie jednej sekundy – ~4104 transakcje na sekundę. Na podstawie tych podstawowych informacji możemy powiedzieć, że program spał 18 920 ms a robił „*coś* innego” przez 5 448 ms.
+
+Przeanalizujmy dalsze wyniki wygenerowane przez program `/usr/bin/time`, który w odróżnieniu od swojego „*kuzyna*” czyli komendy `time` (wbudowanej w interpreter `shell`) podaje dużo ciekawych szczegółów.
+
+Linia `User time (seconds): 5.39` mówi nam, że program spędził w `userspace` ok 5.4 sekundy co sugeruje, że nasze „*coś innego*” to w całości nasz kod a nie np. wykonanie procedur jądra systemu na nasze żądanie (taki czas został oszacowany na `System time (seconds): 0.02`).
+
+Można zaryzykować hipotezę, że przez 5.39 + 0.02 sekundy nasz program intensywnie obciążał jeden rdzeń procesora a przez 18.92 sekundy nic nie robił. Spróbujmy zatem obliczyć eksperymentalnie średnie zużycie procesora: (5.39 + 0.02) / 24.36 = ~22.2 %. Aby zweryfikować naszą hipotezę wystarczy rzucić okiem na zmierzone zużycie procesora `Percent of CPU this job got: 22%`. Po tych krótkich spostrzeżeniach wiemy, że nie wykorzystujemy w pełni naszego procesora. Innymi słowy – da się szybciej.
+
+Zanim przejdziemy do dalszych usprawnień naszego programu, zróbmy kilka pomiarów które pozwolą nam obejrzeć program od innej strony. Zobaczmy jakie funkcje systemowe były wywoływane przez nasz program:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ strace -c  ./processing_pipeline 1
+Running Experiment_1_single_threaded
+Control result: 6.49994e+10
+Total sleep: 18920 ms, # yield: 49800, # requests: 100000
+Waited 26401.5 ms, avg 3787.67 trans/sec
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000474           0     49800           sched_yield
+  0.00    0.000000           0         6           read
+  0.00    0.000000           0         4           write
+  0.00    0.000000           0         7           open
+  0.00    0.000000           0         7           close
+  0.00    0.000000           0         7           fstat
+  0.00    0.000000           0         3           lseek
+  0.00    0.000000           0        19           mmap
+  0.00    0.000000           0        11           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           rt_sigaction
+  0.00    0.000000           0         1           rt_sigprocmask
+  0.00    0.000000           0         7         7 access
+  0.00    0.000000           0       200           nanosleep
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         1           getrlimit
+  0.00    0.000000           0         1           arch_prctl
+  0.00    0.000000           0         2           futex
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         1           set_robust_list
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000474                 50085         7 total
+
+```
+
+&lt;/div&gt;Wywołania `sched_yield` i `nanosleep` nie powinny dziwić. Jednak jedna rzecz może zastanawiać – funkcja systemowa `access` (sprawdza uprawnienia) była wywoływana siedem razy i za każdym razem zwracała błąd. Należy zwracać uwagę na tego typu sytuacje ponieważ mogą się przyczyniać do znacznego spadku wydajności. Często jest tak, że błędy są „naprawiane” i użytkownik nie widzi nic oprócz spadku wydajności.
+
+Przyjrzyjmy się zatem bliżej wywołaniom tej funkcji:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ strace -T -e trace=access  ./processing_pipeline 1                                                                                        
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000173&gt;
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory) &lt;0.000129&gt;
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000052&gt;
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000029&gt;
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000027&gt;
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000027&gt;
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) &lt;0.000027&gt;
+
+```
+
+&lt;/div&gt;Okazuje się, że jest to sprawka *glibc*, który robi to celowo:
+
+&gt; **`/etc/ld.so.nohwcap`** When this file is present the dynamic linker will load the non-optimized version of a library, even if the CPU supports the optimized version.
+&gt; 
+&gt; <cite>[Debian `glibc` manpage for `ld.so`](https://anonscm.debian.org/cgit/pkg-glibc/glibc.git/tree/debian/local/manpages/ld.so.8)</cite>
+
+Czas spędzony na tych wywołaniach jest znikomy (nawiasy &lt;&gt;). Fałszywy alarm.
+
+Jest jeszcze jedna rzecz, którą musimy zbadać – co tak na prawdę robi nasz kod?
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ perf record  ./processing_pipeline 1
+```
+
+&lt;/div&gt;A po wykonaniu:
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ perf report
+```
+
+&lt;/div&gt;Wyświetli się interaktywna konsola profilera:
+
+<figure class="wp-block-image size-large">![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2019/12/image.png?resize=696%2C422)</figure>I już na pierwszy rzut oka widać, że najdroższa operacja pod względem zużycia CPU to modyfikacja tekstu. Niestety jest to część, której nie możemy dotykać więc nasze możliwości usprawnień zostały wyczerpane.
+
+W [następnych](http://rrowniak.com/c-2/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-2/) odsłonach spróbujemy zrównoleglić nasze przetwarzanie zapytań. Wydawać by się mogło, że spawa jest banalnie prosta. Okazuje się, że istnieje wiele podejść do tego tematu, każde z nich dotyka pewnych subtelnych niuansów. Będziemy odkrywać różne pułapki i przekonamy się, że wybór złej taktyki daje zaskakująco podłe wyniki.
+</pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></double></pre></div></pre></div>
+
+  </div><a class="u-url" href="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

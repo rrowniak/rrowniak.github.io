@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Ethereal stuff – volatile | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Ethereal stuff – volatile" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this article I’m going to share some details about the volatile keyword available in a number of programming languages like C++, C, Java. During my professional career, I have found out that the volatile type qualifier is frequently misunderstood and, what is even worse, incorrectly used (leading to nasty bugs)." />
+<meta property="og:description" content="In this article I’m going to share some details about the volatile keyword available in a number of programming languages like C++, C, Java. During my professional career, I have found out that the volatile type qualifier is frequently misunderstood and, what is even worse, incorrectly used (leading to nasty bugs)." />
+<link rel="canonical" href="/_posts/programming/ethereal-stuff-volatile/" />
+<meta property="og:url" content="/_posts/programming/ethereal-stuff-volatile/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-03T12:27:25+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ethereal stuff – volatile" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2018-02-03T12:27:25+01:00","datePublished":"2018-02-03T12:27:25+01:00","description":"In this article I’m going to share some details about the volatile keyword available in a number of programming languages like C++, C, Java. During my professional career, I have found out that the volatile type qualifier is frequently misunderstood and, what is even worse, incorrectly used (leading to nasty bugs).","headline":"Ethereal stuff – volatile","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/programming/ethereal-stuff-volatile/"},"url":"/_posts/programming/ethereal-stuff-volatile/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Ethereal stuff &amp;#8211; volatile</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-02-03T12:27:25+01:00" itemprop="datePublished">Feb 3, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In this article I’m going to share some details about the <code class="language-plaintext highlighter-rouge">volatile</code> keyword available in a number of programming languages like C++, C, Java. During my professional career, I have found out that the <code class="language-plaintext highlighter-rouge">volatile</code> type qualifier is frequently misunderstood and, what is even worse, incorrectly used (leading to nasty bugs).</p>
+
+<p>I’ll show the differences between C/C++ and Java languages and present some examples. However, this is not a definitive guide. The main purpose of this article is to give some overview and highlight potential problems.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">volatile</code> keyword differs from language to language, thus we can’t just write one definition for all. Fortunately, the <code class="language-plaintext highlighter-rouge">volatile</code> type identifier serves the same purpose in C and C++ (albeit C++ slightly extends the definition).</p>
+
+<h2 id="c-and-c">C++ and C</h2>
+
+<h4 id="a-bit-of-theory">A bit of theory</h4>
+
+<p>A common answer to a question „what’s volatile” is „well, it prevents a compiler from aggressive optimizations…”. But what are these optimizations? Is there anything else we should know about? Can we leverage these properties in multi-threaded code?</p>
+
+<p>According to <a href="http://en.cppreference.com/w/cpp/language/cv">cppreference.com</a>: <em>Every access (read or write operation, member function call, etc.) on the volatile object is treated as a visible side-effect for the purposes of optimization (that is, within a single thread of execution, volatile accesses cannot be optimized out or reordered with another visible side effect that is sequenced-before or sequenced-after the volatile access. This makes volatile objects suitable for communication with a signal handler, but not with another thread of execution, see std::memory_order).</em></p>
+
+<p>In order to understand the above definition we need to know what happens when we’re reading or writing an object. Unfortunately, it may be quite complex depending on underlying hardware, but the idea simply boils down to one rule – a processor (or micro-controller) doesn’t operate directly on variables located in RAM. It works on registers instead. So every operation on a given variable requires „transfer” corresponding value from RAM to a certain register (load) and then, after the operation completion, update that variable, that is, „transfer” in reverse direction (store). However, accessing RAM memory could be very expensive, sometimes far more than 100 cycles.</p>
+
+<p>To overcome that problem, engineers and architects have invented a lot of optimizations and tricks like memory multi-level caching (L1, L2, L3), caching values in registers, reordering computations. Also other optimizations can be applied like eliminating useless and redundant computations and many more.</p>
+
+<p>Sometimes we don’t want compilers to optimize access to a given variable. For example, the following code snippet:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+i = 0;
+i = 1;
+i = 2;
+</code></pre></div></div>
+
+<p>could be optimized by C/C++ compiler in a way that it would be equivalent to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+i = 2;
+</code></pre></div></div>
+
+<p>which is quite reasonable because previous assignments have no effects. But not always. For example, variable <code class="language-plaintext highlighter-rouge">i</code> could be a hardware register and the underlying hardware expects a certain sequence of changes. After optimizations, we won’t be even informed that our sequence of value changes doesn’t exist at all.</p>
+
+<p>Let’s see practical implications.</p>
+
+<h4 id="example--8-bit-micro-controller">Example – 8 bit micro-controller</h4>
+
+<p>The following code for an embedded device written in C was compiled by avr-gcc.</p>
+
+<p>The program is simple (and pretty useless, but it was created for the purpose of this article) – changes <code class="language-plaintext highlighter-rouge">PORTA</code> output when a hardware interrupt happens (caused by an external event).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; highlight: [1,4]; title: ; notranslate" title=""&gt;
+unsigned char int_flag = 0;
+ISR(INT0_vect) // interrupt handler
+{
+int_flag = 1;
+}
+
+int main(void)
+{
+unsigned char led_status = 0;
+configure();
+
+while (1) {
+if (int_flag) {
+led_status = !led_status;
+PORTA = led_status;
+int_flag = 0;
+}
+}
+}
+</code></pre></div></div>
+
+<p>And it works as expected until we set the optimization level to C3…</p>
+
+<p>Raising optimization level brings some problems – interrupts don’t make any changes to <code class="language-plaintext highlighter-rouge">PORTA</code> as if the while loop was not evaluated at all. We need to go deeper to find out what’s going on. Here is generated assembly of the main part:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: plain; highlight: [5]; title: ; notranslate" title=""&gt;
+LDS R24,0x0060 ; Load int_flag to R24
+TST R24        ; Test for Zero or Minus
+BREQ PC+0x05   ; Branch if equal
+LDI R24,0x01   ; Load immediate
+OUT 0x1B,R24   ; Out to I/O location (PORTA = 1)
+STS 0x0060,R1  ; Store direct to data space
+RJMP PC-0x0000 ; Relative jump
+CLI            ; Global Interrupt Disable
+RJMP PC-0x0000 ;Relative jump
+</code></pre></div></div>
+
+<p>And indeed, it looks like there is no while loop! That’s because the compiler deduced that <code class="language-plaintext highlighter-rouge">int_flag</code> variable is modified only once inside the while loop and, after that modification, the if statement will always be evaluated to false. So the while loop is not necessary here.</p>
+
+<p>Most of the code was optimized out, the compiler decided that the equivalent implementation would be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+if (int_flag) {
+PORTA = 1;
+int_flag = 0;
+} 
+</code></pre></div></div>
+
+<p>Definitely the result is not what we have expected. Why that optimization has been applied here? Are data loading operations (<code class="language-plaintext highlighter-rouge">LDS</code>, <code class="language-plaintext highlighter-rouge">STS</code>) so expensive? No, they are not very expensive (at least in this particular case – takes two cycles). But remember that this code can be deployed on very small micro-controllers (e.g. ATtiny2313) having 128 bytes RAM (or even less) and 2kB flash thus aggressive optimizations against program space and used resources are highly desired here. In this particular case the compiler removed unnecessary instructions.</p>
+
+<p>Let’s fix it by adding the <code class="language-plaintext highlighter-rouge">volatile</code> identifier to <code class="language-plaintext highlighter-rouge">int_flag</code> variable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt; volatile unsigned char int_flag = 0; 
+</code></pre></div></div>
+
+<p>Here is generated assembly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: plain; highlight: [3,8]; title: ; notranslate" title=""&gt;
+LDI R25,0x00     ; Load immediate
+LDI R18,0x01     ; Load immediate
+LDS R24,0x0060   ; Load int_flag to R24
+TST R24          ; Test for Zero or Minus
+BREQ PC-0x03     ; Branch if equal
+EOR R25,R18      ; Exclusive OR
+OUT 0x1B,R25     ; Out to I/O location
+STS 0x0060,R1    ; Store R1 to int_flag
+RJMP PC-0x0008   ; Relative jump
+CLI              ; Global Interrupt Disable
+RJMP PC-0x0000   ; Relative jump
+</code></pre></div></div>
+
+<p>Everything looks fine and works as expected. Now the compiler assumes that <code class="language-plaintext highlighter-rouge">int_flag</code> might be modified out of the compiler’s knowledge at any time, so <strong>every access to that volatile variable have to be expressed in generated code</strong>.<br />
+Using volatiles in embedded programming is a common practice because there are plenty of memory mapped registers and dealing with interrupts is normal.</p>
+
+<h4 id="volatile-and-multi-threading">volatile and multi-threading</h4>
+
+<p>Can we take advantage of <code class="language-plaintext highlighter-rouge">volatile</code> in multi-threading programming? No. It wasn’t designed for it. At first glance it seems like a good choice because every time a variable is accessed the read/write actually happen. But that’s not enough, not all guarantees are preserved: lack of atomicity and reordering.</p>
+
+<p>Lack of atomicity. There is no guarantee that write or read operations will be atomic. The consequences can be deplorable; you may get weird values – consider a situation where not all bytes have been written yet to a variable (write is not a single instruction) and simultaneously a read operation gets started…</p>
+
+<p>Reordering. The only guarantee is that only <code class="language-plaintext highlighter-rouge">volatile</code> reads/writes won’t be reordered by compilers. However, an underlying hardware (where weak memory consistency model is implemented) may still reorder these instructions. See <a href="https://en.wikipedia.org/?title=Dekker%27s_algorithm">Dekker’s algorithm</a> and related <a href="http://jakob.engbloms.se/archives/65">troubles</a> on multi-core machines. Moreover, access to <code class="language-plaintext highlighter-rouge">volatile</code>s and non-<code class="language-plaintext highlighter-rouge">volatile</code>s can be reordered by compilers and/or hardware as well. In order to prevent from reordering memory barriers needs to be used. This is a hardware instruction, but compilers are also aware of that as they are also supposed to stop reordering.</p>
+
+<p>The above explanation about reordering might sound odd, but it could be seen in the following example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+volatile bool ready = false;
+int message;
+
+void foo(int i)
+{
+message = 53 * i;
+ready = true;
+} 
+</code></pre></div></div>
+
+<p>The code is quite easy: write a message and then let another thread get that message. However, there is no guarantee that the <code class="language-plaintext highlighter-rouge">ready</code> flag will be updated after the <code class="language-plaintext highlighter-rouge">message</code> is set which is quite important. We don’t want the message being read while the update is in progress.<br />
+I’ve compiled this code by gcc 5.4.1 with <code class="language-plaintext highlighter-rouge">-O2</code> and here is the result:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: plain; title: ; notranslate" title=""&gt;
+_Z3fooi:
+imull $53, %edi, %edi
+movb $1, ready(%rip)
+movl %edi, message(%rip)
+ret
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ready</code> flag is set to <code class="language-plaintext highlighter-rouge">true</code> <em>before</em> <code class="language-plaintext highlighter-rouge">message</code> is modified. A reordering happens. But when optimizations are turned off we don’t experience the reordering. That can be very deceptive because the code would work as expected until we decide to turn some optimizations on, usually when we’re trying to solve performance problems reported by a client…</p>
+
+<p>Note that some compilers (e.g. Visual C++) may provide reordering guarantees for volatiles anyway but if you want to write portable code you should not rely on that.</p>
+
+<p>What about very popular „pattern”:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; highlight: [1]; title: ; notranslate" title=""&gt;
+volatile bool running = true;
+
+void stop() {
+// called from main thread
+running = false;
+}
+
+void worker() {
+// called from another thread
+while (running) {
+// do something
+}
+}
+</code></pre></div></div>
+
+<p>That code would work in most of the cases and many developers use this technique with success. But there are some subtleties.</p>
+
+<p>First of all, there are better suited tools like atomic types which should be leveraged here.</p>
+
+<p>A second problem is that the above example may suggest that changing <code class="language-plaintext highlighter-rouge">bool</code> to <code class="language-plaintext highlighter-rouge">int</code> and adding some innocently looking operations like incrementing (<code class="language-plaintext highlighter-rouge">running++</code>) is still thread safe. It is not.</p>
+
+<p>Another problem is that this code may not work as expected, at least in theory. Imagine a multi-core processor where the main and worker threads are being executed on separate physical cores. Each core might have its own cache. Writing and reading a volatile object doesn’t imply memory barrier, that is, caches may not be synchronized so each core may have a different view of the same variable. Therefore, our worker might not be stopped for some time. In practice, it is highly unlikely that a memory barrier won’t be executed for a long time.</p>
+
+<p>In case of multi-threading programming, we have alternatives which should be used instead of <code class="language-plaintext highlighter-rouge">volatile</code>s. In C++ use aforementioned atomic types defined in atomic header e.g:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+#include &amp;amp;lt;atomic&amp;amp;gt;
+// ...
+std::atomic_bool running{true};
+</code></pre></div></div>
+
+<p>C (in this particular case C11) also comes with similar types:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+#include &amp;amp;lt;atomic.h&amp;amp;gt;
+// ...
+atomic_bool running = ATOMIC_VAR_INIT(1);
+</code></pre></div></div>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>Very popular (and really needed) in embedded programming (interrupt/signal handling, dealing with memory mapped IO registers).</p>
+
+<p>Using volatiles turns off some optimizations – code can be significantly slower.</p>
+
+<p>Not relevant in multi-threading programming (makes an illusion of thread safe code but potentially hazardous).</p>
+
+<h2 id="java">Java</h2>
+
+<p>The situation in Java (&gt;=5) is a bit simpler. <code class="language-plaintext highlighter-rouge">volatile</code> has got a different definition which is easier to understand and narrows the possibility of making errors.</p>
+
+<p>In contrast to C and C++, Java’s <code class="language-plaintext highlighter-rouge">volatile</code> type identifier is intended to be used in multi-threading programming. However, there are still some limitations.</p>
+
+<p>Atomic writes to volatile variables are guaranteed. Also memory barriers are applied. But these features may not be strong enough to make <code class="language-plaintext highlighter-rouge">volatile</code> a replacement for <code class="language-plaintext highlighter-rouge">synchronized</code> section, e.g. incrementing a volatile integer is not thread safe. Incrementing looks like a simple instruction, but in fact, this is a sequence of read-modify-write operations which are not guaranteed to be performed as a transaction. So simultaneous attempts to increment the variable from different threads may interfere yielding unpredictable results. A full synchronization is needed here.</p>
+
+<p>Some call the <code class="language-plaintext highlighter-rouge">volatile</code> a weak form of synchronization. Although <code class="language-plaintext highlighter-rouge">volatile</code> in Java is not widely recommended, it is often used when dealing with interruptions, or used as status flags.</p>
+
+<p>One of the common usage is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: java; title: ; notranslate" title=""&gt;
+volatile boolean running = true;
+
+public void stop() { running = false; }
+public void doWork() {
+while (running) {
+// do some stuff
+}
+}
+</code></pre></div></div>
+
+<h2 id="summary">Summary</h2>
+
+<p>Although <code class="language-plaintext highlighter-rouge">volatile</code> in C and C++ is not the same as <code class="language-plaintext highlighter-rouge">volatile</code> in Java there is one common advice – use volatile if you fully understand how it works. If you are not certain about the details and consequences consider using stronger tools like <code class="language-plaintext highlighter-rouge">synchronized</code> sections in Java.</p>
+
+<p>I hope that this article gives you some overview and warns about potential problems. However, this is not a definitive guide, some aspects were simplified. If you want to get „expert level” you need to go deeper and find more accurate documentation.</p>
+
+  </div><a class="u-url" href="/_posts/programming/ethereal-stuff-volatile/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

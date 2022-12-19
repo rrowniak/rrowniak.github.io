@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>New word order – sorting | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="New word order – sorting" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Almost every modern language comes with sorting procedures. Is there any reason to dive into?" />
+<meta property="og:description" content="Almost every modern language comes with sorting procedures. Is there any reason to dive into?" />
+<link rel="canonical" href="/_posts/programming/new-word-order-sorting/" />
+<meta property="og:url" content="/_posts/programming/new-word-order-sorting/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-03T12:28:33+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="New word order – sorting" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2018-02-03T12:28:33+01:00","datePublished":"2018-02-03T12:28:33+01:00","description":"Almost every modern language comes with sorting procedures. Is there any reason to dive into?","headline":"New word order – sorting","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/programming/new-word-order-sorting/"},"url":"/_posts/programming/new-word-order-sorting/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">New word order &amp;#8211; sorting</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-02-03T12:28:33+01:00" itemprop="datePublished">Feb 3, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Almost every modern language comes with sorting procedures. Is there any reason to dive into?</p>
+
+<p>Very often it doesn’t matter which sorting procedure we select. Especially when we’re sorting a relatively small set of data, say, less than 1000 records, and the performance is not critical. Moreover, some languages give no options but one sorting procedure (taking into consideration only basic language facilities).</p>
+
+<p>But what if we have gigabytes to be sorted? Let’s check out that case.</p>
+
+<h2 id="disclaimer">Disclaimer</h2>
+
+<p>Before we go further, I’d like to clarify some things.</p>
+
+<p>In this test I use only basic facilities of a given language so specialized libraries are not present here. Moreover, in real life you should consider using appropriate tools when dealing with gigabytes of data. Good examples are specialized libraries like <a href="http://www.numpy.org/">Numpy</a> or <a href="http://pandas.pydata.org/">Panda</a>, memory cached systems (<a href="https://memcached.org/">Memcached</a>, <a href="https://redis.io/">Redis</a>), NoSQL databases, embedded databases (<a href="http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html">Berkeley DB</a>, <a href="leveldb.org/">LevelDB</a>), big data processing tools like <a href="http://spark.apache.org/">Apache Spark</a>, <a href="https://hadoop.apache.org/">Hadoop framework</a> to name a few.</p>
+
+<p>This is neither a scientific experiment nor a proof of superiority one language over the others. This is only a brief description and short test of built-in sorting procedures.</p>
+
+<p>The tests were executed on a laptop with i7 processor and 64 GB RAM. The source code is available <a href="https://github.com/rrowniak/blog/tree/master/sorting_big">here</a>.</p>
+
+<h2 id="data-generator">Data (generator)</h2>
+
+<p>In order to generate a representative set of data I prepared a special procedure. I could have used randomly generated data but I wanted to have the same data across all tests.</p>
+
+<p>The procedure is just a simple linear congruential generator.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: plain; title: ; notranslate" title=""&gt;
+x_1 = seed
+x_n+1 = (a x_n + c) mod m
+</code></pre></div></div>
+
+<p>with the following factors:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: plain; title: ; notranslate" title=""&gt;
+a = 48271
+c = 0
+m = 2147483647
+seed = 1
+</code></pre></div></div>
+
+<p>Using this procedure I’ll generate 1 000 000 000 records (or less if that number cannot be handled).</p>
+
+<p>Each record is a structure containing two 64-bit unsigned integers. The first field acts as a simple identifier, the second field is a value to be sorted. In C and C++ the record looks as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="brush: cpp; title: ; notranslate" title=""&gt;
+struct {
+uint64_t id;
+uint64_t value;
+};
+</code></pre></div></div>
+
+<p>Although this is only an example, you can imagine the structure as being a simple index record, pointing to some real data. However, in real life you’d rather use a specialized tool or library instead of reinventing the wheel.</p>
+
+<h2 id="c">C++</h2>
+
+<p>C++ comes with two sorting procedures; the first one called <code class="language-plaintext highlighter-rouge">std::sort</code> is guaranteed to have <em>O(N log(N))</em> complexity. This constraint is valid since C++11 (before C++11, it was <em>O(N log(N))</em> on average). Engineers who implement the Standard Library are free to take any sorting algorithm provided it conforms the requirements. In case of libstdc++ (used by e.g. gcc) it is the <a href="https://en.wikipedia.org/wiki/Introsort">introsort</a>, that is, kind of quick-sort with limited branching (by switching to the heap sort) to avoid the worst case scenario which is <em>O(N²)</em>.</p>
+
+<p>The second sorting procedure is <code class="language-plaintext highlighter-rouge">std::stable_sort</code>. As the name suggests, sorting is stable, that is, equal elements preserve its relative order. The complexity is <em>O(N log²(N))</em> but it can be reduced to <em>O(N log(N))</em> if additional memory is available.</p>
+
+<p>So the title of this paragraph might be misleading as we are going to test sorting procedures implemented in libstdc++ and compiled by gcc v5.4.1, in this particular case.</p>
+
+<p>Let’s check the results of sorting 1 000 000 000 (one billion) records.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Sorting procedure</strong></th>
+      <th><strong>Memory</strong></th>
+      <th><strong>Creation</strong></th>
+      <th><strong>Sorting</strong></th>
+      <th><strong>Checking result</strong></th>
+      <th><strong>Remarks</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>std::sort</td>
+      <td>15 GB</td>
+      <td>5 seconds</td>
+      <td>112 seconds</td>
+      <td>1 second</td>
+      <td>-O2/-O3</td>
+    </tr>
+    <tr>
+      <td>std::sort</td>
+      <td>15 GB</td>
+      <td>21 seconds</td>
+      <td>614 seconds</td>
+      <td>13 second</td>
+      <td>optimizations turned off</td>
+    </tr>
+    <tr>
+      <td>std::stable_sort</td>
+      <td>22 GB</td>
+      <td>5 seconds</td>
+      <td>140 seconds</td>
+      <td>1 second</td>
+      <td>-O2/-O3</td>
+    </tr>
+    <tr>
+      <td>std::stable_sort</td>
+      <td>22 GB</td>
+      <td>21 seconds</td>
+      <td>689 seconds</td>
+      <td>12 second</td>
+      <td>optimizations turned off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Also, I checked which comparator is faster, lambda or struct based – there is no difference. Similar story with optimization level O2 vs O3 – no difference.</p>
+
+<h2 id="c-1">C</h2>
+
+<p>The standard C library offers the <code class="language-plaintext highlighter-rouge">qsort</code> procedure. The implementation is not defined (like in C++). Moreover, there are no complexity requirements and <code class="language-plaintext highlighter-rouge">qsort</code> doesn’t have to be stable. Theoretically, it could be even the bubble sort (<em>O(n²)</em>) but fortunately this is very unlikely.</p>
+
+<p>The implementation can be tricky, for example, there might be leveraged more than one algorithm depending on collection size and whether „additional” memory is available.</p>
+
+<p>In this particular execution (linux, glibc, gcc v5.4.1), the merge sort variant was chosen by the runtime taking additional memory (about +7GB). If that additional memory was not available, quick-sort would be selected.</p>
+
+<p>Sorting 1 000 000 000 records…</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Sorting procedure</strong></th>
+      <th><strong>Memory</strong></th>
+      <th><strong>Creation</strong></th>
+      <th><strong>Sorting</strong></th>
+      <th><strong>Checking result</strong></th>
+      <th><strong>Remarks</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>qsort</td>
+      <td>22 GB</td>
+      <td>4 seconds</td>
+      <td>277 seconds</td>
+      <td>&lt; 1 second</td>
+      <td>-O2/-O3</td>
+    </tr>
+    <tr>
+      <td>qsort</td>
+      <td>22 GB</td>
+      <td>12 seconds</td>
+      <td>355 seconds</td>
+      <td>2 seconds</td>
+      <td>optimizations turned off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Like in C++, optimization levels O2 and O3 don’t differ too much.</p>
+
+<p>C++ seems to be a bit faster, probably due to the fact, that the comparison function was inlined, and possibly, different algorithms and implementations also matters.</p>
+
+<h2 id="python">Python</h2>
+
+<p>As Python is not intended to be a high-performance language, I had to limit data set to 100 000 000 (a tenth of the initial number).</p>
+
+<p>Python’s built-in sort is implemented in C and the algorithm is called <a href="https://en.wikipedia.org/wiki/Timsort">timsort</a>. This is a kind of the merge sort supported by the insertion sort. Requires additional memory; <em>O(n)</em> in the worst case. The complexity is <em>O(n log(n))</em> – the worst case and average case as well.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Sorting procedure</strong></th>
+      <th><strong>Memory</strong></th>
+      <th><strong>Creation</strong></th>
+      <th><strong>Sorting</strong></th>
+      <th><strong>Checking result</strong></th>
+      <th><strong>Remarks</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sort</td>
+      <td>43 GB</td>
+      <td>129 seconds</td>
+      <td>340 seconds</td>
+      <td>50 seconds</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Pretty good numbers as for a scripting language. Python allows playing with reasonable big data sets.</p>
+
+<h2 id="java">Java</h2>
+
+<p>Java (&gt;=7) also uses the timsort algorithm, at least for sorting objects. For sorting primitives, heuristics are leveraged to select right algorithm.</p>
+
+<p>The distinction in sorting between objects and primitive types has been introduced to take advantage of some properties allowing further optimizations. One property is that for primitive types, the sorting algorithm doesn’t have to be stable. Another observation is that in order to compare objects, the function <code class="language-plaintext highlighter-rouge">Object.compare()</code> is called. It doesn’t have to be expensive, but there is a certain cost related anyway. Primitive types can be compared using faster and inline code.</p>
+
+<p>Let’s sort 1 000 000 000 records…</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Sorting procedure</strong></th>
+      <th><strong>Memory</strong></th>
+      <th><strong>Creation</strong></th>
+      <th><strong>Sorting</strong></th>
+      <th><strong>Checking result</strong></th>
+      <th><strong>Remarks</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sort</td>
+      <td>41 GB</td>
+      <td>60 seconds</td>
+      <td>788 seconds</td>
+      <td>22 seconds</td>
+      <td>*</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The test can’t be completed if one uses only default VM parameters. The first thing is to set Xms and Xmx parameters to large enough values. In my test I used the concurrent collector as it gives relatively good results in this case.</p>
+
+<p>*) -Xmx50g -Xms50g -XX:+UseConcMarkSweepGC -XX:NewSize=5g</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>Be aware that some sorting algorithms might take additional memory (e.g. the merge sort and its derivatives).</p>
+
+<p>Some sorting procedures take advantage of more than one sorting algorithm. They may select the best algorithm depending on the input (size, if almost sorted, if array of built-in types, etc).</p>
+
+<p>C and C++. Always take into consideration compiler’s optimization options as it gives a significant speed boost. Not only when dealing with sorting procedures.</p>
+
+<p>Java. Be aware the default VM settings won’t always be a good choice.</p>
+
+<p>The more dynamic language, the bigger memory consumption. Usually.</p>
+
+<p>When dealing with huge data sets, consider using specialized tools.</p>
+
+<p>Regarding the performance – always measure, don’t make blind assumptions.</p>
+
+  </div><a class="u-url" href="/_posts/programming/new-word-order-sorting/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

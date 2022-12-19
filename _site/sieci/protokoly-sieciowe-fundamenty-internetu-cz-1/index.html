@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Protokoły sieciowe – fundamenty Internetu cz.1 | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Protokoły sieciowe – fundamenty Internetu cz.1" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Jak działa internet? To niewinnie wyglądające pytanie jest w rzeczywistości bardzo trudne. Internet to właściwie zbiór niezliczonej ilości technologii, które to jakimś cudem razem współdziałają. Ta współpraca jest możliwa dzięki (w miarę) dobremu dogadywaniu się, za co odpowiadają tzw. protokoły sieciowe. Liczba protokołów sieciowych może przyprawić o zawrót głowy. Wiele z nich działa na różnych poziomach i w różnych sytuacjach, co na pewno nie ułatwia zadania polegającego na sprawnym nawigowaniu w tym pogmatwanym świecie. Spróbujmy zatem skatalogować kilka najbardziej popularnych protokołów wraz z ich krótkim opisem i wybranymi cechami." />
+<meta property="og:description" content="Jak działa internet? To niewinnie wyglądające pytanie jest w rzeczywistości bardzo trudne. Internet to właściwie zbiór niezliczonej ilości technologii, które to jakimś cudem razem współdziałają. Ta współpraca jest możliwa dzięki (w miarę) dobremu dogadywaniu się, za co odpowiadają tzw. protokoły sieciowe. Liczba protokołów sieciowych może przyprawić o zawrót głowy. Wiele z nich działa na różnych poziomach i w różnych sytuacjach, co na pewno nie ułatwia zadania polegającego na sprawnym nawigowaniu w tym pogmatwanym świecie. Spróbujmy zatem skatalogować kilka najbardziej popularnych protokołów wraz z ich krótkim opisem i wybranymi cechami." />
+<link rel="canonical" href="/_posts/sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/" />
+<meta property="og:url" content="/_posts/sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:image" content="/_posts/wp-content/uploads/2019/05/david-klein-452056-small.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-04T19:41:01+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="/_posts/wp-content/uploads/2019/05/david-klein-452056-small.jpg" />
+<meta property="twitter:title" content="Protokoły sieciowe – fundamenty Internetu cz.1" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2019-07-04T19:41:01+02:00","datePublished":"2019-07-04T19:41:01+02:00","description":"Jak działa internet? To niewinnie wyglądające pytanie jest w rzeczywistości bardzo trudne. Internet to właściwie zbiór niezliczonej ilości technologii, które to jakimś cudem razem współdziałają. Ta współpraca jest możliwa dzięki (w miarę) dobremu dogadywaniu się, za co odpowiadają tzw. protokoły sieciowe. Liczba protokołów sieciowych może przyprawić o zawrót głowy. Wiele z nich działa na różnych poziomach i w różnych sytuacjach, co na pewno nie ułatwia zadania polegającego na sprawnym nawigowaniu w tym pogmatwanym świecie. Spróbujmy zatem skatalogować kilka najbardziej popularnych protokołów wraz z ich krótkim opisem i wybranymi cechami.","headline":"Protokoły sieciowe – fundamenty Internetu cz.1","image":"/_posts/wp-content/uploads/2019/05/david-klein-452056-small.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/"},"url":"/_posts/sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Protokoły sieciowe &amp;#8211; fundamenty Internetu cz.1</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-07-04T19:41:01+02:00" itemprop="datePublished">Jul 4, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><em>Jak działa internet?</em> To niewinnie wyglądające pytanie jest w rzeczywistości bardzo trudne. Internet to właściwie zbiór niezliczonej ilości technologii, które to jakimś cudem razem współdziałają. Ta współpraca jest możliwa dzięki (w miarę) dobremu dogadywaniu się, za co odpowiadają tzw. protokoły sieciowe. Liczba protokołów sieciowych może przyprawić o zawrót głowy. Wiele z nich działa na różnych poziomach i w różnych sytuacjach, co na pewno nie ułatwia zadania polegającego na sprawnym nawigowaniu w tym pogmatwanym świecie. Spróbujmy zatem skatalogować kilka najbardziej popularnych protokołów wraz z ich krótkim opisem i wybranymi cechami.</p>
+
+<p>Na szczęście sposób uporządkowania tego uniwersum został odkryty znacznie wcześniej i właśnie z tego powodu powstał tzw. <a href="https://pl.wikipedia.org/wiki/Model_OSI">warstwowy model sieci OSI</a>. Niejako rozbija on całe zagadnienie na kilka podproblemów, które stają się warstwami nakładającymi na siebie. Każda z nich definiuje inne odpowiedzialności. I tak, najniższa warstwa to:</p>
+
+<h3 id="warstwa-1-fizyczna-physical-layer">Warstwa 1: fizyczna (Physical Layer)</h3>
+
+<p>Jak sama nazwa sugeruje, tutaj zdefiniowane jest medium po którym będzie odbywał się transport danych wraz z różnymi charakterystykami i parametrami, takimi jak rodzaj transmisji (half-duplex, full-duplex), poziomy napięć (mogą one być definiowane poprzez protokoły takie jak TTL), długości linii, długość fali, częstotliwość taktowania, częstotliwość fali elektromagnetycznej, modulacja itp. Tych parametrów jest setki jak nie tysiące. Ale nie jest to zbytnio ciekawe z punktu widzenia inżyniera oprogramowania. Warto jednak wiedzieć, że <strong>istota tej warstwy polega na umożliwieniu przesyłania bitów z jednej maszyny do drugiej</strong>. Sama struktura danych nie jest tutaj zdefiniowana. Przykłady takich protokołów? Proszę bardzo: <a href="https://en.wikipedia.org/wiki/Infrared_Data_Association">IRDA</a> (warstwa fizyczna), <a href="https://en.wikipedia.org/wiki/USB">USB</a> (warstwa fizyczna), <a href="https://en.wikipedia.org/wiki/RS-232">RS-232</a>, <a href="https://en.wikipedia.org/wiki/100BASE-T">100BASE-T</a> (warstwa fizyczna), <a href="https://en.wikipedia.org/wiki/802.11">802.11</a> <a href="https://en.wikipedia.org/wiki/Wi-Fi">Wi-Fi</a>, <a href="https://en.wikipedia.org/wiki/CAN_bus">CAN bus</a> (warstwa fizyczna). To oczywiście tylko kilka przykładów.</p>
+
+<h3 id="warstwa-2-łącza-danych-data-link-layer">Warstwa 2: łącza danych (Data Link Layer)</h3>
+
+<p>Tutaj zaczyna się robić naprawdę ciekawie. <strong>Warstwa ta definiuje w jaki sposób dwie maszyny połączone fizycznym medium będą przesyłać „atomowe” paczki danych</strong>. Te atomowe paczki danych nazywamy ramkami (<em>frames</em>). Krótko mówiąc – wykorzystując warstwę pierwszą będziemy przesyłać dane mające już pewną strukturę. Najczęściej protokoły tej warstwy są implementowane przez sprzęt, jak na przykład karty sieciowe. Ale nie przynudzając zbytnio z teorią przejdźmy do konkretnych protokołów, a sprawa się rozjaśni.</p>
+
+<h4 id="ethernet">Ethernet</h4>
+
+<p>To najbardziej popularny protokół warstwy drugiej. Jednak protokół ten dostępny jest w wielu wariantach różniących się między sobą pewnymi szczegółami. Oto niektóre z tych wariantów: Ethernet II, Ethernet 802.3raw, Ethernet IEEE 802.3, Ethernet IEEE 802.3 SNAP, VLAN 802.1q – Ethernet II tagged i IEEE 802.3 tagged. Najbardziej popularnymi wariantami są Ethernet IEEE 802.3 (+ jego „pod-wariant” – 802.3 tagged, który wykorzystywany jest w sieciach wirtualnych VLAN) i Ethernet II.</p>
+
+<p>Omówmy zatem IEEE 802.3 i Ethernet II.</p>
+
+<figure class="wp-block-image">![Representation of an Ethernet 802.3 frame structure](https://i0.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure3.jpg?w=696&amp;ssl=1)<figcaption>Ethernet IEEE 802.3</figcaption></figure>
+<figure class="wp-block-image">![Representation of an Ethernet II frame structure](https://i1.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure.jpg?w=696&amp;ssl=1)<figcaption>Ethernet II</figcaption></figure>
+<p>Sekcje <em>Preamble</em> i <em>Inter Frame Gap</em> są częścią warstwy 1. Nas interesuje część zwana <em>Ethernet Frame</em> (ramka ethernetowa). Ramki ethernetowe mają zmienny rozmiar w granicach od 64 bajtów do 1518 bajtów (wyjątkiem mogą być tzw. <a href="https://en.wikipedia.org/wiki/Jumbo_frame">jumbo frames</a>) a więc rozmiar danych przesyłanych wynosi od 42/46 bajtów do 1497/1500 bajtów dla IEEE 802.3/Ethernet II. To drugie ograniczenie mówiące o maksymalnym rozmiarze danych w ramce nazywa się <strong>MTU</strong> (Maximum Transmission Unit).</p>
+
+<p>Patrząc na strukturę ramki widzimy, że pierwsze 12 bajtów to adresy <strong>MAC</strong>: docelowy i źródłowy. Adresy pozwalają na dostarczanie ramek do konkretnych odbiorców – jednym fizycznym medium może być połączone więcej niż dwie maszyny. Później sobie omówimy skąd nowo podłączona maszyna zna adres docelowy, co to są adresy rozgłoszeniowe i jakie urządzenia operują na tej warstwie.</p>
+
+<p>Kolejne pole to Length (IEEE 802.3) czyli rozmiar danych w sekcji Data. Oczywista sprawa… Otóż nie do końca. Pole Length może być różnie interpretowane a to w związku z zapewnieniem kompatybilności z Ethernet II, a właściwie wykryciem czy mamy do czynienia z ramką IEEE 802.3 czy z Ethernet II. Jeśli wartość tego pola jest mniejsza lub równa 1536 to istotnie jest to rozmiar danych w ramce i zarazem ramka IEEE 802.3. Jednak w przeciwnym wypadku pole to będzie interpretowane jako typ protokołu warstwy 3 (np. IP, MPLS, ICMP itp) a sama ramka będzie interpretowana jako Ethernet II. Widać to dobrze porównując oba formaty. Warto zauważyć, że jeśli wartość ta będzie z przedziału [1498 – 1535] to mamy do czynienia z przypadkiem niezdefiniowanym.</p>
+
+<p>Jak już wspomniałem pole Type w Ethernet II oznacza protokół warstwy trzeciej. Pełną listę wspieranych typów można zobaczyć <a href="https://en.wikipedia.org/wiki/EtherType">tutaj</a>. Wariant IEEE 802.3 niestety jest nieco bardziej złożony jeśli chodzi wyznaczenia EtherType. Służy do tego pole <a href="https://www.savvius.com/networking-glossary/reference_overview/sap_numbers/">DSAP</a>. Jednak jest to tylko jeden bajt więc liczba protokołów była by ograniczona do 256. Jest pewna furtka – jeśli wartość tego pola wynosi 0xAA to mamy do czynienia z wariantem IEEE 802.3: SNAP. I tam są zdefiniowane kolejne pola pozwalające na odkodowanie typu. Ale myślę, że nie ma sensu wchodzić w tak głębokie szczegóły.</p>
+
+<p>Pozostaje jeszcze jedno pytanie: <strong>jak nowo podłączony komputer do sieci ma zaadresować pierwszą ramkę</strong>? Istnieje specjalny adres MAC: FF:FF:FF:FF:FF:FF. To nic innego jak adres rozgłoszeniowy – tak zaadresowana ramka dotrze do każdego urządzenia podłączonego do tego samego switcha. Mamy tutaj do czynienia z rozgłoszeniowym trybem transmisji (broadcasting). Jednak ten mechanizm staje się użyteczny dopiero w połączeniu z innymi protokołami takimi jak ARP lub DHCP. Ale o tym później.</p>
+
+<h4 id="inne-protokoły">Inne protokoły</h4>
+
+<p>Mamy kilka innych protokołów ale najczęściej, obok Ethernet, używanym jest <a href="https://en.wikipedia.org/wiki/IEEE_802.11">IEEE 802.11</a> WiFi. Jest to odpowiednik Ethernet dla WiFi. Pozostałe z nich są specjalistyczne i rzadziej używane (np. VLAN) więc nie będę przynudzał nimi zbytnio.</p>
+
+<h3 id="warstwa-25-wtf">Warstwa 2.5: WTF?</h3>
+
+<p>Tak, to nie pomyłka. Co prawda nie ma czegoś takiego jak warstwa 2.5 ale w żargonie mówi się o protokołach warstwy 2.5. Są twory, które wykorzystują warstwę 2 (głównie Ethernet) ale z drugiej strony nie spełniają definicji warstwy 3. Przykładem jest <a href="https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching">MPLS</a> służący do szybkiego trasowania pakietów, którego nie będziemy opisywać bo mamy znacznie ciekawszy i częściej używany w praktyce protokół:</p>
+
+<h4 id="arp-address-resolution-protocol">ARP (<strong>Address Resolution Protocol</strong>)</h4>
+
+<p>Protokół ten służy do logicznego mapowania adresów MAC (warstwa 2) z adresami IP warstwy trzeciej (chociaż mogą to być inne adresy niż IP). Kiedy go potrzebujemy? Ano wtedy gdy mając już jakiś docelowy adres IP (np. 192.168.1.2) chcemy wysłać odpowiedni pakiet do tego adresata. Ale jaki docelowy adres MAC należy wstawić w ramce? I czy będzie on adresem docelowego hostu? Na drugie pytanie można odpowiedzieć szybko – z reguły nie będzie on adresem docelowego hostu, no chyba, że taka maszyna znajduje się w tej samej sieci lokalnej i nie jest oddzielona żadnymi routerami czy bramami.</p>
+
+<p>Jak zatem działa ten protokół? Załóżmy, że komputer <em>A</em> chce wysłać pakiet do komputera <em>B</em>. Z usługi DNS <em>A</em> dowiedział się, że adres IP <em>B</em> to 192.168.1.2. Ale podczas konstrukcji pakietu wymagany jest adres MAC tej maszyny (<em>B</em>) lub węzła pośredniczącego w komunikacji. Więc komputer A:</p>
+
+<div class="wp-block-advgb-list">- Wysyła zapytanie ARP gdzie adres docelowy MAC to FF:FF:FF:FF:FF:FF. Czyli takie zapytanie trafi do wszystkich komputerów w sieci lokalnej. Zapytanie to można tłumaczyć mniej więcej tak: czy ktoś zna adres MAC odpowiadający takiemu adresowi IP 192.168.1.2?
+- Jeśli maszyna B otrzyma rozgłoszone zapytanie to niezwłocznie odpowiada: tak to ja, mój MAC jest taki a taki.
+- Może się zdarzyć, że maszyna B leży w innej podsieci i nie otrzyma tej wiadomości. Ale jest szansa, że router lub inny węzeł sieci będzie wiedział jak przekierować pakiet do B. Wtedy odpowie: wysyłaj te pakiety na ten MAC…
+
+</div>
+<p>Aby za każdym razem nie pytać się niepotrzebnie o te same adresy wymyślono coś takiego jak tablica ARP (ARP table). To taka pamięć podręczna na lokalnej maszynie uaktualniana z każdym otrzymanym zapytaniem lub odpowiedzią. Wtedy potrzeba wysyłania zapytań maleje z czasem. Taką tablicę można również ręcznie „tuningować”.</p>
+
+<p>Ok, mamy już podstawy. To tyle na dzisiaj. W następnej części zajmiemy się kolejnymi protokołami i warstwami.</p>
+
+  </div><a class="u-url" href="/_posts/sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_posts/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
