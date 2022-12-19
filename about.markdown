@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Welcome to my software engineering blog! Here, I aim to share my knowledge and practical experiences with the community, including measurements and experiments related to programming and software development. While my primary programming language is C++, I also cover other languages such as C, Python, and Java. In addition to programming, I also delve into broader topics in the field of software engineering.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+On my blog, you will find articles in both English and Polish. Some posts may be published in one language, while others may be available in both. If you feel that a particular post would benefit from being translated, please let me know. I hope you find my content helpful and informative!
