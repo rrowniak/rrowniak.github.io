@@ -10,22 +10,22 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych." />
 <meta property="og:description" content="Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych." />
-<link rel="canonical" href="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
-<meta property="og:url" content="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
+<link rel="canonical" href="http://localhost:4000/_site/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
+<meta property="og:url" content="http://localhost:4000/_site/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" />
 <meta property="og:site_name" content="Rafal’s blog" />
-<meta property="og:image" content="/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
+<meta property="og:image" content="http://localhost:4000/_site/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-12-22T09:09:51+01:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
+<meta property="twitter:image" content="http://localhost:4000/_site/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg" />
 <meta property="twitter:title" content="Architektura serwerów – wydajność przetwarzania zapytań cz.1" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2019-12-22T09:09:51+01:00","datePublished":"2019-12-22T09:09:51+01:00","description":"Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych.","headline":"Architektura serwerów – wydajność przetwarzania zapytań cz.1","image":"/_posts/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"},"url":"/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2019-12-22T09:09:51+01:00","datePublished":"2019-12-22T09:09:51+01:00","description":"Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych.","headline":"Architektura serwerów – wydajność przetwarzania zapytań cz.1","image":"http://localhost:4000/_site/wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_site/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"},"url":"http://localhost:4000/_site/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/_posts/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/_posts/feed.xml" title="Rafal&apos;s blog" /></head>
+<link rel="stylesheet" href="/_site/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/_site/feed.xml" title="Rafal&apos;s blog" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/_posts/">Rafal&#39;s blog</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title" rel="author" href="/_site/">Rafal&#39;s blog</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -35,7 +35,7 @@
           </span>
         </label>
 
-        <div class="trigger"><a class="page-link" href="/_posts/about/">About</a></div>
+        <div class="trigger"><a class="page-link" href="/_site/about/">About</a></div>
       </nav></div>
 </header>
 <main class="page-content" aria-label="Content">
@@ -285,12 +285,12 @@ $ perf report
 W [następnych](http://rrowniak.com/c-2/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-2/) odsłonach spróbujemy zrównoleglić nasze przetwarzanie zapytań. Wydawać by się mogło, że spawa jest banalnie prosta. Okazuje się, że istnieje wiele podejść do tego tematu, każde z nich dotyka pewnych subtelnych niuansów. Będziemy odkrywać różne pułapki i przekonamy się, że wybór złej taktyki daje zaskakująco podłe wyniki.
 </pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></double></pre></div></pre></div>
 
-  </div><a class="u-url" href="/_posts/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" hidden></a>
+  </div><a class="u-url" href="/_site/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/" hidden></a>
 </article>
 
       </div>
     </main><footer class="site-footer h-card">
-  <data class="u-url" href="/_posts/"></data>
+  <data class="u-url" href="/_site/"></data>
 
   <div class="wrapper">
 
@@ -302,7 +302,7 @@ W [następnych](http://rrowniak.com/c-2/architektura-serwerow-wydajnosc-przetwar
           <li class="p-name">Rafal&#39;s blog</li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_posts/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_site/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_site/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">
