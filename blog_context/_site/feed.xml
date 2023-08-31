@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/_site/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/_site/" rel="alternate" type="text/html" /><updated>2022-12-20T08:34:14+01:00</updated><id>http://localhost:4000/_site/feed.xml</id><title type="html">Rafal’s blog</title><subtitle>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&apos;re a seasoned IT professional or just starting out in the field, I hope you&apos;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/_site/jekyll/update/2022/12/19/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2022-12-19T17:50:59+01:00</published><updated>2022-12-19T17:50:59+01:00</updated><id>http://localhost:4000/_site/jekyll/update/2022/12/19/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/_site/jekyll/update/2022/12/19/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+<p>Jekyll requires blog post files to be named according to the following format:</p>
+
+<p><code class="language-plaintext highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code></p>
+
+<p>Where <code class="language-plaintext highlighter-rouge">YEAR</code> is a four-digit number, <code class="language-plaintext highlighter-rouge">MONTH</code> and <code class="language-plaintext highlighter-rouge">DAY</code> are both two-digit numbers, and <code class="language-plaintext highlighter-rouge">MARKUP</code> is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+
+<p>Jekyll also offers powerful support for code snippets:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry><entry><title type="html">Przegląd rynku pracy IT 01/22</title><link href="http://localhost:4000/_site/it-pl/przeglad-rynku-pracy-it-01-22/" rel="alternate" type="text/html" title="Przegląd rynku pracy IT 01/22" /><published>2022-01-11T18:49:28+01:00</published><updated>2022-01-11T18:49:28+01:00</updated><id>http://localhost:4000/_site/it-pl/przeglad-rynku-pracy-it-01-22</id><content type="html" xml:base="http://localhost:4000/_site/it-pl/przeglad-rynku-pracy-it-01-22/"><![CDATA[<p>Zobaczmy jak wygląda rynek pracy IT na początku roku 2022. Przeanalizowałem ponad 8 tysięcy aktywnych ofert pracy i zbudowałem kilka ciekawych statystyk, w tym te dotyczące płac. Pomogą one zorientować się jak obecnie kształtuje się rynek pracy, w jakie technologie warto inwestować i na co można liczyć. Zapraszam do czytania.</p>
+
+<p>Pod lupę wziąłem oferty dostępne na portalu <a href="http://justjoin.it">justjoin.it</a>. Już pierwsze statystyki pokazują, że obecna sytuacja jest inna niż tak, którą mogliśmy obserwować jeszcze kilka lat temu. I tak, <strong>70%</strong> badanych ogłoszeń to praca zdalna a pozostałe 30% wymagać będzie pojawienia się w biurze. Kiedyś w 2018 <a href="http://rrowniak.com/raport/raport-2-2018-krotki-przeglad-rynku-pracy-it/">zrobiłem</a> zestawienie ofert pracy per miasto. Dzisiaj nie miało by to większego sensu ponieważ lokalizacja przestaje mieć znaczenie. Czy to tylko „tymczasowa konieczność”? Moim zdaniem to już trwały trend.</p>
+
+<p>Poniżej zestawienie form zatrudnienia.</p>
+
+<figure class="wp-block-image size-full">[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image.png?resize=696%2C398)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image.png)</figure>
+<p>Większość ogłoszeń to praca na warunkach tylko b2b bo aż 42%. Możliwość wyboru pomiędzy b2b a umową o pracę zobaczymy w 27% ogłoszeń. Umowa o pracę to 28% a pozostałe 1% to umowa o dzieło. Jestem bardzo ciekawy jak będzie wyglądała dynamika zmian na tym obszarze w tym roku.</p>
+
+<figure class="wp-block-image size-full">[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-14.png?resize=696%2C377)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-14.png)</figure>
+<p>33% ofert kierowana jest do seniorów. Jednak najbardziej pożądani są specjaliści z średnim doświadczeniem (mid) bo aż 54%. Juniorzy to tylko 13% stawki. Relatywnie niskie zapotrzebowanie na inżynierów bez lub z małym stażem może korelować z dużą ilością ofert pracy zdalnej gdzie wymagane jest pewne doświadczenie ponieważ wdrożenie świeżego pracownika jest bardzo trudne w środowisku zdalnym i rozproszonym.</p>
+
+<p>Przyjrzyjmy się jakich specjalistów szukają pracodawcy. Poniższy wykres pokazuje zapotrzebowanie na poszczególne specjalizacje:</p>
+
+<figure class="wp-block-image size-full">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-1.png?resize=696%2C432)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-1.png)</figure>
+<p>Javascript jest niekwestionowanym liderem. To właśnie tych ogłoszeń o pracę jest najwięcej bo aż ponad 1,5k na ok 8k co daje ok 18% udziałów. Potem w kolejności Java, QA, .Net, PHP, Devops i na siódmym miejscu Python. O ile Java i QA nie dziwi to obstawiałem, że Python uplasuje się wyżej.</p>
+
+<p>Dla porównania zobaczmy za jakie umiejętności pracodawcy są gotowi zapłacić więcej niż 35k PLN:</p>
+
+<figure class="wp-block-image size-full">[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-2.png?resize=696%2C435)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-2.png)</figure>
+<p>Tutaj mamy kilka ciekawostek. Na przykład język Go, który w poprzednim zestawieniu był na poziomie błędu statystycznego a teraz wyskoczył na piątą pozycję. Tak na marginesie to właśnie Go jest „<em>sponsorem</em>” tych zestawień. Mocny spadek zaliczyły takie obszary jak QA, .Net czy PHP. Jakiś czas temu <a href="http://rrowniak.com/dobre-praktyki/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/">próbowałem przewidzieć</a> jakie technologie będą zyskiwać na popularności i pewne trendy zaczynają być widoczne. W tym zestawieniu widać obszary takie jak security, technologie web czy przetwarzanie w chmurze. Chociaż to ostatnie będzie widoczne w dalszych zestawieniach. Przewidywałem też pojawienie się ogólnie pojętej sztucznej inteligencji i uczenia maszynowego. Ten trend nie jest jeszcze wyraźnie widoczny.</p>
+
+<p>Przejdźmy do zarobków, a właściwie to do stawek jakie proponują pracodawcy. Do obliczeń wziąłem górne widełki motywując to tym, że jest to maksymalna kwota jaką pracodawca jest w stanie zaproponować za dane usługi, czyli jaki ma budżet. Oczywiście nie musi to być prawda, wiemy, że niektórzy zawyżają górne widełki aby zwabić jak największą ilość kandydatów. Jednak wolałem uniknąć dodatkowych komplikacji i niuansowania tego zestawienia zgodnie z zasadą <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>. Można dyskutować czy nie brać średniej czy jeszcze inaczej to liczyć ale nie da się zadowolić wszystkich.</p>
+
+<figure class="wp-block-image size-full">[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-3.png?resize=696%2C390)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-3.png)</figure>
+<p>Histogram przedstawia zestawienie płac b2b (niebieski) i UoP (zielony). Dla przedziału płac (oś X) wyliczono ilość ofert (oś Y). Widzimy, że środek ciężkości oscyluje w granicach 15k – 25k. Warto też odnotować niemal liniowy trend spadkowy liczby ogłoszeń UoP wraz ze wzrostem stawek i dominację b2b.</p>
+
+<p>Na koniec chciałbym się skupić na bardziej szczegółowej analizie poszczególnych obszarów. Bo np. pisząc, że Javascript jest najpopularniejszą technologią robimy spore uproszczenie. Bo co oznacza oferta Javascript? Czy jedynym wymaganiem będzie znajomość tego języka? Z całą pewnością nie, szczególnie jeśli mówimy o stanowiskach mid lub senior. Przyjrzyjmy się zatem jakie inne wymagania pojawiają się obok głównych technologii.</p>
+
+<figure class="wp-block-image size-full">[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-7.png?resize=696%2C380)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-7.png)</figure>
+<p>Wykres należy czytać następująco. Oś Y to poszczególne wymagania towarzyszące danej technologii a oś X to procentowy udział we wszystkich ogłoszeniach. Na podstawie tych wykresów oszacujemy jak często pojawia się dane wymaganie.</p>
+
+<p>W przypadku ogłoszeń Javascript widzimy, że React pojawia się prawie w 40% przypadków. Typescript będziemy widzieć w ok 1/3 ogłoszeń. Potem następuje coraz większe zróżnicowanie.</p>
+
+<figure class="wp-block-image size-full">[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-8.png?resize=696%2C388)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-8.png)</figure>
+<p>Devops to głównie praca w chmurze czyli AWS, Linux, Kubernetes, Docker. O te umiejętności pracodawca będzie pytał najczęściej.</p>
+
+<figure class="wp-block-image size-full">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-9.png?resize=696%2C383)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-9.png)</figure>
+<p>Dla języka Python obserwujemy spore rozdrobnienie. Może to oznaczać sporą ilość różnych wymagań, natomiast możemy zauważyć, że framework Django będzie pojawiać się w co piątym ogłoszeniu.</p>
+
+<figure class="wp-block-image size-full">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-10.png?resize=696%2C392)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-10.png)</figure>
+<p>Podobnie jak w przypadku języka Python, tutaj rozdrobnienie jest wysokie, natomiast najczęstszym wymaganiem towarzyszącym będzie Spring.</p>
+
+<figure class="wp-block-image size-full">[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-11.png?resize=696%2C377)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-11.png)<figcaption>Dla języka Go zaskakująco często pojawia się wymaganie języka angielskiego. Może to być związane z dużą ilością ofert pracy do rozproszonych i międzynarodowych zespołów gdzie język angielski jest kluczowy. Kolejne pozycje wskazują na rozwiązania typowo chmurowe.</figcaption></figure>
+<figure class="wp-block-image size-full">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-13.png?resize=696%2C383)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2022/01/image-13.png)<figcaption>Rozbicie kategorii data jest o tyle ciekawe, że nie bardzo było wiadomo co to właściwie jest. Jest to głównie praca z relacyjnymi bazami danych, najczęściej w języku Python. Potem już mamy spore zróżnicowanie.</figcaption></figure>
+<p>Mam nadzieję, że analiza była ciekawą lekturą. Zdaję sobie sprawę, że możesz czuć pewien niedosyt, że można było stworzyć więcej szczegółowych zestawień, że pewne uproszczenia powinny zostać zniuansowane, itp. Daj znać jeśli jest coś co powinno znaleźć się w tym zestawieniu. Niczego nie obiecuję ale jeśli będzie zainteresowanie to zrobimy dogrywkę.</p>]]></content><author><name>Rafał Równiak</name></author><category term="IT" /><category term="Raport" /><category term="płace" /><category term="raport" /><category term="rynek IT" /><summary type="html"><![CDATA[Zobaczmy jak wygląda rynek pracy IT na początku roku 2022. Przeanalizowałem ponad 8 tysięcy aktywnych ofert pracy i zbudowałem kilka ciekawych statystyk, w tym te dotyczące płac. Pomogą one zorientować się jak obecnie kształtuje się rynek pracy, w jakie technologie warto inwestować i na co można liczyć. Zapraszam do czytania.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/_site/wp-content/uploads/2022/01/javad-esmaeili-small-0unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/_site/wp-content/uploads/2022/01/javad-esmaeili-small-0unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Bash cheat-sheet</title><link href="http://localhost:4000/_site/dobre-praktyki/bash-cheat-sheet/" rel="alternate" type="text/html" title="Bash cheat-sheet" /><published>2022-01-06T12:13:41+01:00</published><updated>2022-01-06T12:13:41+01:00</updated><id>http://localhost:4000/_site/dobre-praktyki/bash-cheat-sheet</id><content type="html" xml:base="http://localhost:4000/_site/dobre-praktyki/bash-cheat-sheet/"><![CDATA[<p>If you are not a daily bash scripter, you may forget how to do certain operations. This cheat-sheet contains the most common tasks that you may want to do.</p>
+
+<h3 id="check-if-given-commands-exists">Check if given commands exists</h3>
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+$ command -v curl &gt; /dev/null || echo "Curl not installed"
+```
+
+&lt;/div&gt;### Common string tests
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+# empty string?
+[[ -z STRING ]]
+
+# non empty string?
+[[ -n STRING ]]
+
+# strings are equal?
+[[ STRING == STRING ]]
+
+# strings aren't equal?
+[[ STRING != STRING ]]
+```
+
+&lt;/div&gt;### Common file tests
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+# exists?
+[[ -e FILE ]]
+
+# directory?
+[[ -d FILE ]]
+
+# file?
+[[ -f FILE ]]
+
+# executable?
+[[ -x FILE ]]
+```
+
+&lt;/div&gt;### Test if environment variable is set
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+[[ -z "${DEPLOY_ENV}" ]]
+
+# example
+[ -z "${HOST}" ] &amp;&amp; HOST=localhost
+```
+
+&lt;/div&gt;### Range loops
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+# C-like (undefined in sh)
+for ((i = 0 ; i &lt; 100 ; i++)); do
+  echo $i
+done
+
+# standard
+for i in $(seq 1 100); do
+    echo "Welcome $i"
+done
+```
+
+&lt;/div&gt;### Conditional execution
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+$ git commit &amp;&amp; git push
+$ git commit || echo "Commit failed"
+```
+
+&lt;/div&gt;### Test if command succeeded/failed
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+if some_command; then
+    echo command returned true
+else
+    echo command returned some error
+fi
+
+if ! some_command; then
+    echo command returned some error
+else
+    echo command returned true
+fi
+```
+
+&lt;/div&gt;### Directory of the script
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: bash; title: ; notranslate" title="">
+SCRIPT_DIR=$(dirname "$0")
+```
+
+&lt;/div&gt;## Resources
+
+- https://devhints.io/bash
+</pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></pre></div></pre></div>]]></content><author><name>Rafał Równiak</name></author><category term="Dobre praktyki" /><category term="Linux" /><category term="Bash" /><category term="Linux" /><summary type="html"><![CDATA[If you are not a daily bash scripter, you may forget how to do certain operations. This cheat-sheet contains the most common tasks that you may want to do.]]></summary></entry><entry><title type="html">The new kid on the block – golang</title><link href="http://localhost:4000/_site/performance/the-new-kid-on-the-block-golang/" rel="alternate" type="text/html" title="The new kid on the block – golang" /><published>2021-11-06T17:31:48+01:00</published><updated>2021-11-06T17:31:48+01:00</updated><id>http://localhost:4000/_site/performance/the-new-kid-on-the-block-golang</id><content type="html" xml:base="http://localhost:4000/_site/performance/the-new-kid-on-the-block-golang/"><![CDATA[<p>Do you remember my <a href="http://rrowniak.com/performance/new-word-order-sorting/">article</a> about the speed of sorting large data chunk in different languages? Of course you don’t. So, I advice you to go through that article as there is a description of the test procedure. However, today I’m going to extend this benchmark by testing <em>go</em> language. The results will be surprising…</p>
+
+<p>Let’s re-execute the test. This time I’ll be using a dedicated script <code class="language-plaintext highlighter-rouge">run_experiment.sh</code> which does all what’s needed and prints results in a friendly way:</p>
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: plain; title: ; notranslate" title="">
+$ ./run_experiment.sh 
+Starting tests...
+Language             Records #     Bulding time  Sorting time  Testing time  Total time        RSS memory usage
+cpp optimized          100,000,000 B:   1.027 s, S:  10.312 s, T:   0.011 s, Total:  11.500 s, Mem: 1.5 GB (1565736 kB)
+cpp debug              100,000,000 B:   2.496 s, S:  54.936 s, T:   0.059 s, Total:  58.890 s, Mem: 1.5 GB (1565672 kB)
+c optimized            100,000,000 B:   0.899 s, S:  31.997 s, T:   0.033 s, Total:  33.060 s, Mem: 3.0 GB (3126412 kB)
+c debug                100,000,000 B:   1.707 s, S:  39.647 s, T:   0.042 s, Total:  41.660 s, Mem: 3.0 GB (3126492 kB)
+go                     100,000,000 B:   0.686 s, S:  29.685 s, T:   0.031 s, Total:  30.750 s, Mem: 1.5 GB (1614968 kB)
+java                   100,000,000 B:   1.793 s, S:  71.187 s, T:   0.078 s, Total:  78.480 s, Mem: 3.9 GB (4062140 kB)
+python                  20,000,000 B:  25.476 s, S:  50.473 s, T:   0.148 s, Total: 147.800 s, Mem: 9.0 GB (9466744 kB)
+```
+
+&lt;/div&gt;Here is the visualization.
+
+<figure class="wp-block-image size-large">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2021/11/Results.png?resize=696%2C348)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2021/11/Results.png)</figure>All sources including supporting scripts and gnuplot script are available on my [github](https://github.com/rrowniak/blog/tree/master/sorting_big).
+
+Ok, tests have passed, so now it’s time to review the results and draw the conclusions.
+
+- C++ optimized test program is the fastest one. No surprise here.
+- C++ with debug symbols enabled – isn’t performing well. **If you’re looking for speed, debug symbols need to be switch off.**
+- C program. Not a big difference between optimized and debug version. Relatively slow in comparison to C++. That might be due to a different sorting algorithm used and inability to inline the comparison function. Another unpleasant surprise **is memory consumption which is double in comparison to** C++. The algorithm that is used when calling qsort (merge sort?) has apparently O(n) memory complexity.
+- Go. Very good results! Memory consumption like C++ version and **faster than C optimized program!** Of course, it doesn’t mean that Go is faster than C in general, just for this task it performs better (better sorting algo).
+- Java. I’d expect that Java will produce the results similar to Go’s and vice versa.
+- Python. Very high memory consumption and pretty slow execution time. It requires 9GB of memory while theoretical minimum is 1,5 GB (C++ and Go). For doing such tasks, specialized libraries will be needed (e.g. scipy).
+</pre></div>]]></content><author><name>Rafał Równiak</name></author><category term="Performance" /><category term="C" /><category term="c++" /><category term="go" /><category term="Golang" /><category term="Java" /><category term="Performance" /><category term="Python" /><category term="sorting" /><summary type="html"><![CDATA[Do you remember my article about the speed of sorting large data chunk in different languages? Of course you don’t. So, I advice you to go through that article as there is a description of the test procedure. However, today I’m going to extend this benchmark by testing go language. The results will be surprising…]]></summary></entry><entry><title type="html">Tip of the day: SSH Key-Based Authentication</title><link href="http://localhost:4000/_site/linux/tip-of-the-day-ssh-key-based-authentication/" rel="alternate" type="text/html" title="Tip of the day: SSH Key-Based Authentication" /><published>2021-10-15T10:32:14+02:00</published><updated>2021-10-15T10:32:14+02:00</updated><id>http://localhost:4000/_site/linux/tip-of-the-day-ssh-key-based-authentication</id><content type="html" xml:base="http://localhost:4000/_site/linux/tip-of-the-day-ssh-key-based-authentication/"><![CDATA[<p>This type of authentication is considered to be among the most secured ones. You can setup this config in two steps.</p>
+
+<p>First, you need to generate a public/private key pair. Use default location. Be careful to not override existing keys.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="wp-block-code"&gt;```
+$ ssh-keygen
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Then, install a public key on your server:
+
+</code></pre></div></div>
+<pre class="wp-block-code">```
+ssh-copy-id username@remote_host
+```
+```
+
+If that for some reason does not work, use more manual approach:
+
+```
+<pre class="wp-block-code">```
+$ cat ~/.ssh/id_rsa.pub | ssh username@remote_host "mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt; ~/.ssh/authorized_keys"
+```
+```
+
+You’ll find more details [here](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server).
+</pre></pre>]]></content><author><name>Rafał Równiak</name></author><category term="Linux" /><category term="key-based authentication" /><category term="Linux" /><category term="ssh" /><summary type="html"><![CDATA[This type of authentication is considered to be among the most secured ones. You can setup this config in two steps.]]></summary></entry><entry><title type="html">Learning awk by examples</title><link href="http://localhost:4000/_site/linux/learning-awk-by-examples/" rel="alternate" type="text/html" title="Learning awk by examples" /><published>2021-10-14T09:18:01+02:00</published><updated>2021-10-14T09:18:01+02:00</updated><id>http://localhost:4000/_site/linux/learning-awk-by-examples</id><content type="html" xml:base="http://localhost:4000/_site/linux/learning-awk-by-examples/"><![CDATA[<p><em>awk</em> is a powerful Linux/Unix tool that simplifies your life when it comes to parsing text files/outputs, doing various text manipulation, or, what’s surprising to the newbies, doing certain calculations without using Excel. Let’s get started!</p>
+
+<p>##</p>
+
+<h2 id="example-1--change-output-on-the-fly">Example 1 – Change output on the fly</h2>
+
+<p>Suppose that you want to get 4 biggest files in <em>/etc/init.d</em> and display their names together with associated sizes. Let’s start from something like that:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="wp-block-code"&gt;```bash
+$ ls -l /etc/init.d/ | sort -nrk 5 | head -n4
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+The above combination might give you the following output:
+
+</code></pre></div></div>
+<pre class="wp-block-code">```bash
+$ ls -l /etc/init.d/ | sort -nrk 5 | head -n4
+-rwxr-xr-x 1 root root 9138 gru  3  2018 openvpn
+-rwxr-xr-x 1 root root 6872 paź 11  2019 udev
+-rwxr-xr-x 1 root root 6032 wrz  7  2020 virtualbox
+-rwxr-xr-x 1 root root 5574 lis  5  2019 alsa-utils
+```
+```
+
+Well, we’re not quite there, too many columns. Here comes *awk*:
+
+```
+<pre class="wp-block-code">```bash
+awk '{ print $5, "bytes:", $9 }'
+```
+```
+
+Which simply prints column number 5, short text and finally column number 9:
+
+```
+<pre class="wp-block-code">```bash
+$ ls -l /etc/init.d/ | sort -nrk 5 | head -n4 | awk '{ print $5, "bytes:", $9 }'
+9138 bytes: openvpn
+6872 bytes: udev
+5658 bytes: nfs-common
+5574 bytes: alsa-utils
+```
+```
+
+## Example 2 – parse /proc/cpuinfo and calculate total amount of CPUs and cores
+
+*/proc/cpuinfo* contains a lot of useful information about CPU(s) that are visible by the kernel. This file may be long, a few first lines are shown below:
+
+```
+<pre class="wp-block-code">```bash
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 15
+model           : 6
+model name      : Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
+stepping        : 1
+microcode       : 0x1
+cpu MHz         : 2199.996
+cache size      : 16384 KB
+physical id     : 0
+siblings        : 1
+core id         : 0
+cpu cores       : 1
+apicid          : 0
+initial apicid  : 0
+```
+```
+
+But we’re interested only in a short summary – CPUs and cores amount. Simple and a bit hacky awk script that does the job:
+
+```
+<pre class="wp-block-code">```bash
+awk '
+{
+    # regex matching, we could alternatively
+    # write $1 == "processor"
+    if ($1 ~/processor/) {
+        stats["processors"]++;
+    }
+
+    # tricky part: "cpu cores" is actually interpreted as
+    # two columns!
+    if ($1 == "cpu" &amp;&amp; $2 == "cores") {
+        stats["cores"] += $4;
+    }
+}
+END {
+    # iterate over associative array and print
+    # key-value pairs
+    for (s in stats) {
+        print s , ":", stats[s];
+    }
+}
+' /proc/cpuinfo
+```
+```
+
+The output:
+
+```
+<pre class="wp-block-code">```bash
+processors : 24
+cores : 24
+```
+```
+
+## Example 3: pretty formatting
+
+Sometimes we want a better tool than `print "str1", $1, ...` . Here comes a built-in C-like function `printf`:
+
+```
+<pre class="wp-block-code">```bash
+awk 'BEGIN {
+    PI=3.14159
+    printf("%s: int(%.2f) = %d\n", "Int function", PI, int(PI));
+}'
+```
+```
+
+Output:
+
+```
+<pre class="wp-block-code">```bash
+Int function: int(3.14) = 3
+```
+```
+
+This example isn’t very practical in this shape but I’m pretty sure that you know what’s going on and how to use that example in real world scenarios.
+
+## Example 4: get rid of Excel! Playing with CSV.
+
+Consider the following CSV file:
+
+```
+<pre class="wp-block-code">```bash
+"Sell","List","Living","Rooms","Beds","Baths","Age","Acres","Taxes"
+142,160,28,10,5,3,60,0.28,3167
+175,180,18,8,4,1,12,0.43,4033
+129,132,13,6,3,1,41,0.33,1471
+138,140,17,7,3,1,22,0.46,3204
+232,240,25,8,4,3,5,2.05,3613
+135,140,18,7,4,3,9,0.57,3028
+150,160,20,8,4,3,18,4.00,3131
+```
+```
+
+Our task is to calculate the average age (column 7). With *awk* this is easy:
+
+```
+<pre class="wp-block-code">```bash
+awk 'BEGIN {
+    count = 0;
+    sum = 0;
+    # define custom field separator
+    FS=","
+}
+{
+    # skip first line
+    if (NR == 1) {
+        next;
+    }
+
+    # skip empty or invalid lines
+    if (NF &lt; 7) {
+        next;
+    }
+
+    count++;
+    sum += $7
+}
+END {
+    printf("Average age: %.1f years\n", sum / count)
+}
+' example.csv
+```
+```
+
+Output:
+
+```
+<pre class="wp-block-code">```bash
+Average age: 23.9 years
+```
+```
+
+## Example 5: Treat units and prefixes
+
+Let’s try to display all directories and files in the home directory which take &gt;= 1GB of disk space and sum them up. Good starting point would be:
+
+```
+<pre class="wp-block-code">```bash
+$ du -hd1 ~ | head -n -1
+12G     /home/rr/Music
+1,5G    /home/rr/.config
+46M     /home/rr/Pictures
+4,0K    /home/rr/Public
+752M    /home/rr/Documents
+4,0K    /home/rr/.ssh
+793M    /home/rr/STM32Cube
+5,2G    /home/rr/.cache
+...
+```
+```
+
+Now we have to pick up those with size &gt;= 1G. Let *awk* do the job:
+
+```
+<pre class="wp-block-code">```bash
+du -hd1 ~ | head -n -1 | awk '$1 ~ /[0-9]*G/ {
+    # get rid of following "G"
+    val = substr($1, 0, length($1) - 1)
+    
+    # replace , with .
+    # numbers with . decimal sep will be handled correctly
+    # (sub available in gawk and nawk)
+    sub(/,/, ".", val)
+    
+    sum += val
+    
+    print $1, "\t", $2
+}
+END {
+    out = sum "G"
+    sub(/\./, ",", out)
+    print "total:", out
+}'
+```
+```
+
+Have you noticed a new syntax: `<strong>$1 ~ /[0-9]*G/</strong> {...}` ? This says „execute code in the brackets only when condition `$1 ~ /[0-9]*G/` is fulfilled. In our case – select a line where first column ends with G.
+
+Results:
+
+```
+<pre class="wp-block-code">```bash
+12G      /home/rr/Music
+1,6G     /home/rr/.config
+5,2G     /home/rr/.cache
+51G      /home/rr/VirtualBoxVMs
+6,8G     /home/rr/Downloads
+12G      /home/rr/dev
+7,6G     /home/rr/apps
+total: 96,2G
+```
+```
+
+## Built in variables
+
+We’ve been using some of them. More built-in variables below:
+
+`FS `– The Input Field Separator Variable (defaulted to ” „)
+
+`OFS `– The Output Field Separator Variable
+
+`NF `– The Number of Fields Variable
+
+`NR `– The Number of Records Variable (lines)
+
+`RS `– The Record Separator Variable (defaulted to „\\n”)
+
+`ORS `– The Output Record Separator Variable
+
+`FILENAME `– The Current Filename Variable
+
+## Conclusions
+
+This article shows only a few problems that can be solved using *awk*. However, I strongly recommend you to get familiar with this tool by reading a good article that gives you solid understanding. For example, you can have a look at[ this excellent intro](https://www.grymoire.com/Unix/Awk.html) to awk by Bruce Barnett.
+
+I was using standard commands to produce example data. It’s likely that you could figure out how to avoid using awk in these examples! But that’s not the point – the intention is to show awk potential. In real word you will be dealing with various kind of data – then awk should be your primary tool in your toolbox.
+</pre></pre></pre></pre></pre></pre></pre></pre></pre></pre></pre></pre></pre></pre>]]></content><author><name>Rafał Równiak</name></author><category term="Linux" /><category term="awk" /><category term="Linux" /><summary type="html"><![CDATA[awk is a powerful Linux/Unix tool that simplifies your life when it comes to parsing text files/outputs, doing various text manipulation, or, what’s surprising to the newbies, doing certain calculations without using Excel. Let’s get started!]]></summary></entry><entry><title type="html">Tip of the day: gcc address sanitizer</title><link href="http://localhost:4000/_site/linux/tip-of-the-day-gcc-memory-sanitizer/" rel="alternate" type="text/html" title="Tip of the day: gcc address sanitizer" /><published>2021-02-03T09:05:24+01:00</published><updated>2021-02-03T09:05:24+01:00</updated><id>http://localhost:4000/_site/linux/tip-of-the-day-gcc-memory-sanitizer</id><content type="html" xml:base="http://localhost:4000/_site/linux/tip-of-the-day-gcc-memory-sanitizer/"><![CDATA[<p>Today I’m going to show you how effectively solve painful issues related to memory corruption occurrences.</p>
+
+<p>Let’s start from the example. Consider the following code:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;pre class="wp-block-code"&gt;```cpp
+#include &lt;iostream&gt;
+
+int array[2];
+int table[2];
+
+int main(int argc, char** argv)
+{   
+    array[2] = 11;
+
+    if (table[0] == 0) {
+        std::cout &lt;&lt; "Obvious!" &lt;&lt; std::endl;
+    } else {
+        std::cout &lt;&lt; "Not really... Something is wrong" &lt;&lt; std::endl;
+        std::cout &lt;&lt; table[0] &lt;&lt; " vs " &lt;&lt; array[2] &lt;&lt; std::endl;
+    }
+
+    return array[0];
+}
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+And corresponding makefile:
+
+</code></pre></div></div>
+<pre class="wp-block-code">```bash
+CPPFLAGS = -g -Wall
+LDFLAGS = -g
+LDLIBS = -lm -ldl
+
+test: test.o
+    g++ $(LDFLAGS) -o test test.o $(LDLIBS)
+
+test.o: test.cpp
+    g++ $(CPPFLAGS) -c test.cpp
+
+clean:
+    @rm test test.o
+```
+```
+
+Let’s build &amp; execute the program:
+
+```
+<pre class="wp-block-code">```bash
+$ make
+ g++ -g -Wall -c test.cpp
+ g++ -g -o test test.o -lm -ldl
+$ ./test 
+ Not really… Something is wrong
+ 11 vs 11
+```
+```
+
+The issue is visible in the source without using any fancy tool. But if you have hundreds of thousands of lines of code, the problem isn’t such trivial. Moreover, it may not manifest all the time but just from time to time and it doesn’t have to be a crash – sometimes it’s just a weird program behavior like the above example.
+
+Can we do anything around that? Yes – gcc built-in address sanitizer. That feature adds additional instrumentation to our code and will perform monitoring in the runtime like checking whether our code access only allocated memory, stack overflows, and many more.
+
+In order to enable the address sanitizer let’s modify slightly our makefile:
+
+```
+<pre class="wp-block-code">```bash
+CPPFLAGS = -g -Wall
+LDFLAGS = -g
+LDLIBS = -lm -ldl
+
+test: test.o
+    g++ $(LDFLAGS) -o test test.o $(LDLIBS)
+
+test.o: test.cpp
+    g++ $(CPPFLAGS) -c test.cpp
+
+asan: CPPFLAGS += -fsanitize=address
+asan: LDLIBS += -lasan
+asan: test
+
+clean:
+    @rm test test.o
+```
+```
+
+And build – this time using non-default target:
+
+```
+<pre class="wp-block-code">```bash
+$ make clean
+$ make asan
+ g++ -g -Wall -fsanitize=address -c test.cpp
+ g++ -g -o test test.o -lm -ldl -lasan
+```
+```
+
+Now the most interesting part – let’s execute our program:
+
+```
+<pre class="wp-block-code">```bash
+$ ./test 
+ ==26315==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55b90bac2388 at pc 0x55b90b8c0ffb bp 0x7ffe6500cb20 sp 0x7ffe6500cb10
+ WRITE of size 4 at 0x55b90bac2388 thread T0
+     #0 0x55b90b8c0ffa in main /home/local/CORVIL/rrowniak/tmp/sanitizer/test.cpp:8
+     #1 0x7f088b811bf6 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21bf6)
+     #2 0x55b90b8c0ed9 in _start (/home/local/CORVIL/rrowniak/tmp/sanitizer/test+0xed9)
+ 0x55b90bac2388 is located 0 bytes to the right of global variable 'array' defined in 'test.cpp:3:5' (0x55b90bac2380) of size 8
+ 0x55b90bac2388 is located 56 bytes to the left of global variable 'table' defined in 'test.cpp:4:5' (0x55b90bac23c0) of size 8
+ SUMMARY: AddressSanitizer: global-buffer-overflow /home/local/CORVIL/rrowniak/tmp/sanitizer/test.cpp:8 in main
+ Shadow bytes around the buggy address:
+   0x0ab7a1750420: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a1750430: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a1750440: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a1750450: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a1750460: 00 00 00 00 00 00 00 00 01 f9 f9 f9 f9 f9 f9 f9
+ =&gt;0x0ab7a1750470: 00[f9]f9 f9 f9 f9 f9 f9 00 f9 f9 f9 f9 f9 f9 f9
+   0x0ab7a1750480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a1750490: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a17504a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a17504b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   0x0ab7a17504c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ Shadow byte legend (one shadow byte represents 8 application bytes):
+   Addressable:           00
+   Partially addressable: 01 02 03 04 05 06 07 
+   Heap left redzone:       fa
+   Freed heap region:       fd
+   Stack left redzone:      f1
+   Stack mid redzone:       f2
+   Stack right redzone:     f3
+   Stack after return:      f5
+   Stack use after scope:   f8
+   Global redzone:          f9
+   Global init order:       f6
+   Poisoned by user:        f7
+   Container overflow:      fc
+   Array cookie:            ac
+   Intra object redzone:    bb
+   ASan internal:           fe
+   Left alloca redzone:     ca
+   Right alloca redzone:    cb
+ ==26315==ABORTING
+```
+```
+
+At first glance the output looks a bit scary. But there is everything that you need to solve the puzzle. Especially that comment: „*AddressSanitizer: **global-buffer-overflow on address** (…) **WRITE of size 4** in main /home/**test.cpp:8** (…)*” – that’s all what you really need.
+
+That’s it, see you next time 🙂
+</pre></pre></pre></pre></pre>]]></content><author><name>Rafał Równiak</name></author><category term="C" /><category term="C++" /><category term="English" /><category term="Linux" /><summary type="html"><![CDATA[Today I’m going to show you how effectively solve painful issues related to memory corruption occurrences.]]></summary></entry><entry><title type="html">Najbardziej poszukiwane umiejętności IT w świecie post-pandemicznym</title><link href="http://localhost:4000/_site/it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/" rel="alternate" type="text/html" title="Najbardziej poszukiwane umiejętności IT w świecie post-pandemicznym" /><published>2021-01-17T20:31:44+01:00</published><updated>2021-01-17T20:31:44+01:00</updated><id>http://localhost:4000/_site/it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym</id><content type="html" xml:base="http://localhost:4000/_site/it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/"><![CDATA[<p>Początek nowego roku to dobry moment na refleksję nad kierunkami rozwoju branży IT i jej zapotrzebowaniem na specjalistów. Przejrzałem sporą ilość raportów mniej lub bardziej znanych ośrodków analitycznych i w niniejszym wpisie chciałbym zarysować pewien wyłaniający się obraz najbliższej przyszłości w świecie technologii informatycznych.</p>
+
+<h2 id="zmiany">Zmiany</h2>
+
+<p>Zanim zaczniemy wymieniać konkretne umiejętności o które będą konkurować największe firmy IT to spróbujmy się zastanowić co będzie napędzać sektor IT w najbliższym czasie. Gartner w artykule <a href="https://www.gartner.com/smarterwithgartner/gartner-top-strategic-technology-trends-for-2021/">Top Strategic Technology Trends for 2021</a> mówi krótko – będą to obliczenia w chmurze, sztuczna inteligencja, cyberbezpieczeństwo i <a href="https://www.gartner.com/smarterwithgartner/gartner-keynote-the-future-of-business-is-composable/">elastyczny biznes</a> oparty na technologiach IT i „wymiennych modułach” pozwalających na szybką adaptację do zmieniających się realiów. Argumentacja jest oparta o zmiany jakie już można zaobserwować. Świat post-pandemiczny będzie inny niż ten znany do tej pory.</p>
+
+<p>Jedną z nowinek ma być automatyczne wspieranie i egzekwowanie rygorów sanitarnych takich jak mycie rąk lub noszenie maseczek w przestrzeni publicznej i korporacyjnej. Jest to część szerszej inicjatywy nazywanej internetem zachowań (Internet of Behaviors) mającej na celu zmianę (na lepsze) zachowań ludzkich w oparciu o monitoring i analizę danych. Nie owijając w bawełnę – inwigilacja. Jeszcze rok temu ten pomysł byłby zapewne sklasyfikowany jako nieudolna próba naśladownictwa pomysłów rodem z powieści Huxley’a. Dzisiaj już tak śmiesznie to nie wygląda i w niektórych krajach jak np. Chiny to chleb powszedni od wielu lat. Jeśli ta prognoza się ziści w skali globalnej to będziemy potrzebować odpowiedniej technologii takich jak rozpoznawanie obrazów, IoT, sztuczna inteligencja i analiza dużych zbiorów danych.</p>
+
+<p>Kolejną zmianą będzie wymóg działania w środowiskach rozproszonych, niepewnych, rozmytych. Środowisko rozproszone jest niejako przeciwieństwem do środowiska scentralizowanego, gdzie pracownik musi pojawić się siedzibie pracodawcy aby wykonywać swoje obowiązki, kandydat o pracę musi stawić się w określonym miejscu, klient musi widzieć się osobiście z przedstawicielem firmy, serwery korporacyjne są własnością firmy, dokumentacja to sterta papieru, itp. Do tego dochodzi niepewność, brak pełnej wiedzy podczas podejmowania decyzji i wymuszona gotowość adaptacyjna do zmieniających się realiów. Kiedyś nie do pomyślenia było aby firma produkująca zmywarki do naczyń mogła się szybko przeformować na produkcję specjalistycznego sprzętu medycznego. Dziś już takie przykłady mamy. Jakiś czas temu <a href="http://rrowniak.com/it-pl/koronawirus-w-it/">opisywałem</a> jakie wsparcie technologiczne (absolutne minimum) jest potrzebne aby firma mogła sprawnie funkcjonować w obecnym świecie. Ale to nie wszystko gdyż dochodzi do tego kwestia odpowiedniej infrastruktury sieciowej, bezpieczeństwa, przenoszenia procesów do przestrzeni cyfrowej. Spowoduje to jeszcze większe zapotrzebowanie na specjalistów od wirtualizacji, rozwiązań „w chmurze”, inżynierów DevOps.</p>
+
+<p>Dostęp do korporacyjnych zasobów cyfrowych musi być możliwy poprzez każde urządzenie elektroniczne jak klasyczne laptopy, tablety, smartfony. Z dowolnego miejsca na świecie. Przez korporacyjne zasoby cyfrowe mam na myśli komunikatory, pocztę, dokumentację, rejestry, spisy, bazy danych, wewnętrzne usługi, wszystko to, co potrzebne jest do normalnej pracy. Również usługi oferowane powinny być w maksymalnym stopniu przeniesione do świata wirtualnego. Takie podejście rodzi wiele wątpliwości natury bezpieczeństwa. Jak wspomina <a href="http://cio.com">cio.com</a> w swoim <a href="https://www.cio.com/article/3235944/hiring-the-most-in-demand-tech-jobs-for-2021.html">raporcie</a>, wymogi bezpieczeństwa to nie tylko szyfrowane połączenia ale również odpowiednie procedury, które powinny zapewnić wystarczająco wysoki poziom bezpieczeństwa nie będąc przy tym uciążliwymi, audyty bezpieczeństwa, zgodność z wymogami wewnętrznymi i prawnymi. Widać wyraźnie, że wysokie zapotrzebowanie na ekspertów od bezpieczeństwa będzie niezmiennie trwać.</p>
+
+<h2 id="lista">Lista</h2>
+
+<h5 id="1-cyberbezpieczeństwo">1. Cyberbezpieczeństwo</h5>
+
+<p>Ta umiejętność jest chyba jednoznacznym zwycięzcą ponieważ zdecydowana większość zestawień plasuje znajomość zagadnień bezpieczeństwa w świecie elektronicznym jako najbardziej pożądaną umiejętność. Tematyka jest szeroka ponieważ obejmuje projektowanie i implementację bezpiecznego dostępu do zdalnych zasobów, szyfrowanie baz danych, audyty bezpieczeństwa, architekturę bezpieczeństwa, projektowanie i wdrażanie procedur bezpieczeństwa, analizę incydentów, itp.</p>
+
+<p>Można w zasadzie stwierdzić, że zdecydowana większość zidentyfikowanych trendów na rok 2021 w znacznym stopniu będzie dotykać zagadnień bezpieczeństwa.</p>
+
+<p>Chciałbym tutaj jeszcze dodać, że z moich prywatnych rozmów z managerami i inżynierami pracującymi dla różnych firm wynika, że praktycznie wszystkie organizacje planują w obecnym roku zwiększyć fundusze na szeroko rozumiane bezpieczeństwo i cyberbezpieczeństwo.</p>
+
+<h5 id="2-przetwarzanie-w-chmurze-cloud-computing">2. Przetwarzanie w chmurze (cloud computing)</h5>
+
+<p>Trend nie jest nowy i trwa w najlepsze od wielu lat. Z całą pewnością nie jest to przejściowa moda a raczej zaakceptowany model biznesowy, który w obecnych czasach wydaje się być słusznym. Cloud oferuje to co obiecuje (no prawie) – możliwość wykorzystywania zasobów i usług z zależności od potrzeb nie martwiąc się o fizyczny sprzęt i administrację nim.</p>
+
+<p>Temat jest szeroki ponieważ istnieje wiele specjalizacji wewnątrz tego obszaru. Jedne firmy będą poszukiwać specjalistów i architektów z doświadczeniem (i certyfikatami) w AWS, Azure bądź GCP. Oczywiście będę mile widziani inżynierowie, którzy potrafią projektować optymalne architektury wykorzystujące w sposób inteligentny zasoby za które dostawca każe sobie słono płacić (skalowanie, efektywność kosztów).</p>
+
+<p>Nie tylko projektowanie i architektura będzie się liczyć. Rozwiązania w chmurze ktoś musi utrzymywać i zarządzać nimi. Nawet sam proces wdrażania również będzie wymagał odpowiednich specjalistów.</p>
+
+<p>Jeszcze innym zagadnieniem jest projektowanie systemów odpornych na awarie co wymaga odpowiedniej replikacji danych, bezstanowości serwisów, redundancji co bywa trudne w systemach rozproszonych.</p>
+
+<h5 id="3-wirtualizacja">3. Wirtualizacja</h5>
+
+<p>Tematyka mocno związana z przetwarzaniem w chmurze, jednak tak rozległa, że zdecydowałem się ją opisać osobno. Sam koncept chmury obliczeniowej zbudowany jest na technologiach umożliwiających wirtualizację i lekką wirtualizację. Więc naturalnie potrzebni są inżynierowie, którzy wiedzą co to kontenery Docker, umieją budować aplikacje przy użyciu Kubernetes’a, doskonale znają zagadnienie współdzielenia zasobów, potrafią zarządzać setkami wirtualnych maszyn (używając np. narzędzia Terraform – koncept <em>infrastructure as code</em>), dokonywać uaktualnień oprogramowania itp.</p>
+
+<p>Praktycznie każdy duży projekt typu <em>enterprise</em> jest oparty bądź wykorzystuje wirtualizację a lekka wirtualizacja (kontenery) staje się de-facto standardem.</p>
+
+<h5 id="4-interfejs-użytkownika-20-czyli-aplikacje-mobilne-i-webowe">4. Interfejs użytkownika 2.0 czyli aplikacje mobilne i webowe</h5>
+
+<p>Więcej usług dostępnych przez internet oznacza większe zapotrzebowanie na aplikacje webowe i mobilne. Trend nie jest nowy ale obecna sytuacja tylko go wzmocni. Obecnie notujemy rekordowy wzrost w sektorze usług e-commerce co jest spowodowane obecnymi utrudnieniami i potrzebą załatwiania jak najwięcej spraw nie wychodząc z domu. Możemy się spodziewać presji na inne branże i podmioty aby to co obecnie załatwialiśmy jako petent było możliwe poprzez przeglądarkę lub aplikację na smartfona.</p>
+
+<h5 id="5-sztuczna-inteligencja-i-uczenie-maszynowe">5. Sztuczna inteligencja i uczenie maszynowe</h5>
+
+<p>Sztuczna inteligencja i uczenie maszynowe pozwala realizować zadania, które jeszcze do niedawna były zarezerwowane tylko dla człowieka. W dzisiejszych czasach takich zadań przybywa więc potrzebna jest odpowiednia technologia do rozwiązywania nowych problemów. Abstrahując od oceny etycznej, możemy się spodziewać dalszych inwestycji w rozszerzony monitoring oparty na rozpoznawaniu obrazów, inteligentnej analizy i wyszukiwaniu wzorców w danych dostarczanych przez niezliczoną ilość źródeł i czujników (IoT) czy choćby autonomiczne auta.</p>
+
+<h2 id="wnioski">Wnioski</h2>
+
+<p>Powyższa lista przedstawia umiejętności i obszary, które są już znane od lat. Co więcej, od pewnego czasu były one już w czołówce najbardziej pożądanych specjalizacji. Więc co zmienia pandemia? Otóż katalizuje pewne procesy, które normalnie trwały by latami i być może były by trudne do wychwycenia. Obecnie widzimy jak zmieniają się trendy nie tylko w świecie nowych technologii ale także w innych gałęziach gospodarki. Pewne branże przeżywają głęboki kryzys, być może nie przetrwają. Inne znowu przeżywają niespotykany rozkwit, na przykład e-commerce. Jeszcze inne przechodzą głębokie transformacje.</p>
+
+<p>Również część tych obszarów zachodzi na siebie, przeplata się i czasami jest ze sobą nierozerwalnie połączona. Prawdą jest, że nie można być specjalistą w jednej z wymienionych domen nie znając innych.</p>
+
+<p>Zmiany, które zachodzą na naszych oczach spowodują gwałtowny wzrost znaczenia wyżej wymienionych specjalizacji tym samym generując spory popyt na takich specjalistów. Jednak to nie oznacza, że inne obszary IT pójdą w odstawkę – nic z tych rzeczy. Branża IT jest tą, która wychodzi zwycięsko z tej zawieruchy.</p>
+
+<h2 id="źródła">Źródła</h2>
+
+<ul>
+  <li><a href="https://www.techrepublic.com/article/7-in-demand-tech-skills-to-master-in-2021/">https://www.techrepublic.com/article/7-in-demand-tech-skills-to-master-in-2021/</a></li>
+  <li><a href="https://www.engagewithus.com/the-most-in-demand-tech-skills-for-2021/">https://www.engagewithus.com/the-most-in-demand-tech-skills-for-2021/</a></li>
+  <li><a href="https://blockew.com/top-10-in-demand-tech-skills-you-need-to-have/">https://blockew.com/top-10-in-demand-tech-skills-you-need-to-have/</a></li>
+  <li><a href="https://www.gartner.com/smarterwithgartner/gartner-top-strategic-technology-trends-for-2021/">https://www.gartner.com/smarterwithgartner/gartner-top-strategic-technology-trends-for-2021/</a></li>
+  <li><a href="http://rrowniak.com/it-pl/koronawirus-w-it/">http://rrowniak.com/it-pl/koronawirus-w-it/</a></li>
+  <li><a href="https://www.cio.com/article/3235944/hiring-the-most-in-demand-tech-jobs-for-2021.html">https://www.cio.com/article/3235944/hiring-the-most-in-demand-tech-jobs-for-2021.html</a></li>
+  <li><a href="https://www.globalknowledge.com/us-en/resources/resource-library/articles/the-10-most-important-it-skills-for-2020/">https://www.globalknowledge.com/us-en/resources/resource-library/articles/the-10-most-important-it-skills-for-2020/</a></li>
+</ul>]]></content><author><name>Rafał Równiak</name></author><category term="Dobre praktyki" /><category term="IT" /><category term="Raport" /><category term="Sieci" /><summary type="html"><![CDATA[Początek nowego roku to dobry moment na refleksję nad kierunkami rozwoju branży IT i jej zapotrzebowaniem na specjalistów. Przejrzałem sporą ilość raportów mniej lub bardziej znanych ośrodków analitycznych i w niniejszym wpisie chciałbym zarysować pewien wyłaniający się obraz najbliższej przyszłości w świecie technologii informatycznych.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/_site/wp-content/uploads/2021/01/javier-allegue-barros-smallnsplash.jpg" /><media:content medium="image" url="http://localhost:4000/_site/wp-content/uploads/2021/01/javier-allegue-barros-smallnsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Witaj w piekle: C &amp;#038; C++ – niejawne konwersje i promocje typów</title><link href="http://localhost:4000/_site/dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow/" rel="alternate" type="text/html" title="Witaj w piekle: C &amp;#038; C++ – niejawne konwersje i promocje typów" /><published>2020-05-22T13:34:06+02:00</published><updated>2020-05-22T13:34:06+02:00</updated><id>http://localhost:4000/_site/dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow</id><content type="html" xml:base="http://localhost:4000/_site/dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow/"><![CDATA[<p>Nie jest tajemnicą, że C i C++ zawiera sporo różnych pułapek czyhających nawet na doświadczonych programistów. Chciałbym przedstawić kilka wyjątkowo wrednych, trudnych do wykrycia, czasem subtelnych i prawie zawsze bardzo niebezpiecznych niespodzianek jakie zaserwuje nam kompilator. Co gorsza, na pierwszy rzut oka wszystko wygląda logicznie…</p>
+
+<p>Na początek kilka przykładów, które z jakiegoś powodu są uwielbiane przez technicznych rekruterów C++…</p>
+
+<h3 id="przykład-1">Przykład 1</h3>
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+unsigned char one = 1;
+unsigned char max = 255;
+     
+unsigned char sum = one + max;
+    
+if (sum == one + max) {
+    std::cout &lt;&lt; "Captain obvious!" &lt;&lt; std::endl;
+} else {
+    std::cout &lt;&lt; "Wait... WTF?" &lt;&lt; std::endl;
+}
+```
+
+&lt;/div&gt;### Przykład 2
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+unsigned char x = 0;
+unsigned char y = 1;
+printf("255, right? Oops: %u\n", x - y);
+```
+
+&lt;/div&gt;### Przykład 3
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+unsigned int a = 1;
+signed int b = -2;
+
+if (a + b &gt; 0) {
+    std::cout &lt;&lt; "Wait... -1 &gt; 0?" &lt;&lt; std::endl;
+}
+```
+
+&lt;/div&gt;## Analiza
+
+Aby zrozumieć powyższe *anomalie* trzeba zapoznać się z trzema konceptami wprowadzonymi przez standardy C i C++: promocje typów całkowitych, [niejawne konwersje](https://en.cppreference.com/w/cpp/language/implicit_conversion) i balansowanie. Oczywiście jest to tylko wierzchołek góry lodowej ale z mojego doświadczenia wiem, że nieznajomość właśnie tych reguł przyczynia się do największej ilości błędów tego rodzaju. Postaram się ująć obydwa języki (C i C++) w jedną całość jako że reguły te są niemal identyczne.
+
+#### Promocje typów całkowitych i NIEJAWNE KONWERSJE
+
+Każdemu typowi całkowitemu przydzielono rangę konwersji (*conversion rank*), która to wykorzystywana jest do podjęcia decyzji przez kompilator o promocji. I tak dla typów podstawowych, w kolejności od najmniejszych do największych rang mamy: `char`, `short`, `int`, `long`, `long long`. Odpowiadające im typy `unsigned` mają identyczne rangi.
+
+Zasada jest taka, że każdy typ całkowity (w tym `unsigned`) o randze mniejszej niż `int` jest **niejawnie konwertowany w wyrażeniach** do typu `int` pod warunkiem, ze `int` jest wstanie reprezentować każdą wartość typu konwertowanego. Czyli konwersja nie spowoduje utraty wartości. Jeśli jednak ten warunek nie zostałby spełniony to konwersja będzie dokonana do typu `unsigned int`.
+
+Powyższą regułę nazywamy **promocjami typów całkowitych** (*integer promotions*).
+
+Uzbrojeni w tą wiedzę możemy przeanalizować *przykład nr 1*. Interesujący nas fragment to `if (sum == one + max)`. Zmienne `sum`, `one` i `max` są typu `unsigned char` więc zgodnie z regułą promocji będą one promowane w wyrażeniach do typu `int`. Możemy zapisać to wyrażenie równoważnie jako `if ((int)sum == (int)one + (int)max)`. Pamiętając, że wcześniej zmienna `sum` przyjmuje wartość `0` po rzutowaniu wyniku dodawania z `int` na `unsigned char` (znowu reguła promocji `sum = (int)one + (int)max`!). Dla odmiany wyrażenie w warunku `(int)one + (int)max` będzie mieć wartość 256. Stąd to dziwne zachowanie.
+
+*Przykład 2* pozostawiam jako ćwiczenie. Reguła promocji tłumaczy dziwny rezultat (`255, right? Oops: 4294967295`). Tutaj trzeba również zwrócić uwagę na flagi formatujące w funkcji `printf`.
+
+#### Balansowanie
+
+*Przykład 3* jest ciekawy bo dziwnego zachowania już nie wyjaśnimy powyższymi prawidłami. Mamy dwa typy o równych rangach: `signed int` i `unsigned int`. Co w takim przypadku? Musimy zapoznać się z tzw. balansowaniem (*balancing*) a bardziej precyzyjnie z *Usual arithmetic conversions*.
+
+Większość operatorów binarnych (np. `+`) działających na typach liczbowych przyjmuje dwa argumenty tego samego typu i zwraca ten sam typ. Typ ten nazywamy *common real type*. Koncepcyjnie moglibyśmy przedstawić taki operator jako
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+template <class T="">
+T operator+(T a, T b)
+{ return a + b; }
+```
+
+&lt;/div&gt;Więc jeśli wystąpi różnica typów argumentów mających tą samą rangę, tak jak w przykładzie 3, to musi zostać dokonana konwersja. W przypadku różnych rang mniejszych od `int` zostanie wykonana promocja i operator może otrzymać na wejściu dwa identyczne typy (`int` albo `unsigned int`). A co w innych przypadkach?
+
+Balansowanie wykonywane jest wg. poniższego algorytmu (skup się!):
+
+- Jeśli jeden z argumentów jest `long double` to drugi będzie konwertowany do `long double` (np. `long double + float ==&gt; long double`)
+- W przeciwnym wypadku, jeśli jeden z argumentów jest `double` to drugi będzie konwertowany do `double` (np. `double + int ==&gt; double`)
+- W przeciwnym wypadku, jeśli jeden z argumentów jest `float` to drugi będzie konwertowany do `float` (np. `unsigned long long int + float ==&gt; float`)
+- W przeciwnym przypadku (typy całkowite) **zastosuj promocję typów całkowitych** (opisaną powyżej) **\_i\_**:
+    - Jeśli typy są identyczne – koniec zabawy
+    - W przeciwnym wypadku, jeśli rangi są różne ale wersje typów (`unsigned`/`signed`) takie same to konwertuj do typu o większej randze (np. `int + long ==&gt; long`)
+    - W przeciwnym wypadku, jeśli wersje typów są różne i ten „`unsigned`” ma większą bądź równą rangę to konwertuj do tego typu (`unsigned int + int ==&gt; unsigned int`)
+    - W przeciwnym wypadku, jeśli ranga typu „`signed`” jest wyższa to skonwertuj do typu „`signed`” pod warunkiem, że ten pomieści drugi typ w całości (`signed long long + unsigned int ==&gt; signed long long`)
+    
+    
+    - W przeciwnym wypadku (ranga typu „`signed`” jest wyższa niż typu „`unsigned`” ale „`signed`” nie pomieści w całości „`unsigned`„) to konwertuj obydwa typy do nowego typu „`unsigned`” o randze równej „`signed`” (np. jeśli `sizeof(long) == sizeof(long long)` to `unsigned long int + signed long long int ==&gt; unsigned long long int`)
+    - Uff
+
+Jak można poprawić przykład 3? Np. zmieniając `unsigned int a = 1;` and `unsigned short a = 1;`.
+
+Na koniec kilka przykładów.
+
+1\.
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+double d = 1;
+int e = 2;
+unsigned int f = 3;
+    
+auto g = d * (e / f);
+
+// g=? =&gt; 1!
+
+auto h = d * e / f;
+
+// h=? =&gt; ~0.666667  :)
+```
+
+&lt;/div&gt;2\.
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+int a = -2;
+unsigned int b = 1;
+    
+auto c = a + b;
+
+// c=? =&gt; 4294967295
+```
+
+&lt;/div&gt;Jeśli w powyższym przykładzie zmienimy linię 1 na `int a = -1;` to dostaniemy poprawny wynik. Dlaczego?
+
+3\.
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+long int a = -2;
+unsigned int b = 1;
+    
+auto c = a + b;
+
+// c=? =&gt; -1
+```
+
+&lt;/div&gt;4\.
+
+<div class="wp-block-syntaxhighlighter-code ">```
+<pre class="brush: cpp; title: ; notranslate" title="">
+static_assert(sizeof(long) == sizeof(long long), " ");
+
+unsigned long f = 1;
+long long g = -2;
+
+auto h = f + g;
+std::cout &lt;&lt; "-1?.... " &lt;&lt; h &lt;&lt; std::endl;
+// h (unsigned long long) --&gt; 18446744073709551615
+```
+
+&lt;/div&gt;Ostatni przykład pokazuje ostatnią regułę balansowania w akcji.
+
+Mam nadzieję, że temat został choć odrobinę przybliżony. Nie jest to kompendium wiedzy ale raczej wstęp do tematyki. Z drugiej strony informacje zawarte w tym wpisie pozwolą na uniknięcie 90% nieprzyjemności jakie napotkamy w tym obszarze.
+
+## Materiały dodatkowe:
+
+[https://en.cppreference.com/w/cpp/language/implicit\_conversion](https://en.cppreference.com/w/cpp/language/implicit_conversion)
+
+<figure class="wp-block-embed is-type-link is-provider-jeff-hurchalla"><div class="wp-block-embed__wrapper">[\[C/C++\] Surprises and Undefined Behavior From Unsigned Integer Promotion](https://jeffhurchalla.com/2019/01/16/c-c-surprises-and-undefined-behavior-due-to-unsigned-integer-promotion/)</div></figure>&lt;https://stackoverflow.com/questions/46073295/implicit-type-promotion-rules&gt;
+</pre></div></pre></div></pre></div></pre></div></class></pre></div></pre></div></pre></div></pre></div>]]></content><author><name>Rafał Równiak</name></author><category term="C" /><category term="C++" /><category term="Dobre praktyki" /><category term="C" /><category term="c++" /><category term="Konwersje" /><category term="Promocje" /><category term="Typy" /><summary type="html"><![CDATA[Nie jest tajemnicą, że C i C++ zawiera sporo różnych pułapek czyhających nawet na doświadczonych programistów. Chciałbym przedstawić kilka wyjątkowo wrednych, trudnych do wykrycia, czasem subtelnych i prawie zawsze bardzo niebezpiecznych niespodzianek jakie zaserwuje nam kompilator. Co gorsza, na pierwszy rzut oka wszystko wygląda logicznie…]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/_site/wp-content/uploads/2020/05/neonbrand-small-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/_site/wp-content/uploads/2020/05/neonbrand-small-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Koronawirus w IT</title><link href="http://localhost:4000/_site/it-pl/koronawirus-w-it/" rel="alternate" type="text/html" title="Koronawirus w IT" /><published>2020-03-17T18:39:21+01:00</published><updated>2020-03-17T18:39:21+01:00</updated><id>http://localhost:4000/_site/it-pl/koronawirus-w-it</id><content type="html" xml:base="http://localhost:4000/_site/it-pl/koronawirus-w-it/"><![CDATA[<p>Jak radzi sobie branża IT w realiach pandemii koronawirusa? Nadspodziewanie dobrze? Dlaczego? Dzisiaj opowiem jakie mechanizmy zadziałały, co nie do końca się sprawdziło i jak zorganizować (jeśli jeszcze tego nie zrobiliście) środowisko do <strong><em>pracy zdalnej</em></strong>.</p>
+
+<p>Brutalnie bezpośredni tytuł nie pozostawia wątpliwości jaki temat będzie omawiany. Oficjalnie ogłoszona pandemia koronawirusa (<a href="https://pl.wikipedia.org/wiki/SARS-CoV-2">SARS-CoV-2</a>), który może powodować ostre zakażenie dróg oddechowych (<a href="https://pl.wikipedia.org/wiki/COVID-19">COVID-19</a>) przetoczyła się przez cały świat, a końca ani widu ani słychu. Jednak już teraz wirus i cała sytuacja z nim związana obnażyła wiele słabości na poziomie lokalnym, krajowym, i chyba przede wszystkim unijnym. Do tego dochodzą gwałtowne spadki na giełdach, zawirowania na rynku surowców, mniejsza lub większa panika. I coraz śmielej stawiane pytania: dlaczego państwa liberalne wydają się być gorzej przygotowane od państw totalitarnych i quasi-totalitarnych? Impotencja ta jest nierzadko zaskakująca. A to tylko wierzchołek złowrogiej góry lodowej.</p>
+
+<p>Próba walki z pandemią jest w gruncie rzeczy oparta na kwarantannie. Oznacza to różne ograniczenia w Polsce i na świecie, które uderzają bezpośrednio w przedsiębiorstwa niezależnie od wielkości i skali. Okazuje się, że niektóre sektory przemysłu są lepiej przygotowane a inne gorzej. Odpowiedź na pytanie „skąd ta różnica” jest złożona. Często jest tak, że niejako <em>z definicji</em> dany sektor jest w gorszym położeniu, ponieważ jego działalność operacyjna stoi w sprzeczności do tzw. <em>kwarantanny</em> czyli ograniczenia kontaktów, mobilności. Przykładem może tu być branża turystyczna i rozrywkowa. Nie można zapominać, że mamy do czynienia z systemem naczyń połączonych toteż słabość jednej gałęzi może pociągnąć załamanie w innej.</p>
+
+<p>IT wydaje się być pozbawiona niektórych z tych ograniczeń. Jednak to nie wystarczy aby osiągnąć sukces w obecnej sytuacji, albo raczej uchronić się od poważnych problemów. A więc o co chodzi? Oczywiście o <strong>pracę zdalną</strong>! Model ten idealnie wpisuje się w obecne wymogi sytuacyjne i jest jednym z pierwszych wymagań jakie stawia <em>kwarantanna</em>. Jednak wbrew pozorom organizacja pracy zdalnej może być trudna. Z rozmów z wieloma znajomymi wiem, że sporo firm IT nie poradziło sobie z wyzwaniem organizacji pracy z domu.</p>
+
+<h2 id="praca-zdalna--jak-to-powinno-wyglądać">Praca zdalna – jak to powinno wyglądać</h2>
+
+<p>Wszyscy wiedzą jak powinna wyglądać praca z domu i na pierwszy rzut oka nie powinno być z tym problemów. Pakujemy laptop i idziemy do domu. Ale nawet tutaj natrafiamy na pierwsze ograniczenie – trzeba mieć laptop, a potem możliwość pracy na nim w naszym domu. Jednak to nie wszystko, istnieje szereg ograniczeń początkowo niewidocznych.</p>
+
+<p>Jeśli firma już miała wdrożony model pracy z domu, który działa w praktyce to nie ma większego problemu. Tak jest przykładowo w <a href="https://www.pico.net/">firmie</a> gdzie obecnie pracuję. Kultura pracy z domu to nasza wieloletnia praktyka, więc nie było żadnych problemów, a ja jako osoba stojąca na czele polskiego oddziału tej firmy miałem bardzo ułatwione zadanie jeśli chodzi o poproszenie załogi o pracę zdalną. I tu pojawia się pierwszy niewidoczny bohater – <em>kultura pracy z domu</em>. Oznacza to wszystkie nawyki, przyzwyczajenia i praktyki, które są niezbędne do efektywnej pracy poza biurem takie jak np.:</p>
+
+<ul>
+  <li>Doskonała znajomość wszystkich narzędzi służących do współpracy w rozproszonym środowisku (lista będzie niżej).</li>
+  <li>Wyrobione dobre praktyki dotyczące komunikacji, np. kiedy się komunikować, z kim, jak ogłaszać nowe priorytety i ważne informacje, kiedy się nie komunikować itp.</li>
+  <li>Synchronizacja zadań i postępów.</li>
+  <li>Metodologia pracy.</li>
+</ul>
+
+<p>Trudno jest podać przepis na to jak taka kultura ma wyglądać. Co więcej, nie jest to kwestia odgórnej woli ani wydanego dekretu, a raczej odpowiedniego środowiska sprzyjającego budowaniu odpowiednich praktyk. I tak, jeśli Twój menadżer ciągle sapie nad Tobą bo chce kontrolować każdy krok, lub odwrotnie, jest bardzo miły ale wiesz, że za Twoimi plecami mówi już nie tak słodko to oznacza, że zespół taki jest dysfunkcyjny (polecam <a href="https://www.amazon.com/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756">tę</a> książkę na ten temat). Jedną z przyczyn dysfunkcji jest brak zaufania. Praca zdalna zespołu, gdzie zdiagnozowano te i podobne symptomy będzie skrajnie nieefektywna nawet jeśli technicznie możliwa. Często tacy menadżerowie znają (lub czują instynktownie) te konsekwencje i będą utrudniać możliwość pracy z domu. No chyba, że spanikują to wtedy pierwsi dokonają ewakuacji 🙂</p>
+
+<p>Kolejny element o znaczeniu kluczowym to komunikacja i swoboda komunikacji. Dlatego powstało wiele narzędzi i ich typów, co można zobaczyć na poniższej liście. Ale narzędzia to nie wszystko! Zespół powinien mieć wyrobiony nawyk i potrzebę komunikacji. Jest to tak istotna sprawa, że wiele metodyk wytwarzania oprogramowania wplotło różne metody komunikacji w swoją ideologię. Dla przykładu, SCRUM wprowadził pojęcie tzw. <em>daily standups</em> czyli krótkich codziennych spotkań synchronizujących pracę zespołu. Więcej na ten temat znajdziesz <a href="http://rrowniak.com/dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/">tutaj</a>. Pisałem również <a href="http://rrowniak.com/dobre-praktyki/implementacja-scrum-zagrozenia/">jakie pułapki czekają</a> na wdrażających tę metodykę. Mówiąc krótko, jeśli problem z komunikacją istnieje w biurze, to w modelu pracy z domu będzie jeszcze gorzej, więc warto nad tym pracować niezależnie od tego czy się pracuje z domu czy nie.</p>
+
+<p>To nie wszystko, są też sprawy natury technicznej. Aby skutecznie pracować zdalnie należy wyposażyć zespół, bądź firmę w efektywne narzędzia, czyli takie, które zostały sprawdzone na placu boju. Należy unikać jak ognia różnych <em>wynalazków</em>, które ktoś będzie chciał wdrożyć z potrzeb ideologicznych.</p>
+
+<p>Standardem są narzędzia dostępne przez przeglądarkę internetową tzw. aplikacje webowe. Powinny one mieć również odpowiedniki mobilne. Jeśli ktoś proponuje rozwiązanie niespełniające powyższych kryteriów to prawdopodobnie nie będzie to trafiony wybór. Należy wspomnieć, że takie narzędzia nie służą tylko do pracy zdalnej. Doskonale sprawdzają się w modelu pracy w biurze lub pracy mieszanej. Zróbmy sobie zatem wyliczankę, po kategoriach a potem w kolejności od <em>bardziej lubianych</em>:</p>
+
+<ul>
+  <li>Klient poczty e-mail + kalendarz: <a href="http://gmail.com">gmail</a>, <a href="http://office.com">Outlook</a></li>
+  <li>Narzędzia do komunikacji/telekonferencji: <a href="https://slack.com">Slack</a>, <a href="https://zoom.us/">Zoom</a>, Skype, <a href="https://gsuite.google.com/products/meet/">Google Hangouts</a>, <a href="https://teams.microsoft.com/start">Microsoft Teams</a>, Webex, Webex Teams</li>
+  <li>Interaktywne tablice: <a href="https://miro.com/">Miro</a>, <a href="https://www.cisco.com/c/en/us/products/collaboration-endpoints/webex-board/index.html">Cisco Webex Board</a></li>
+  <li>Narzędzia do zarządzania zadaniami: <a href="https://jira.atlassian.com/">JIRA</a>, <a href="https://www.aha.io/">Aha!</a>, Bugzilla, <a href="https://trello.com/">Trello</a></li>
+  <li>Narzędzia do przechowywania i współdzielenia plików: <a href="https://www.google.com/drive/">Google Drive</a>, <a href="https://www.dropbox.com/">Dropbox</a></li>
+  <li>Narzędzia biurowe umożliwiające interaktywną edycję: <a href="https://www.google.com/docs/about/">Google Docs</a>, <a href="http://office.com">MS Office 365</a></li>
+  <li>Przeglądy kodu źródłowego: <a href="https://www.atlassian.com/pl/software/fisheye">Fisheye</a>, Gerrit, Review Board</li>
+</ul>
+
+<p>Oczywiście powyższa lista w żaden sposób nie wyczerpuje tematu. Omówmy pokrótce poszczególne klasy narzędzi i w jaki sposób należy z nich korzystać z pominięciem pierwszej grupy, bo to chyba oczywiste.</p>
+
+<p>Narzędzia do komunikacji w formie tekstowej. Absolutna podstawa. Każdy powinien mieć możliwość szybkiego kontaktu z każdym. Wklejanie obrazków, fragmentów kodu źródłowego, wymiana plików, tworzenie kanałów oficjalnych i nieoficjalnych to wymagania elementarne i nie podlegające żadnym negocjacjom. Slack jest tutaj wzorcem.</p>
+
+<p>Narzędzia do telekonferencji. Pierwsze wymaganie to <strong>żeby działało</strong>. I okazuje się, że z tym są największe problemy. Potem: łatwe w obsłudze, możliwość „pokazania” swojego pulpitu i szybkość organizacji wideo-spotkań, również dla ludzi z poza firmy. Niby prosta sprawa, ale tak nie jest. Według mnie najbliżej ideału jest Zoom. Ta forma kontaktu nie powinna być nadużywana za wyjątkiem sesji 1-1.</p>
+
+<p>Interaktywne tablice. Niektórzy lubią ten sposób komunikacji, ale ja nie jestem jakimś zapalonym miłośnikiem tych narzędzi więc uważam je za „<em>nice to have</em>„.</p>
+
+<p>Narzędzia do zarządzania zadaniami. Sprawa bezdyskusyjna, brak takiego narzędzia (bądź ich większej liczby) to ubóstwo technologiczne. Narzędzia te służą do sprawnego synchronizowania pracy, komunikowania wymagań, monitorowaniu postępu prac i kierunku w jakim projekt się rozwija. Są one szczególnie istotne w modelu pracy zdalnej. JIRA to tzw. standard przemysłowy.</p>
+
+<p>Narzędzia do przechowywania i współdzielenia plików. W brew intuicji nie są jakoś powszechnie stosowane w IT (a przynajmniej nie powinny). Są lepsze narzędzia takie jak specjalizowane repozytoria kodu źródłowego bądź innych artefaktów (np. <a href="https://jfrog.com/artifactory/">artifactory</a>). Z reguły takie narzędzia są dostępne tylko w sieci lokalnej i z zewnątrz poprzez VPN.</p>
+
+<p>Narzędzia biurowe umożliwiające tworzenie dokumentów online i interaktywną edycję. Ułatwiają kooperację w szczególności na poziomie definiowania wymagań i zarządzania. Dokument może być edytowany przez wiele osób jednocześnie i można komentować różne sekcje dokumentu. Ta grupa narzędzi jest mniej lubiana przez inżynierów, a bardziej przez kadrę zarządzającą. Niemniej ten punkt wydaje się być wymagany. Czasami jest zastępowany lub uzupełniany przez aplikacje webowe typu <em>wiki</em> jak np. Confluence.</p>
+
+<p>Przeglądy kodu źródłowego. W firmach IT jest to standard, więc też powstały narzędzia do wspomagania tego procesu. Narzędzie obowiązkowe w każdej firmie IT niezależnie od tego czy pracujemy zdalnie, czy na miejscu. Wymienione narzędzia umożliwią inżynierom robienie przeglądów również w środowisku pracy zdalnej.</p>
+
+<p>To nadal nie koniec. Potrzebny jest również bezpieczny dostęp do wewnętrznej sieci poprzez <a href="https://en.wikipedia.org/wiki/Virtual_private_network">VPN</a>. Wewnętrzna sieć to różne zasoby takie jak repozytoria kodu źródłowego i innych artefaktów, środowiska <a href="https://en.wikipedia.org/wiki/Continuous_integration">contiguous integration</a>, środowiska uruchomieniowe i testowe, serwery plików, i wiele innych.</p>
+
+<h2 id="praca-zdalna--czego-nie-należy-robić">Praca zdalna – czego nie należy robić</h2>
+
+<p>Istnieje pokusa aby wraz z decyzją o <em>pracy z domu</em> wprowadzać zasady, reguły i procesy. To błąd. Powstaje wtedy długa lista różnych rzeczy, które teoretycznie brzmią sensownie ale w praktyce nie mają sensu. Podam kilka przykładów.</p>
+
+<p>„<em>Podczas wideokonferencji należy ściszyć mikrofon gdy się nic nie mów. Ma to redukować szumy.</em>„. Sensowne, prawda? Prawie. Bo obecnie dobre systemy wideokonferencyjne świetnie sobie radzą z redukcją szumów, a w przypadku problemów „zasada” ta jest wprowadzona w życie po jakiejś sekundzie. Nie trzeba tego nigdzie spisywać. Strata czasu.</p>
+
+<p>„<em>Komunikatora X używamy do tego a tego, komunikatora Y…</em>„. Reguła bez sensu. Co do czego się najbardziej nadaje to wyjdzie w praniu.</p>
+
+<p>„<em>O godzinie Z należy przesyłać raport z postępów zadań…</em>„. Czyżby brak zaufania do zespołu? I na domiar złego komunikowanie tego w sposób tak dobitny?</p>
+
+<p>„<em>Spotykajmy się regularnie, częściej niż zazwyczaj ze względu na wzgląd…</em>„. Nie, im miej spotkań tym lepiej. To też tyczy się pracy zdalnej.</p>
+
+<p>Kolejny kiler pracy z domu to dokumentacja na przenośnych nośnikach danych lub na papierze. Niestety takie sytuacje nadal zdarzają się w XIX w. Nie trudno domyślić się co tu nie zadziała.</p>
+
+<h2 id="czy-można-zaszczepić-te-praktyki-w-innych-branżach">Czy można zaszczepić te praktyki w innych branżach?</h2>
+
+<p>Niestety nie umiem odpowiedzieć na to pytanie. Znam sporo działów przemysłu, gdzie nie da się nic sensownego zaproponować. Być może inne gałęzie będą bardziej nadawały się do wprowadzenia tego modelu. Każdy, kto zna dobrze swoją branżę może spróbować się zastanowić, które z powyższych pomysłów mogłyby zadziałać. W IT spisują się wyśmienicie.</p>]]></content><author><name>Rafał Równiak</name></author><category term="inne" /><category term="IT" /><category term="Management" /><category term="dobrepraktyki" /><category term="koronawirus" /><category term="pandemia" /><category term="pracazdomu" /><summary type="html"><![CDATA[Jak radzi sobie branża IT w realiach pandemii koronawirusa? Nadspodziewanie dobrze? Dlaczego? Dzisiaj opowiem jakie mechanizmy zadziałały, co nie do końca się sprawdziło i jak zorganizować (jeśli jeszcze tego nie zrobiliście) środowisko do pracy zdalnej.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/_site/wp-content/uploads/2020/03/pille-riin-priske-small-unsplash.jpg" /><media:content medium="image" url="http://localhost:4000/_site/wp-content/uploads/2020/03/pille-riin-priske-small-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

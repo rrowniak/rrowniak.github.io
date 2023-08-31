@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Microkernel – wzorzec architektoniczny | Rafal’s blog</title>
+<meta name="generator" content="Jekyll v4.3.1" />
+<meta property="og:title" content="Microkernel – wzorzec architektoniczny" />
+<meta name="author" content="Rafał Równiak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Wzorce architektoniczne stanowią bardzo ważną część inżynierii oprogramowania. Są niejako instrukcją postępowania podczas rozwiązywania pewnych powtarzających się problemów. Dzisiaj weźmiemy na pulpit wzorzec architektoniczny, który jest związany głównie z (ale nie tylko) architekturą systemów operacyjnych – microkernel (nie mylić z kernelem systemu operacyjnego!). Podam ogólny zarys tego wzorca i zrobię krótką analizę uwzględniając różne kryteria. Ta ostania rzecz jest szczególnie bardzo ważna dla programistów i architektów oprogramowania – zobaczymy jakie należy przyjąć kryteria oceny i na co zwracać uwagę podczas analizy wzorców projektowych." />
+<meta property="og:description" content="Wzorce architektoniczne stanowią bardzo ważną część inżynierii oprogramowania. Są niejako instrukcją postępowania podczas rozwiązywania pewnych powtarzających się problemów. Dzisiaj weźmiemy na pulpit wzorzec architektoniczny, który jest związany głównie z (ale nie tylko) architekturą systemów operacyjnych – microkernel (nie mylić z kernelem systemu operacyjnego!). Podam ogólny zarys tego wzorca i zrobię krótką analizę uwzględniając różne kryteria. Ta ostania rzecz jest szczególnie bardzo ważna dla programistów i architektów oprogramowania – zobaczymy jakie należy przyjąć kryteria oceny i na co zwracać uwagę podczas analizy wzorców projektowych." />
+<link rel="canonical" href="http://localhost:4000/_site/dobre-praktyki/microkernel-wzorzec-architektoniczny/" />
+<meta property="og:url" content="http://localhost:4000/_site/dobre-praktyki/microkernel-wzorzec-architektoniczny/" />
+<meta property="og:site_name" content="Rafal’s blog" />
+<meta property="og:image" content="http://localhost:4000/_site/wp-content/uploads/2018/04/gears-cogs-machine-machinery-small.jpeg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-01T09:30:43+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/_site/wp-content/uploads/2018/04/gears-cogs-machine-machinery-small.jpeg" />
+<meta property="twitter:title" content="Microkernel – wzorzec architektoniczny" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Rafał Równiak"},"dateModified":"2018-05-01T09:30:43+02:00","datePublished":"2018-05-01T09:30:43+02:00","description":"Wzorce architektoniczne stanowią bardzo ważną część inżynierii oprogramowania. Są niejako instrukcją postępowania podczas rozwiązywania pewnych powtarzających się problemów. Dzisiaj weźmiemy na pulpit wzorzec architektoniczny, który jest związany głównie z (ale nie tylko) architekturą systemów operacyjnych – microkernel (nie mylić z kernelem systemu operacyjnego!). Podam ogólny zarys tego wzorca i zrobię krótką analizę uwzględniając różne kryteria. Ta ostania rzecz jest szczególnie bardzo ważna dla programistów i architektów oprogramowania – zobaczymy jakie należy przyjąć kryteria oceny i na co zwracać uwagę podczas analizy wzorców projektowych.","headline":"Microkernel – wzorzec architektoniczny","image":"http://localhost:4000/_site/wp-content/uploads/2018/04/gears-cogs-machine-machinery-small.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/_site/dobre-praktyki/microkernel-wzorzec-architektoniczny/"},"url":"http://localhost:4000/_site/dobre-praktyki/microkernel-wzorzec-architektoniczny/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/_site/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/_site/feed.xml" title="Rafal&apos;s blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/_site/">Rafal&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/_site/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Microkernel &amp;#8211; wzorzec architektoniczny</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-05-01T09:30:43+02:00" itemprop="datePublished">May 1, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Rafał Równiak</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Wzorce architektoniczne stanowią bardzo ważną część inżynierii oprogramowania. Są niejako instrukcją postępowania podczas rozwiązywania pewnych powtarzających się problemów. Dzisiaj weźmiemy na pulpit wzorzec architektoniczny, który jest związany głównie z (ale nie tylko) architekturą systemów operacyjnych – microkernel (nie mylić z kernelem systemu operacyjnego!). Podam ogólny zarys tego wzorca i zrobię krótką analizę uwzględniając różne kryteria. Ta ostania rzecz jest szczególnie <strong>bardzo ważna</strong> dla programistów i architektów oprogramowania – zobaczymy jakie należy przyjąć kryteria oceny i na co zwracać uwagę podczas analizy wzorców projektowych.</p>
+
+<h2 id="microkernel">Microkernel</h2>
+
+<p>Wzorzec ten definiuje strukturę oprogramowania np. systemu operacyjnego dzieląc ją na rdzeń czyli po angielsku <em>kernel</em> (nazywany również <em>mikrokenelem</em>) i stowarzyszone moduły. Poniższy rysunek przedstawia tą ideę.</p>
+
+<p><a href="https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/05/microkernel.jpg"><img src="https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/05/microkernel.jpg?resize=696%2C244" alt="" /></a></p>
+
+<p>Kernel zawiera implementację minimalnego zestawu funkcjonalności jaki jest potrzebny aby zrealizować bardziej złożone zadania. A realizacją tych złożonych zadań zajmą się stowarzyszone moduły. Brzmi dość mgliście, wiem. Spróbujmy znaleźć jakąś analogię aby mieć lepsze wyobrażenie na ten temat i nieco uzbroić intuicję.</p>
+
+<p>Wyobraź sobie pralkę automatyczną. Zawiera ona kilka mechanizmów takich jak silnik napędowy, pompa wody, grzałka do podgrzewania wody, elektrozawory, filtry i kilka czujników. Producent mógłby Ci udostępnić zestaw wajch do sterowania każdą z tych części, powstał by trochę taki star-trek. I teoretycznie mógłbyś prać ubrania tak jak można to robić używając klasycznej pralki automatycznej. Ba, nie byłbyś ograniczony żadnymi programami. Ale wygląda na to, że świat poszedł w innym kierunku. Co nie oznacza, że nie ma tych mechanizmów w pralce i nie można nimi sterować. Można ale robi to kto inny. Więc taka „goła” pralka to odpowiednik kernela. Udostępnia ona minimalny zestaw narzędzi potrzebnych do wykonania danego zadania. Ale nic ponadto. Uważny obserwator zanotuje, że takie pralki nie podbiły rynku. Kontynuując naszą analogię, na scenę wkraczają wspomniane moduły. Rozszerzają one nasz kernel tak aby uczynić nasze życie łatwiejszym. I tak nasza pralka otrzyma zestaw programów, przyjazny panel sterowania, obsługę sytuacji wyjątkowych, funkcję robienia kawy i takie tam podobne. Widać więc, że moduły korzystają z funkcji udostępnionych przez kernel ale same nie operują bezpośrednio na sprzęcie ani nie są absolutnie konieczne do jego działania.</p>
+
+<p>Mając pewne wyobrażenie na ten temat porozmawiajmy o detalach. Już wiemy, że kernel implementuje podstawowe funkcjonalności, które są udostępnione poprzez tzw. <a href="https://pl.wikipedia.org/wiki/Interfejs_programowania_aplikacji">API</a> (application programming interface). API może przyjąć formę <a href="https://pl.wikipedia.org/wiki/Us%C5%82uga_sieciowa">web-service</a>, interfejsu <a href="https://pl.wikipedia.org/wiki/Representational_State_Transfer">REST</a> lub <a href="https://pl.wikipedia.org/wiki/Zdalne_wywo%C5%82anie_procedury">RPC</a> albo co ma najczęściej miejsce w przypadku systemów operacyjnych i <a href="https://pl.wikipedia.org/wiki/System_wbudowany">systemów wbudowanych</a> (ang. <em>embedded</em>) – interfejsu <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a>. Istnieją również moduły. Czasami można spotkać się z określeniem <em>services</em> lub <em>components</em>, co opracowanie to inna nomenklatura. W każdym bądź razie moduły korzystają z interfejsu jaki udostępnia kernel. I same udostępniają nowe interfejsy. Może to być rozszerzenie interfejsu kernela lub stworzenie nowego, definiującego wyższy poziom abstrakcji. Moduły mogą korzystać tylko z API kernela – wtedy mówimy o modułach wewnętrznych, internal modules. Ale jest też kategoria modułów, które mogą korzystać z API innych modułów (innych ale tylko tych <em>internal</em>) – wtedy mamy do czynienia z modułami zewnętrznymi, external modules.</p>
+
+<h2 id="mircokernel-vs-monolithic">Mircokernel vs Monolithic</h2>
+
+<p>Bardzo często wzorzec microkernel jest porównywany do podejścia monolitycznego, czyli braku separacji na kernel i moduły. Mogło by się wydawać, że sprawa jest oczywista; mikrokernel wprowadza strukturę i pewne reguły więc będzie jakościowo lepszy. Teoria stoi za mikrokernelem. Ale tak nie jest. Dobitnym przykładem jest jądro Linux’a. Jest to monolityczna architektura, która się sprawdziła. Istnieje nawet zapis słynnej <a href="https://en.wikipedia.org/wiki/Tanenbaum%E2%80%93Torvalds_debate">dysputy</a> po między twórcą jądra systemu Linux Linusem Torvald’em a znanym teoretykiem informatyki Andrew’em S. Tanenbaumem, którzy to prowadzili długą debatę nad wyższością jednego podejścia nad drugim.</p>
+
+<h2 id="zalety-i-wady">Zalety i wady</h2>
+
+<p>Zalety:</p>
+
+<ul>
+  <li>zdefiniowana struktura</li>
+  <li>możliwość łatwej wymiany modułów</li>
+  <li>rozszerzalność</li>
+  <li>możliwość implementacji tzw. modelu plug-in’owego</li>
+  <li>możliwość dostosowania do potrzeb, nie używane moduły mogą być wyłączone</li>
+</ul>
+
+<p>Wady:</p>
+
+<ul>
+  <li>większa złożoność</li>
+  <li>dodatkowe narzuty wydajnościowe, głownie chodzi o takie problemy jak <a href="https://en.wikipedia.org/wiki/CPU_cache#CACHE-MISS"><em>cache misses</em></a>, <em>tlb misses</em></li>
+</ul>
+
+<h2 id="analiza">Analiza</h2>
+
+<h4 id="agility">Agility</h4>
+
+<p>Wysoki stopień adaptacji do metodyk zwinnych ponieważ podział strukturalny i zdefiniowany interfejs API pozwala na łatwą dystrybucję zadań pomiędzy zespołami. Implementacja może być przyrostowa i iteracyjna. Nowe funkcjonalności mogą być dodawane szybko. Jedynym krytycznym punktem jest API, każda zmiana ma ogromny wpływ na resztę komponentów.</p>
+
+<h4 id="ease-of-deployment"><strong>Ease of deployment</strong></h4>
+
+<p>Wdrażanie rozwiązań opartych o ten wzorzec jest łatwe, późniejsza aktualizacja polega na wymianie lub dodawaniu nowych modułów.</p>
+
+<h4 id="testability"><strong>Testability</strong></h4>
+
+<p>Testowalność jest bardzo ułatwiona. Każdy moduł może być testowany w izolacji ponieważ funkcjonalność kernela może być emulowana. Również kernel może być testowany osobno ponieważ udostępnia API, które będzie wykorzystane do testów.</p>
+
+<h4 id="performance"><strong>Performance</strong></h4>
+
+<p>Tutaj sprawa jest nieco bardziej skomplikowana. Z jednej strony nieużywane moduły mogą być wyłączone lub w ogóle nie zainstalowane. To spowoduje mniejsze zapotrzebowanie na zasoby co może przełożyć się na wydajność. Ale z drugiej strony mamy dodatkowy narzut w postaci API i sam podział strukturalny wymusza więcej kodu. A to może przełożyć się bezpośrednio na wydajność, chodzi głównie o <a href="https://en.wikipedia.org/wiki/CPU_cache#CACHE-MISS"><em>cache misses</em></a>.</p>
+
+<p>W praktyce rozwiązania oparte o ten wzorzec mogą charakteryzować się gorszymi wynikami. Jednak różnice mogą być niewielkie i tam gdzie wydajność nie jest najważniejszym czynnikiem wzorzec może być stosowany z powodzeniem.</p>
+
+<h4 id="scalability"><strong>Scalability</strong></h4>
+
+<p>Skalowalność jest niska ponieważ mamy do czynienia z pojedynczymi jednostkami, które są dosyć mocno odizolowane. Wzorzec jest silnie scentralizowany.</p>
+
+<h4 id="ease-of-development"><strong>Ease of development</strong></h4>
+
+<p>Rozwój oprogramowania opartego o ten wzorzec jest stosunkowo łatwa. Podział narzucony przez wzorzec daje możliwość tworzenia modułów w izolacji, możemy je tworzyć niezależnie w oparciu o zdefiniowany interfejs. Dodatkowo kernel może być emulowany. Programistyczny raj…</p>
+
+<p>Ale jest też ciemna strona tego zagadnienia. Wszystko działa jak wyżej opisałem pod warunkiem, że API jest stabilne i dobrze zaprojektowane. A to dość trudna sprawa. Do tego dochodzi wersjonowanie interfejsów. Kolejnym problematycznym fragmentem jest sam kernel. Wymaga on od programistów dużej wiedzy i dobrego warsztatu ponieważ jest on centralnym punktem systemu i problemy z nim związane będą się propagowały na cały system.</p>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>To tyle jeśli chodzi o microkernel. Wiesz już co to za wzorzec, poznałeś jego silne i słabe strony. Dodatkowo zobaczyłeś jak wygląda analiza tego wzorca. Pamiętaj jednak aby w takich analizach uwzględniać czynniki specyficzne dla Twojej firmy, projektu, klienta itp. Ja tego nie zrobiłem, ponieważ nie mogłem poczynić założeń, które wychodziły by poza granice ogólności. W przyszłości będę powracał do tej tematyki i weźmiemy na pulpit kolejne wzorce.</p>
+
+  </div><a class="u-url" href="/_site/dobre-praktyki/microkernel-wzorzec-architektoniczny/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/_site/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Rafal&#39;s blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rafal&#39;s blog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_site/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rrowniak</span></a></li><li><a href="https://www.twitter.com/rrowniak"><svg class="svg-icon"><use xlink:href="/_site/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rrowniak</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Welcome to my IT blog! Here, you will find articles on a wide range of topics related to technology and computer science.  My blog covers everything from software architecture and programming languages like C++ to performance optimization and Linux systems.  Whether you&#39;re a seasoned IT professional or just starting out in the field, I hope you&#39;ll find something of interest on my blog.  Follow me to stay up to date with the latest trends and best practices in the world of technology.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
