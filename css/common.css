@@ -180,6 +180,9 @@ h1,h2,h3,h4,h5,h6{
     background-color: #00aced;
 }
 
+.section-footer p.social a.linkedin {
+    background-color: #0e76a8;
+}
 .section-footer p.social a.email {
     background-color: #4a7f45;
 }
