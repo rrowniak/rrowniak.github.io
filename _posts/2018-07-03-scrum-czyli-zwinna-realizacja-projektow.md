@@ -4,9 +4,8 @@ title: 'SCRUM czyli zwinna realizacja projektów'
 date: '2018-07-03T06:48:49+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=312'
+guid: '/?p=312'
 permalink: /dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/
-image: /wp-content/uploads/2018/05/rawpixel-small-unsplash.jpg
 categories:
     - 'Dobre praktyki'
     - Management
@@ -19,14 +18,13 @@ tags:
     - scrum
     - waterfall
 ---
-
 Wpis ten otwiera serię artykułów traktujących o zarządzaniu projektami i organizacji zespołów projektowych. Obecnie jedną z najpopularniejszych metod realizacji projektów jest SCRUM i wokół niego wszystko będzie się kręcić. Podzielę się też swoimi doświadczeniami i opiszę różne punkty widzenia, jako że miałem przyjemność wcielić się chyba w każdą rolę jaką definiuje SCRUM, a także uczestniczyłem w projektach jako klasyczny PM.
 
 O czym będziemy dyskutować? Teraz zajmiemy się podstawami SCRUM. W następnych częściach przyjdzie mi mówić o:
 
 - *Pojedynek ideologii: agile (SCRUM) vs pięciolatka (waterfall, v-model)*. Porównamy modele „zwinne” z tymi klasycznymi. Zobaczymy jakie problem trapią jeden i drugi styl.
-- *[Czy SCRUM to Złoty Graal](http://rrowniak.com/it/czy-scrum-to-zloty-graal-zarzadzania-projektami/)?* Tutaj zastanowimy się gdzie SCRUM się sprawdza, a gdzie nie. Jak to wykryć w pierwszych etapach? A jeśli się nie sprawdza to jakie są alternatywy?
-- [*Implementacja SCRUM i zagrożenia*](http://rrowniak.com/it/implementacja-scrum-zagrozenia/). Jak wdrożyć SCRUM i jakie czyhają zagrożenia? Zastanowimy się nad pewnymi, często niewidocznymi dla niedoświadczonego oka, problemami które SCRUMa zamieniają w waterfall.
+- *[Czy SCRUM to Złoty Graal](/dobre-praktyki/czy-scrum-to-zloty-graal-zarzadzania-projektami/)?* Tutaj zastanowimy się gdzie SCRUM się sprawdza, a gdzie nie. Jak to wykryć w pierwszych etapach? A jeśli się nie sprawdza to jakie są alternatywy?
+- [*Implementacja SCRUM i zagrożenia*](/dobre-praktyki/implementacja-scrum-zagrozenia/). Jak wdrożyć SCRUM i jakie czyhają zagrożenia? Zastanowimy się nad pewnymi, często niewidocznymi dla niedoświadczonego oka, problemami które SCRUMa zamieniają w waterfall.
 - *A gdzie project manager?* No właśnie, co się stało z project managerem i dlaczego tak mało o nim mówimy?
 
 ## Agile
@@ -60,8 +58,6 @@ Są jeszcze inne role (np. stakeholder) ale nie są kluczowe do zrozumienia o co
 ## Proces
 
 Wiemy już kogo potrzebujemy. Teraz zobaczymy jak to wszystko działa. Cały proces najlepiej opisuje poniższy rysunek:
-
-<figure aria-describedby="caption-attachment-333" class="wp-caption alignnone" id="attachment_333" style="width: 959px">[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/06/Scrum_Framework.png?resize=696%2C388)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/06/Scrum_Framework.png)<figcaption class="wp-caption-text" id="caption-attachment-333">https://en.wikipedia.org/wiki/File:Scrum\_Framework.png</figcaption></figure>
 
 Na samym początku product owner opracowuje listę rzeczy do zrobienia (PBI – *product backlog item*). Oczywiście zgodnie z oczekiwaniami klienta. Początkowo są to bardziej obszary funkcjonalne aniżeli konkretne zadania. Gdybyśmy sobie wyobrazili tworzenie sklepu internetowego (abstrahując od tego, że istnieje mnóstwo gotowych rozwiązań) to moglibyśmy utworzyć kilka takich zagadnień: baza produktów, rozliczenia finansowe, raporty. Zauważ, że jest to opis funkcjonalny i domenowy ,a nie techniczny. Technologia jest przedmiotem, a nie podmiotem. Często zagadnienia te nazywamy epikami (*epics*).
 

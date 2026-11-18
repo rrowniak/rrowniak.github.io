@@ -4,9 +4,8 @@ title: 'Koronawirus w IT'
 date: '2020-03-17T17:39:21+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=694'
+guid: '/?p=694'
 permalink: /it-pl/koronawirus-w-it/
-image: /wp-content/uploads/2020/03/pille-riin-priske-small-unsplash.jpg
 categories:
     - inne
     - IT
@@ -17,7 +16,6 @@ tags:
     - pandemia
     - pracazdomu
 ---
-
 Jak radzi sobie branża IT w realiach pandemii koronawirusa? Nadspodziewanie dobrze? Dlaczego? Dzisiaj opowiem jakie mechanizmy zadziałały, co nie do końca się sprawdziło i jak zorganizować (jeśli jeszcze tego nie zrobiliście) środowisko do ***pracy zdalnej***.
 
 Brutalnie bezpośredni tytuł nie pozostawia wątpliwości jaki temat będzie omawiany. Oficjalnie ogłoszona pandemia koronawirusa ([SARS-CoV-2](https://pl.wikipedia.org/wiki/SARS-CoV-2)), który może powodować ostre zakażenie dróg oddechowych ([COVID-19](https://pl.wikipedia.org/wiki/COVID-19)) przetoczyła się przez cały świat, a końca ani widu ani słychu. Jednak już teraz wirus i cała sytuacja z nim związana obnażyła wiele słabości na poziomie lokalnym, krajowym, i chyba przede wszystkim unijnym. Do tego dochodzą gwałtowne spadki na giełdach, zawirowania na rynku surowców, mniejsza lub większa panika. I coraz śmielej stawiane pytania: dlaczego państwa liberalne wydają się być gorzej przygotowane od państw totalitarnych i quasi-totalitarnych? Impotencja ta jest nierzadko zaskakująca. A to tylko wierzchołek złowrogiej góry lodowej.
@@ -39,7 +37,7 @@ Jeśli firma już miała wdrożony model pracy z domu, który działa w praktyce
 
 Trudno jest podać przepis na to jak taka kultura ma wyglądać. Co więcej, nie jest to kwestia odgórnej woli ani wydanego dekretu, a raczej odpowiedniego środowiska sprzyjającego budowaniu odpowiednich praktyk. I tak, jeśli Twój menadżer ciągle sapie nad Tobą bo chce kontrolować każdy krok, lub odwrotnie, jest bardzo miły ale wiesz, że za Twoimi plecami mówi już nie tak słodko to oznacza, że zespół taki jest dysfunkcyjny (polecam [tę](https://www.amazon.com/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756) książkę na ten temat). Jedną z przyczyn dysfunkcji jest brak zaufania. Praca zdalna zespołu, gdzie zdiagnozowano te i podobne symptomy będzie skrajnie nieefektywna nawet jeśli technicznie możliwa. Często tacy menadżerowie znają (lub czują instynktownie) te konsekwencje i będą utrudniać możliwość pracy z domu. No chyba, że spanikują to wtedy pierwsi dokonają ewakuacji 🙂
 
-Kolejny element o znaczeniu kluczowym to komunikacja i swoboda komunikacji. Dlatego powstało wiele narzędzi i ich typów, co można zobaczyć na poniższej liście. Ale narzędzia to nie wszystko! Zespół powinien mieć wyrobiony nawyk i potrzebę komunikacji. Jest to tak istotna sprawa, że wiele metodyk wytwarzania oprogramowania wplotło różne metody komunikacji w swoją ideologię. Dla przykładu, SCRUM wprowadził pojęcie tzw. *daily standups* czyli krótkich codziennych spotkań synchronizujących pracę zespołu. Więcej na ten temat znajdziesz [tutaj](http://rrowniak.com/dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/). Pisałem również [jakie pułapki czekają](http://rrowniak.com/dobre-praktyki/implementacja-scrum-zagrozenia/) na wdrażających tę metodykę. Mówiąc krótko, jeśli problem z komunikacją istnieje w biurze, to w modelu pracy z domu będzie jeszcze gorzej, więc warto nad tym pracować niezależnie od tego czy się pracuje z domu czy nie.
+Kolejny element o znaczeniu kluczowym to komunikacja i swoboda komunikacji. Dlatego powstało wiele narzędzi i ich typów, co można zobaczyć na poniższej liście. Ale narzędzia to nie wszystko! Zespół powinien mieć wyrobiony nawyk i potrzebę komunikacji. Jest to tak istotna sprawa, że wiele metodyk wytwarzania oprogramowania wplotło różne metody komunikacji w swoją ideologię. Dla przykładu, SCRUM wprowadził pojęcie tzw. *daily standups* czyli krótkich codziennych spotkań synchronizujących pracę zespołu. Więcej na ten temat znajdziesz [tutaj](/dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/). Pisałem również [jakie pułapki czekają](/dobre-praktyki/implementacja-scrum-zagrozenia/) na wdrażających tę metodykę. Mówiąc krótko, jeśli problem z komunikacją istnieje w biurze, to w modelu pracy z domu będzie jeszcze gorzej, więc warto nad tym pracować niezależnie od tego czy się pracuje z domu czy nie.
 
 To nie wszystko, są też sprawy natury technicznej. Aby skutecznie pracować zdalnie należy wyposażyć zespół, bądź firmę w efektywne narzędzia, czyli takie, które zostały sprawdzone na placu boju. Należy unikać jak ognia różnych *wynalazków*, które ktoś będzie chciał wdrożyć z potrzeb ideologicznych.
 

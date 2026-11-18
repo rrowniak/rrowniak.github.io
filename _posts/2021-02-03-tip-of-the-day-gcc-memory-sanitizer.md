@@ -4,7 +4,7 @@ title: 'Tip of the day: gcc address sanitizer'
 date: '2021-02-03T08:05:24+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=805'
+guid: '/?p=805'
 permalink: /linux/tip-of-the-day-gcc-memory-sanitizer/
 categories:
     - C
@@ -12,13 +12,11 @@ categories:
     - English
     - Linux
 ---
-
 Today I’m going to show you how effectively solve painful issues related to memory corruption occurrences.
 
 Let’s start from the example. Consider the following code:
 
-```
-<pre class="wp-block-code">```cpp
+```cpp
 #include <iostream>
 
 int array[2];
@@ -38,12 +36,10 @@ int main(int argc, char** argv)
     return array[0];
 }
 ```
-```
 
 And corresponding makefile:
 
-```
-<pre class="wp-block-code">```bash
+```bash
 CPPFLAGS = -g -Wall
 LDFLAGS = -g
 LDLIBS = -lm -ldl
@@ -57,19 +53,16 @@ test.o: test.cpp
 clean:
     @rm test test.o
 ```
-```
 
 Let’s build &amp; execute the program:
 
-```
-<pre class="wp-block-code">```bash
+```bash
 $ make
  g++ -g -Wall -c test.cpp
  g++ -g -o test test.o -lm -ldl
 $ ./test 
  Not really… Something is wrong
  11 vs 11
-```
 ```
 
 The issue is visible in the source without using any fancy tool. But if you have hundreds of thousands of lines of code, the problem isn’t such trivial. Moreover, it may not manifest all the time but just from time to time and it doesn’t have to be a crash – sometimes it’s just a weird program behavior like the above example.
@@ -78,8 +71,7 @@ Can we do anything around that? Yes – gcc built-in address sanitizer. That fea
 
 In order to enable the address sanitizer let’s modify slightly our makefile:
 
-```
-<pre class="wp-block-code">```bash
+```bash
 CPPFLAGS = -g -Wall
 LDFLAGS = -g
 LDLIBS = -lm -ldl
@@ -97,23 +89,19 @@ asan: test
 clean:
     @rm test test.o
 ```
-```
 
 And build – this time using non-default target:
 
-```
-<pre class="wp-block-code">```bash
+```bash
 $ make clean
 $ make asan
  g++ -g -Wall -fsanitize=address -c test.cpp
  g++ -g -o test test.o -lm -ldl -lasan
 ```
-```
 
 Now the most interesting part – let’s execute our program:
 
-```
-<pre class="wp-block-code">```bash
+```bash
 $ ./test 
  ==26315==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55b90bac2388 at pc 0x55b90b8c0ffb bp 0x7ffe6500cb20 sp 0x7ffe6500cb10
  WRITE of size 4 at 0x55b90bac2388 thread T0
@@ -155,7 +143,6 @@ $ ./test
    Left alloca redzone:     ca
    Right alloca redzone:    cb
  ==26315==ABORTING
-```
 ```
 
 At first glance the output looks a bit scary. But there is everything that you need to solve the puzzle. Especially that comment: „*AddressSanitizer: **global-buffer-overflow on address** (…) **WRITE of size 4** in main /home/**test.cpp:8** (…)*” – that’s all what you really need.

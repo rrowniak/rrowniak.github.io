@@ -4,12 +4,11 @@ title: 'Pierwszy wpis'
 date: '2018-02-03T14:50:28+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=44'
+guid: '/?p=44'
 permalink: /bez-kategorii-pl/pierwszy-wpis/
 categories:
     - 'Bez kategorii'
 ---
-
 To mój pierwszy wpis po polsku. Poprzednio umieściłem kilka artykułów w języku angielskim, w kolejce na publikacje czekają kolejne.  
 Jednak zdecydowałem się rozszerzyć działalność pisarską na język polski, poniekąd na prośbę kolegi a częściowo z chęci komentowania i opisywania spraw, które są związane z naszym podwórkiem.
 

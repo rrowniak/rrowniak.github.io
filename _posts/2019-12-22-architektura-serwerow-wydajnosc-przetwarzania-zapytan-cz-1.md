@@ -1,12 +1,11 @@
 ---
 id: 631
-title: 'Architektura serwerów &#8211; wydajność przetwarzania zapytań cz.1'
+title: 'Architektura serwerów – wydajność przetwarzania zapytań cz.1'
 date: '2019-12-22T08:09:51+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=631'
+guid: '/?p=631'
 permalink: /programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/
-image: /wp-content/uploads/2019/12/ming-lv-small-unsplash.jpg
 categories:
     - 'Architektura oprogramowania'
     - C
@@ -18,7 +17,6 @@ categories:
     - Performance
     - Programming
 ---
-
 Ten wpis rozpoczyna krótką serię na temat architektury serwerów. Będzie to analiza różnych podejść skupiająca się na badaniu wydajności poszczególnych taktyk. Eksperymenty będą wykonywane na systemie Linux z użyciem różnych narzędzi jak np. Intel VTune, perf, dtrace itp. Pokażę różnorakie triki aby wydobyć poszczególne metryki. Artykuły będą raczej trudne, przydatne głownie dla programistów i inżynierów zajmujących się tematyką wydajności aplikacji sieciowych i serwerowych.
 
 ### Wstęp
@@ -31,8 +29,7 @@ Drugi powód to fakt, że przymierzam się do pewnego projektu open-source, gdzi
 
 Zdefiniujmy problem. Mamy do przetworzenia 100 tys. niezależnych zapytań. Dla uproszczenia problematyki każde zapytanie składa się tylko z identyfikatora i generowanie polega na zwiększaniu wartości o jeden:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 bool RequestGenerator::GetNext(Request& req)
 {
     req.id = current++;
@@ -44,11 +41,9 @@ bool RequestGenerator::GetNext(Request& req)
     return true;
 }
 ```
+Każde zapytanie zostanie przetworzone zgodnie z poniższą procedurą:
 
-</div>Każde zapytanie zostanie przetworzone zgodnie z poniższą procedurą:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 void RequestProcessor::Process(const Request& req, Response& r) const
 {
     cnt_requests.inc();
@@ -96,8 +91,7 @@ void RequestProcessor::Process(const Request& req, Response& r) const
     std::replace(std::begin(r.text), std::begin(r.text) + r.textSize, 'v', 'V');
 }
 ```
-
-</div>Powyższy kod nie robi nic użytecznego. Został on zdefiniowany specjalnie na potrzeby tego eksperymentu. Mamy więc kilka obliczeń zmiennoprzecinkowych, operacje na większym bloku tekstu – `r.textSize` wynosi 12386 bajtów, kopiowanie bloku pamięci i wywoływanie funkcji systemowych poprzez funkcje z biblioteki standardowej `std::this_thread::sleep_for()` i `std::this_thread::yield()` które to mają symulować operacje IO (np. odczyt z dysku, zapytanie do bazy danych, itp) i przełączanie kontekstu (*context switching*). Jak to w praktyce bywa, operacje IO bywają kapryśne toteż nasza procedura wywołuje je z różną częstotliwością. Nie będziemy optymalizować tego kodu – nie taka jest idea.
+Powyższy kod nie robi nic użytecznego. Został on zdefiniowany specjalnie na potrzeby tego eksperymentu. Mamy więc kilka obliczeń zmiennoprzecinkowych, operacje na większym bloku tekstu – `r.textSize` wynosi 12386 bajtów, kopiowanie bloku pamięci i wywoływanie funkcji systemowych poprzez funkcje z biblioteki standardowej `std::this_thread::sleep_for()` i `std::this_thread::yield()` które to mają symulować operacje IO (np. odczyt z dysku, zapytanie do bazy danych, itp) i przełączanie kontekstu (*context switching*). Jak to w praktyce bywa, operacje IO bywają kapryśne toteż nasza procedura wywołuje je z różną częstotliwością. Nie będziemy optymalizować tego kodu – nie taka jest idea.
 
 Powyższy eksperyment ma za zadanie symulować zadania z jakimi może spotkać się serwer aplikacji (np. serwer http, zmq, procesor transakcji itp).
 
@@ -111,18 +105,15 @@ Pełny kod źródłowy z eksperymentami dostępny jest [tutaj](https://github.co
 
 Najprostsze rozwiązanie to sekwencyjne procesowanie zapytań jak w poniższym pseudokodzie:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 for_each request in 100k_requests:
     RequestProcessor::Process(request)
 ```
-
-</div>Implementacja taka jest bardzo prosta i chyba zawsze warto od tego zacząć co najmniej z kilku powodów: prostsza implementacja – mniej błędów, dostaniemy początkowe wyniki do późniejszego porównania, sekwencyjna, jednowątkowa implementacja jest łatwa do badania i profilowania.
+Implementacja taka jest bardzo prosta i chyba zawsze warto od tego zacząć co najmniej z kilku powodów: prostsza implementacja – mniej błędów, dostaniemy początkowe wyniki do późniejszego porównania, sekwencyjna, jednowątkowa implementacja jest łatwa do badania i profilowania.
 
 Wykonanie takiego programu daje następujące rezultaty:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ /usr/bin/time -v ./processing_pipeline 1
 Running Experiment_1_single_threaded
 Control result: 6.49994e+10
@@ -152,18 +143,15 @@ Waited 24367.9 ms, avg 4103.76 trans/sec
 	Page size (bytes): 4096
 	Exit status: 0
 ```
+Pierwsze trzy linijki to informacje podane przez sam program wykonujący eksperyment:
 
-</div>Pierwsze trzy linijki to informacje podane przez sam program wykonujący eksperyment:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 Running Experiment_1_single_threaded
 Control result: 6.49994e+10
 Total sleep: 18920 ms, # yield: 49800, # requests: 100000
 Waited 24367.9 ms, avg 4103.76 trans/sec
 ```
-
-</div>Najważniejsze informacje to sumaryczny czas spędzony w funkcji *sleep* (~19s) i ilość wywołań funkcji *yield*. Czyli wykonując sekwencyjnie wszystkie zapytania (100k) program będzie się wykonywał co najmniej 18 920 milisekund. Potem mamy zmierzony czas eksperymentu i wynosi on ok 24 sekundy. I dalej mamy podaną średnią liczbę transakcji wykonanych w czasie jednej sekundy – ~4104 transakcje na sekundę. Na podstawie tych podstawowych informacji możemy powiedzieć, że program spał 18 920 ms a robił „*coś* innego” przez 5 448 ms.
+Najważniejsze informacje to sumaryczny czas spędzony w funkcji *sleep* (~19s) i ilość wywołań funkcji *yield*. Czyli wykonując sekwencyjnie wszystkie zapytania (100k) program będzie się wykonywał co najmniej 18 920 milisekund. Potem mamy zmierzony czas eksperymentu i wynosi on ok 24 sekundy. I dalej mamy podaną średnią liczbę transakcji wykonanych w czasie jednej sekundy – ~4104 transakcje na sekundę. Na podstawie tych podstawowych informacji możemy powiedzieć, że program spał 18 920 ms a robił „*coś* innego” przez 5 448 ms.
 
 Przeanalizujmy dalsze wyniki wygenerowane przez program `/usr/bin/time`, który w odróżnieniu od swojego „*kuzyna*” czyli komendy `time` (wbudowanej w interpreter `shell`) podaje dużo ciekawych szczegółów.
 
@@ -173,8 +161,7 @@ Można zaryzykować hipotezę, że przez 5.39 + 0.02 sekundy nasz program intens
 
 Zanim przejdziemy do dalszych usprawnień naszego programu, zróbmy kilka pomiarów które pozwolą nam obejrzeć program od innej strony. Zobaczmy jakie funkcje systemowe były wywoływane przez nasz program:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ strace -c  ./processing_pipeline 1
 Running Experiment_1_single_threaded
 Control result: 6.49994e+10
@@ -207,13 +194,11 @@ Waited 26401.5 ms, avg 3787.67 trans/sec
 100.00    0.000474                 50085         7 total
 
 ```
-
-</div>Wywołania `sched_yield` i `nanosleep` nie powinny dziwić. Jednak jedna rzecz może zastanawiać – funkcja systemowa `access` (sprawdza uprawnienia) była wywoływana siedem razy i za każdym razem zwracała błąd. Należy zwracać uwagę na tego typu sytuacje ponieważ mogą się przyczyniać do znacznego spadku wydajności. Często jest tak, że błędy są „naprawiane” i użytkownik nie widzi nic oprócz spadku wydajności.
+Wywołania `sched_yield` i `nanosleep` nie powinny dziwić. Jednak jedna rzecz może zastanawiać – funkcja systemowa `access` (sprawdza uprawnienia) była wywoływana siedem razy i za każdym razem zwracała błąd. Należy zwracać uwagę na tego typu sytuacje ponieważ mogą się przyczyniać do znacznego spadku wydajności. Często jest tak, że błędy są „naprawiane” i użytkownik nie widzi nic oprócz spadku wydajności.
 
 Przyjrzyjmy się zatem bliżej wywołaniom tej funkcji:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ strace -T -e trace=access  ./processing_pipeline 1                                                                                        
 access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) <0.000173>
 access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory) <0.000129>
@@ -224,8 +209,7 @@ access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) 
 access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory) <0.000027>
 
 ```
-
-</div>Okazuje się, że jest to sprawka *glibc*, który robi to celowo:
+Okazuje się, że jest to sprawka *glibc*, który robi to celowo:
 
 > **`/etc/ld.so.nohwcap`** When this file is present the dynamic linker will load the non-optimized version of a library, even if the CPU supports the optimized version.
 > 
@@ -235,20 +219,16 @@ Czas spędzony na tych wywołaniach jest znikomy (nawiasy &lt;&gt;). Fałszywy a
 
 Jest jeszcze jedna rzecz, którą musimy zbadać – co tak na prawdę robi nasz kod?
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ perf record  ./processing_pipeline 1
 ```
+A po wykonaniu:
 
-</div>A po wykonaniu:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ perf report
 ```
+Wyświetli się interaktywna konsola profilera:
 
-</div>Wyświetli się interaktywna konsola profilera:
+I już na pierwszy rzut oka widać, że najdroższa operacja pod względem zużycia CPU to modyfikacja tekstu. Niestety jest to część, której nie możemy dotykać więc nasze możliwości usprawnień zostały wyczerpane.
 
-<figure class="wp-block-image size-large">![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2019/12/image.png?resize=696%2C422)</figure>I już na pierwszy rzut oka widać, że najdroższa operacja pod względem zużycia CPU to modyfikacja tekstu. Niestety jest to część, której nie możemy dotykać więc nasze możliwości usprawnień zostały wyczerpane.
-
-W [następnych](http://rrowniak.com/c-2/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-2/) odsłonach spróbujemy zrównoleglić nasze przetwarzanie zapytań. Wydawać by się mogło, że spawa jest banalnie prosta. Okazuje się, że istnieje wiele podejść do tego tematu, każde z nich dotyka pewnych subtelnych niuansów. Będziemy odkrywać różne pułapki i przekonamy się, że wybór złej taktyki daje zaskakująco podłe wyniki.
+W [następnych](/performance/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-2/) odsłonach spróbujemy zrównoleglić nasze przetwarzanie zapytań. Wydawać by się mogło, że spawa jest banalnie prosta. Okazuje się, że istnieje wiele podejść do tego tematu, każde z nich dotyka pewnych subtelnych niuansów. Będziemy odkrywać różne pułapki i przekonamy się, że wybór złej taktyki daje zaskakująco podłe wyniki.

@@ -1,12 +1,11 @@
 ---
 id: 263
-title: 'Microkernel &#8211; wzorzec architektoniczny'
+title: 'Microkernel – wzorzec architektoniczny'
 date: '2018-05-01T07:30:43+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=263'
+guid: '/?p=263'
 permalink: /dobre-praktyki/microkernel-wzorzec-architektoniczny/
-image: /wp-content/uploads/2018/04/gears-cogs-machine-machinery-small.jpeg
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'
@@ -16,14 +15,11 @@ tags:
     - Microkernel
     - 'Monolithic architecture'
 ---
-
 Wzorce architektoniczne stanowią bardzo ważną część inżynierii oprogramowania. Są niejako instrukcją postępowania podczas rozwiązywania pewnych powtarzających się problemów. Dzisiaj weźmiemy na pulpit wzorzec architektoniczny, który jest związany głównie z (ale nie tylko) architekturą systemów operacyjnych – microkernel (nie mylić z kernelem systemu operacyjnego!). Podam ogólny zarys tego wzorca i zrobię krótką analizę uwzględniając różne kryteria. Ta ostania rzecz jest szczególnie **bardzo ważna** dla programistów i architektów oprogramowania – zobaczymy jakie należy przyjąć kryteria oceny i na co zwracać uwagę podczas analizy wzorców projektowych.
 
 ## Microkernel
 
 Wzorzec ten definiuje strukturę oprogramowania np. systemu operacyjnego dzieląc ją na rdzeń czyli po angielsku *kernel* (nazywany również *mikrokenelem*) i stowarzyszone moduły. Poniższy rysunek przedstawia tą ideę.
-
-[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/05/microkernel.jpg?resize=696%2C244)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/05/microkernel.jpg)
 
 Kernel zawiera implementację minimalnego zestawu funkcjonalności jaki jest potrzebny aby zrealizować bardziej złożone zadania. A realizacją tych złożonych zadań zajmą się stowarzyszone moduły. Brzmi dość mgliście, wiem. Spróbujmy znaleźć jakąś analogię aby mieć lepsze wyobrażenie na ten temat i nieco uzbroić intuicję.
 

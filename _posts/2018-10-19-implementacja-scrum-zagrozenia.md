@@ -4,9 +4,8 @@ title: 'Implementacja SCRUM: zagrożenia'
 date: '2018-10-19T18:53:24+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=340'
+guid: '/?p=340'
 permalink: /dobre-praktyki/implementacja-scrum-zagrozenia/
-image: /wp-content/uploads/2018/10/joao-tzanno-small.jpg
 categories:
     - 'Dobre praktyki'
     - Management
@@ -19,12 +18,11 @@ tags:
     - waterfall
     - zagrożenia
 ---
-
 Co może pójść nie tak podczas wdrażania SCRUMa? Na co trzeba zwrócić uwagę? Czy można z góry przewidzieć czy SCRUM się nadaje?
 
 ## Czy aby na pewno SCRUM?
 
-W zasadzie na pytanie czy SCRUM się nadaj odpowiedziałem w poprzednim wpisie [Czy SCRUM to Złoty Graal zarządzania projektami?](http://rrowniak.com/it/czy-scrum-to-zloty-graal-zarzadzania-projektami/). W skrócie – istnieją projekty gdzie SCRUM nie będzie działał dobrze. Czy jednak będzie działał dobrze w przypadku projektów *kompatybilnych* z *agile*? Niekoniecznie. Zobaczmy co może pójść nie tak.
+W zasadzie na pytanie czy SCRUM się nadaj odpowiedziałem w poprzednim wpisie [Czy SCRUM to Złoty Graal zarządzania projektami?](/dobre-praktyki/czy-scrum-to-zloty-graal-zarzadzania-projektami/). W skrócie – istnieją projekty gdzie SCRUM nie będzie działał dobrze. Czy jednak będzie działał dobrze w przypadku projektów *kompatybilnych* z *agile*? Niekoniecznie. Zobaczmy co może pójść nie tak.
 
 ## Złudne oczekiwania
 
@@ -40,7 +38,7 @@ Po pierwsze SCRUM nie przewiduje roli project managera w tzw. *core team*, czyli
 
 ## Dewaluacja
 
-Zaczęliśmy dobrze, SCRUM wdrożony, wszyscy zadowoleni, korki od szampana strzelają. Z czasem jednak zrezygnowaliśmy z retrospekcji, jakoś tak co raz więcej wrzutek zaczęło się pojawiać. Potem nasze storyjki zaczęły puchnąć i przeskakiwać ze sprintu na sprint. I na końcu wróciliśmy do punktu wyjścia, ale tym razem wzbogaceni o „SCRUMa”. Klasyczny przykład [syndromu wybitej szyby](http://rrowniak.com/it/syndrom-wybitej-szyby/).
+Zaczęliśmy dobrze, SCRUM wdrożony, wszyscy zadowoleni, korki od szampana strzelają. Z czasem jednak zrezygnowaliśmy z retrospekcji, jakoś tak co raz więcej wrzutek zaczęło się pojawiać. Potem nasze storyjki zaczęły puchnąć i przeskakiwać ze sprintu na sprint. I na końcu wróciliśmy do punktu wyjścia, ale tym razem wzbogaceni o „SCRUMa”. Klasyczny przykład [syndromu wybitej szyby](/it-pl/syndrom-wybitej-szyby/).
 
 ## Kontrola najwyższą formą zaufania
 

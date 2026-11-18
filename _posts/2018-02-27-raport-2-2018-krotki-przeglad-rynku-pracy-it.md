@@ -4,7 +4,7 @@ title: 'Raport 2/2018: krótki przegląd rynku pracy IT'
 date: '2018-02-27T19:40:02+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=148'
+guid: '/?p=148'
 permalink: /raport/raport-2-2018-krotki-przeglad-rynku-pracy-it/
 categories:
     - Raport
@@ -24,9 +24,6 @@ tags:
     - Warszawa
     - Wrocław
 ---
-
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/tim-gouw-79563-unsplash.jpg?resize=680%2C453)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/tim-gouw-79563-unsplash.jpg)
-
 Drogi Czytelniku tym razem zobaczymy jak wygląda nasz rodzimy rynek pracy. Nie będzie to poważne studium poparte wieloletnimi badaniami, a raczej szybkie spojrzenie na obecną sytuację. Zobaczymy jakie oferty czekają na specjalistów IT i które specjalizacje są najbardziej pożądane na rynku pracy.
 
 ##### Metodyka
@@ -48,8 +45,6 @@ Wybrałem pierwsze pięć rodzin języków programowania według [Tiobe](https:/
 | DevOps | 15 |
 | QA | 8 |
 
-[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart.jpeg?resize=696%2C464)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart.jpeg)
-
 ##### Kraków
 
 | Obszar | Liczba ofert |
@@ -62,8 +57,6 @@ Wybrałem pierwsze pięć rodzin języków programowania według [Tiobe](https:/
 | Frontend | 18 |
 | DevOps | 8 |
 | QA | 11 |
-
-[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart1.jpeg?resize=696%2C464)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart1.jpeg)
 
 ##### Wrocław
 
@@ -78,8 +71,6 @@ Wybrałem pierwsze pięć rodzin języków programowania według [Tiobe](https:/
 | DevOps | 8 |
 | QA | 6 |
 
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart2.jpeg?resize=696%2C464)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart2.jpeg)
-
 ##### Gdańsk
 
 | Obszar | Liczba ofert |
@@ -92,8 +83,6 @@ Wybrałem pierwsze pięć rodzin języków programowania według [Tiobe](https:/
 | Frontend | 5 |
 | DevOps | 6 |
 | QA | 3 |
-
-[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart3.jpeg?resize=696%2C464)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/02/meta-chart3.jpeg)
 
 ##### Podsumowanie
 

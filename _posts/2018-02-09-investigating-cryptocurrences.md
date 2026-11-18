@@ -4,9 +4,8 @@ title: 'Behind the scenes: Bitcoin'
 date: '2018-02-09T17:55:59+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=13'
+guid: '/?p=13'
 permalink: /bitcoin/investigating-cryptocurrences/
-image: /wp-content/uploads/2018/02/chad-kirchoff-small-unsplash.jpg
 categories:
     - 'Architektura oprogramowania'
     - Bitcoin
@@ -27,7 +26,6 @@ tags:
     - security
     - sha256
 ---
-
 Cryptocurrencies are really hot and attract attention of the broader public. But a few of us really know what sits behind the curtain. Today I’m going to give you a short overview of the technological side of Bitcoin. However, I’m not going to focus on economics or social impact of cryptocurrencies.
 
 The whole concept is build on the top of several interesting technologies, some of them are innovative, some of them are well know for decades. This article contains a list of some technologies which are leveraged in the majority of current cryptocurrencies. However, this is not a deep study and you won’t find here much details, only a sort of guidance and reference to corresponding documentation.

@@ -4,9 +4,8 @@ title: 'Bitcoin: fakty'
 date: '2018-03-17T08:16:52+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=118'
+guid: '/?p=118'
 permalink: /bitcoin/bitcoin-fakty/
-image: /wp-content/uploads/2018/02/bitcoin-2.jpg
 categories:
     - Bitcoin
 tags:
@@ -15,14 +14,13 @@ tags:
     - krypto-waluty
     - mity
 ---
-
-Dzisiaj odstawimy na bok mity [zwolenników](http://rrowniak.com/it/bitcoin-mity-i-legendy-wyznawcow/) i [przeciwników](http://rrowniak.com/it/bitcoin-mity-i-legendy-wrogow/) Bitcoina, porozmawiamy o faktach. Jest to już ostatni artykuł dotyczący tej krypto-waluty. Mam nadzieję, że informacje jakie przestawiłem w tej serii rozjaśnią nieco zagmatwany i trudny świat krypto-walut, a w szczególności świat Bitcoina.
+Dzisiaj odstawimy na bok mity [zwolenników](/bitcoin/bitcoin-mity-i-legendy-wyznawcow/) i [przeciwników](/bitcoin/bitcoin-mity-i-legendy-wrogow/) Bitcoina, porozmawiamy o faktach. Jest to już ostatni artykuł dotyczący tej krypto-waluty. Mam nadzieję, że informacje jakie przestawiłem w tej serii rozjaśnią nieco zagmatwany i trudny świat krypto-walut, a w szczególności świat Bitcoina.
 
 ###### Fakt 1: Rewolucyjny pomysł i fenomenalny projekt
 
 Rewolucyjność tej idei polega na genialnym wykorzystaniu istniejących już technologii i wdrożeniu pomysłu na skalę światową. Bardzo rzadko mamy do czynienia z projektem typu open-source, który by tak szybko podbił cały świat i trafił pod strzechy. Obecnie Bitcoin to rozpoznawalna marka, a krypto-waluty kiedyś należące raczej do sfery science-fiction dzisiaj są poważnym uczestnikiem w świecie finansów.
 
-Inny aspekt to techniczna strona Bitcoina. Jakiś czas temu [pisałem o tym co siedzi pod spodem](http://rrowniak.com/en/bitcoin-en/investigating-cryptocurrences/). Są to bardzo ciekawe technologie znane od dekad. Jednak po raz pierwszy zostały one wykorzystane w tej właśnie konfiguracji. Warto również przypomnieć, że od czasu wprowadzenia Bitcoina nie było poważnych awarii systemu, ani nikomu nie udało się skompromitować całej idei. Takich przykładów w świecie IT jest na prawdę mało. Panowie czapki z głów…
+Inny aspekt to techniczna strona Bitcoina. Jakiś czas temu [pisałem o tym co siedzi pod spodem](/bitcoin/investigating-cryptocurrences/). Są to bardzo ciekawe technologie znane od dekad. Jednak po raz pierwszy zostały one wykorzystane w tej właśnie konfiguracji. Warto również przypomnieć, że od czasu wprowadzenia Bitcoina nie było poważnych awarii systemu, ani nikomu nie udało się skompromitować całej idei. Takich przykładów w świecie IT jest na prawdę mało. Panowie czapki z głów…
 
 ###### Fakt 2: Pomysłodawca nieznany
 

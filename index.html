@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -43,7 +45,7 @@
                 <a class="nav-link" href="#section-portfolio">Portfolio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#section-blog">Blog</a>
+                <a class="nav-link" href="blog/">Blog</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#section-about-us">About Us</a>
@@ -214,6 +216,20 @@
                             <h2>IT general posts</h2>
                             <p>Explore our IT general blog for a holistic view of the ever-evolving tech landscape. Stay updated with the latest trends, industry insights, and practical tips to navigate the digital realm. Whether you're a tech enthusiast or a professional, our IT general articles offer valuable knowledge to help you thrive in the digital age. Start your journey today!</p>
                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h3 class="mb-3">Latest posts</h3>
+                        <ul class="list-unstyled">
+                        {% for post in site.posts limit:6 %}
+                            <li class="mb-2">
+                                <a href="{{ post.url | relative_url }}" class="fw-semibold">{{ post.title | escape }}</a>
+                                <span class="text-muted small">&middot; {{ post.date | date: "%Y-%m-%d" }}</span>
+                            </li>
+                        {% endfor %}
+                        </ul>
                     </div>
                 </div>
 

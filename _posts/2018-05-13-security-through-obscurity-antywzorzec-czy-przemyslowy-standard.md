@@ -4,9 +4,8 @@ title: 'Security through obscurity: antywzorzec czy przemysłowy standard?'
 date: '2018-05-13T15:55:43+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=290'
+guid: '/?p=290'
 permalink: /dobre-praktyki/security-through-obscurity-antywzorzec-czy-przemyslowy-standard/
-image: /wp-content/uploads/2018/05/alchemist.jpg
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'
@@ -19,7 +18,6 @@ tags:
     - kryptografia
     - 'Security through obscurity'
 ---
-
 [Security through obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity) to oczywiście angielskie określenie, które można przetłumaczyć jako [bezpieczeństwo przez niejawność](https://pl.wikipedia.org/wiki/Security_through_obscurity). Ale o co chodzi? Czy jest to antywzorzec czy może przemysłowy standard? I co ma z tym wspólnego immobilizer w Twoim aucie? Jeśli chcesz poznać odpowiedzi na te pytania – zapraszam do czytania.
 
 ## Bezpieczeństwo przez niejawność

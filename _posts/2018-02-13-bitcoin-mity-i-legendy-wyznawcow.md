@@ -4,7 +4,7 @@ title: 'Bitcoin: mity i legendy wyznawców'
 date: '2018-02-13T06:53:34+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=93'
+guid: '/?p=93'
 permalink: /bitcoin/bitcoin-mity-i-legendy-wyznawcow/
 categories:
     - Bitcoin
@@ -14,12 +14,9 @@ tags:
     - kryptowaluta
     - mity
 ---
-
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/annette-fischer-498468_small.jpg?resize=627%2C343)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/annette-fischer-498468_small.jpg)
-
 Technologia Bitcoin, czyli wirtualna waluta jest dzisiaj odmieniana przez wszystkie przypadki. Budzi wiele emocji i jest przedmiotem wielu płomiennych dyskusji. Co więcej, nierzadko dochodzą do tego pieniądze, czasami bardzo duże pieniądze. To mieszanka wybuchowa, która przyczyniła się do powstania wielu zwalczających się frakcji. Chyba najłatwiej je podzielić na: obóz wyznawców wirtualnej waluty, obóz zdeklarowanych wrogów, a gdzieś pomiędzy znajdują się wszyscy inni. Jak nietrudno zgadnąć powstało mnóstwo mitów, propagowanych zarówno przez jedną jak i drugą stronę. Mity te znalazły bardzo podatny grunt, ponieważ zasada działania kryptowalut jest bardzo trudna do zrozumienia dla kogoś, kto nie zna podstaw kryptografii, systemów rozproszonych i matematyki wyższej. Czyli, nie oszukujmy się, zdecydowanej większości użytkowników internetu.
 
-Będzie to cykl trzech wpisów, podzielony na mity wyznawców Bitcoina, [mity zagorzałych przeciwników](http://rrowniak.com/it/bitcoin-mity-i-legendy-wrogow/) i kilka interesujących faktów na koniec.
+Będzie to cykl trzech wpisów, podzielony na mity wyznawców Bitcoina, [mity zagorzałych przeciwników](/bitcoin/bitcoin-mity-i-legendy-wrogow/) i kilka interesujących faktów na koniec.
 
 ### Mity wyznawców Bitcoina
 
@@ -71,4 +68,4 @@ Ogólna zasada jest taka: im większą moc obliczeniową posiadasz w sieci BitCo
 
 ###### CDN…
 
-W kolejnej części weźmiemy pod lupę [mity wrogów Bitcoina](http://rrowniak.com/it/bitcoin-mity-i-legendy-wrogow/).
+W kolejnej części weźmiemy pod lupę [mity wrogów Bitcoina](/bitcoin/bitcoin-mity-i-legendy-wrogow/).

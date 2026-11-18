@@ -4,9 +4,8 @@ title: 'Yet another top-friend: irqtop'
 date: '2018-06-12T06:07:45+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=280'
+guid: '/?p=280'
 permalink: /performance/yet-another-top-friend-irqtop/
-image: /wp-content/uploads/2018/05/metal-eye.jpg
 categories:
     - English
     - Linux
@@ -14,16 +13,13 @@ categories:
 tags:
     - Python
 ---
-
-Some time ago I wrote an article about [top-tools](http://rrowniak.com/en/linux-en/linux-top-tools-performance-measurements/). Today I’d like to add another one to the list, that is, *irqtop* which is very useful for performance measurements and investigations. I may be biased a little bit because I have contributed to that project but the tool has given me help in many cases so I have no doubt about its value. Let me show you what’s that.
+Some time ago I wrote an article about [top-tools](/performance/linux-top-tools-performance-measurements/). Today I’d like to add another one to the list, that is, *irqtop* which is very useful for performance measurements and investigations. I may be biased a little bit because I have contributed to that project but the tool has given me help in many cases so I have no doubt about its value. Let me show you what’s that.
 
 ### Description
 
 *irqtop* is a simple tool; presents statistics in realtime about interrupts which are processed by your Linux. You can download *irqtop* from [my github](https://github.com/rrowniak/IrqTop.git) repository. Let’s see *irqtop* in action:
 
 `$ ./irqtop.py`
-
-[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/05/irqtop1.jpg?resize=696%2C427)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/05/irqtop1.jpg)
 
 It’s simple, first column shows interrupt numbers, then we can see irqs/s per CPU core, then summary and last column contains device names. Self explanatory.
 

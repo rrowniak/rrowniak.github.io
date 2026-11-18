@@ -4,9 +4,8 @@ title: '7 multi-threading and concurrency deadly sins'
 date: '2019-03-16T19:29:49+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=15'
+guid: '/?p=15'
 permalink: /it-pl/7-multi-threading-and-concurrency-deadly-sins/
-image: /wp-content/uploads/2018/07/close-up-colors-design-small.jpg
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'
@@ -17,7 +16,6 @@ tags:
     - multithreading
     - programming
 ---
-
 Let’s see what kind of pitfalls are common in multi-threading &amp; concurrency world. This kind of code is simply hard to write and even harder to maintain. I’m going to share what can go wrong and how to avoid many traps.
 
 ## \# 7 Home cooking lock-free and wait-free data structures
@@ -44,7 +42,7 @@ What’s the advice here? It’s as simple as that – first understand the code
 
 Concurrent code not always means „faster”. But it’s always more complex and error prone. Also a linear scalability is usually not the case.
 
-If you decide to go into mutli-threading <del>heaven</del>hell you’d better have a good reason to do so. This is a complex piece of engineering with many obstacles, traps and hidden difficulties which might yield with the performance below the expectations. I’ll list a few of them to give you some idea what I’m talking about: [context switching](https://en.wikipedia.org/wiki/Context_switch), [false sharing](https://en.wikipedia.org/wiki/False_sharing), [memory synchronization](https://en.wikipedia.org/wiki/Consistency_model), [system calls](https://en.wikipedia.org/wiki/System_call), [live locks](https://en.wikipedia.org/wiki/Deadlock#Livelock), [starvation](https://en.wikipedia.org/wiki/Starvation_(computer_science)), [priority inversion](https://en.wikipedia.org/wiki/Priority_inversion), [CPU contention](https://en.wikipedia.org/wiki/Resource_contention), [CPU stalling](https://en.wikipedia.org/wiki/Pipeline_stall). Do you know all of them? This is only a top of the iceberg. Nothing but deep understanding of the matter is your friend. You should know how the things work under the hood and what are the consequences of using particular tools. *Naive* thinking simple does not work here. For example, have a look at my [article](http://rrowniak.com/en/programming/ethereal-stuff-volatile/) about *volatiles* – it seems to be a simple and well suited tool for multi-threading but it’s not.
+If you decide to go into mutli-threading <del>heaven</del>hell you’d better have a good reason to do so. This is a complex piece of engineering with many obstacles, traps and hidden difficulties which might yield with the performance below the expectations. I’ll list a few of them to give you some idea what I’m talking about: [context switching](https://en.wikipedia.org/wiki/Context_switch), [false sharing](https://en.wikipedia.org/wiki/False_sharing), [memory synchronization](https://en.wikipedia.org/wiki/Consistency_model), [system calls](https://en.wikipedia.org/wiki/System_call), [live locks](https://en.wikipedia.org/wiki/Deadlock#Livelock), [starvation](https://en.wikipedia.org/wiki/Starvation_(computer_science)), [priority inversion](https://en.wikipedia.org/wiki/Priority_inversion), [CPU contention](https://en.wikipedia.org/wiki/Resource_contention), [CPU stalling](https://en.wikipedia.org/wiki/Pipeline_stall). Do you know all of them? This is only a top of the iceberg. Nothing but deep understanding of the matter is your friend. You should know how the things work under the hood and what are the consequences of using particular tools. *Naive* thinking simple does not work here. For example, have a look at my [article](/programming/ethereal-stuff-volatile/) about *volatiles* – it seems to be a simple and well suited tool for multi-threading but it’s not.
 
 ## \# 3 Concurrency poker
 
@@ -83,4 +81,4 @@ Despite everything, what if you’d follow [Ovid’s](https://en.wikipedia.org/w
 - Hard to reason what is really protected
 - Easier to make a mistake (e.g. race condition or deadlock)
 - Maintenance nightmare
-- Temptation to follow the broken window theory ([my article on that PL](http://rrowniak.com/it-pl/syndrom-wybitej-szyby/), [wiki](https://en.wikipedia.org/wiki/Broken_windows_theory))
+- Temptation to follow the broken window theory ([my article on that PL](/it-pl/syndrom-wybitej-szyby/), [wiki](https://en.wikipedia.org/wiki/Broken_windows_theory))

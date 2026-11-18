@@ -1,18 +1,16 @@
 ---
 id: 609
-title: 'Protokoły sieciowe &#8211; fundamenty Internetu cz.1'
+title: 'Protokoły sieciowe – fundamenty Internetu cz.1'
 date: '2019-07-04T17:41:01+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=609'
+guid: '/?p=609'
 permalink: /sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/
-image: /wp-content/uploads/2019/05/david-klein-452056-small.jpg
 categories:
     - Sieci
 tags:
     - ethernet
 ---
-
 *Jak działa internet?* To niewinnie wyglądające pytanie jest w rzeczywistości bardzo trudne. Internet to właściwie zbiór niezliczonej ilości technologii, które to jakimś cudem razem współdziałają. Ta współpraca jest możliwa dzięki (w miarę) dobremu dogadywaniu się, za co odpowiadają tzw. protokoły sieciowe. Liczba protokołów sieciowych może przyprawić o zawrót głowy. Wiele z nich działa na różnych poziomach i w różnych sytuacjach, co na pewno nie ułatwia zadania polegającego na sprawnym nawigowaniu w tym pogmatwanym świecie. Spróbujmy zatem skatalogować kilka najbardziej popularnych protokołów wraz z ich krótkim opisem i wybranymi cechami.
 
  Na szczęście sposób uporządkowania tego uniwersum został odkryty znacznie wcześniej i właśnie z tego powodu powstał tzw. [warstwowy model sieci OSI](https://pl.wikipedia.org/wiki/Model_OSI). Niejako rozbija on całe zagadnienie na kilka podproblemów, które stają się warstwami nakładającymi na siebie. Każda z nich definiuje inne odpowiedzialności. I tak, najniższa warstwa to:
@@ -31,7 +29,31 @@ To najbardziej popularny protokół warstwy drugiej. Jednak protokół ten dost�
 
 Omówmy zatem IEEE 802.3 i Ethernet II.
 
-<figure class="wp-block-image">![Representation of an Ethernet 802.3 frame structure](https://i0.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure3.jpg?w=696&ssl=1)<figcaption>Ethernet IEEE 802.3</figcaption></figure><figure class="wp-block-image">![Representation of an Ethernet II frame structure](https://i1.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure.jpg?w=696&ssl=1)<figcaption>Ethernet II</figcaption></figure>Sekcje *Preamble* i *Inter Frame Gap* są częścią warstwy 1. Nas interesuje część zwana *Ethernet Frame* (ramka ethernetowa). Ramki ethernetowe mają zmienny rozmiar w granicach od 64 bajtów do 1518 bajtów (wyjątkiem mogą być tzw. [jumbo frames](https://en.wikipedia.org/wiki/Jumbo_frame)) a więc rozmiar danych przesyłanych wynosi od 42/46 bajtów do 1497/1500 bajtów dla IEEE 802.3/Ethernet II. To drugie ograniczenie mówiące o maksymalnym rozmiarze danych w ramce nazywa się **MTU** (Maximum Transmission Unit).
+<figure class="wp-block-image">
+
+![Representation of an Ethernet 802.3 frame structure](https://i0.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure3.jpg?w=696&ssl=1)
+
+<figcaption>
+
+Ethernet IEEE 802.3
+
+</figcaption>
+
+</figure>
+
+<figure class="wp-block-image">
+
+![Representation of an Ethernet II frame structure](https://i1.wp.com/www.ionos.com/digitalguide/fileadmin/DigitalGuide/Screenshots_2018/EN-ethernet-frame-structure.jpg?w=696&ssl=1)
+
+<figcaption>
+
+Ethernet II
+
+</figcaption>
+
+</figure>
+
+Sekcje *Preamble* i *Inter Frame Gap* są częścią warstwy 1. Nas interesuje część zwana *Ethernet Frame* (ramka ethernetowa). Ramki ethernetowe mają zmienny rozmiar w granicach od 64 bajtów do 1518 bajtów (wyjątkiem mogą być tzw. [jumbo frames](https://en.wikipedia.org/wiki/Jumbo_frame)) a więc rozmiar danych przesyłanych wynosi od 42/46 bajtów do 1497/1500 bajtów dla IEEE 802.3/Ethernet II. To drugie ograniczenie mówiące o maksymalnym rozmiarze danych w ramce nazywa się **MTU** (Maximum Transmission Unit).
 
 Patrząc na strukturę ramki widzimy, że pierwsze 12 bajtów to adresy **MAC**: docelowy i źródłowy. Adresy pozwalają na dostarczanie ramek do konkretnych odbiorców – jednym fizycznym medium może być połączone więcej niż dwie maszyny. Później sobie omówimy skąd nowo podłączona maszyna zna adres docelowy, co to są adresy rozgłoszeniowe i jakie urządzenia operują na tej warstwie.
 
@@ -55,10 +77,14 @@ Protokół ten służy do logicznego mapowania adresów MAC (warstwa 2) z adresa
 
 Jak zatem działa ten protokół? Załóżmy, że komputer *A* chce wysłać pakiet do komputera *B*. Z usługi DNS *A* dowiedział się, że adres IP *B* to 192.168.1.2. Ale podczas konstrukcji pakietu wymagany jest adres MAC tej maszyny (*B*) lub węzła pośredniczącego w komunikacji. Więc komputer A:
 
-<div class="wp-block-advgb-list">- Wysyła zapytanie ARP gdzie adres docelowy MAC to FF:FF:FF:FF:FF:FF. Czyli takie zapytanie trafi do wszystkich komputerów w sieci lokalnej. Zapytanie to można tłumaczyć mniej więcej tak: czy ktoś zna adres MAC odpowiadający takiemu adresowi IP 192.168.1.2?
+<div class="wp-block-advgb-list">
+
+- Wysyła zapytanie ARP gdzie adres docelowy MAC to FF:FF:FF:FF:FF:FF. Czyli takie zapytanie trafi do wszystkich komputerów w sieci lokalnej. Zapytanie to można tłumaczyć mniej więcej tak: czy ktoś zna adres MAC odpowiadający takiemu adresowi IP 192.168.1.2?
 - Jeśli maszyna B otrzyma rozgłoszone zapytanie to niezwłocznie odpowiada: tak to ja, mój MAC jest taki a taki.
 - Może się zdarzyć, że maszyna B leży w innej podsieci i nie otrzyma tej wiadomości. Ale jest szansa, że router lub inny węzeł sieci będzie wiedział jak przekierować pakiet do B. Wtedy odpowie: wysyłaj te pakiety na ten MAC…
 
-</div>Aby za każdym razem nie pytać się niepotrzebnie o te same adresy wymyślono coś takiego jak tablica ARP (ARP table). To taka pamięć podręczna na lokalnej maszynie uaktualniana z każdym otrzymanym zapytaniem lub odpowiedzią. Wtedy potrzeba wysyłania zapytań maleje z czasem. Taką tablicę można również ręcznie „tuningować”.
+</div>
+
+Aby za każdym razem nie pytać się niepotrzebnie o te same adresy wymyślono coś takiego jak tablica ARP (ARP table). To taka pamięć podręczna na lokalnej maszynie uaktualniana z każdym otrzymanym zapytaniem lub odpowiedzią. Wtedy potrzeba wysyłania zapytań maleje z czasem. Taką tablicę można również ręcznie „tuningować”.
 
 Ok, mamy już podstawy. To tyle na dzisiaj. W następnej części zajmiemy się kolejnymi protokołami i warstwami.

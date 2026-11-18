@@ -1,10 +1,10 @@
 ---
 id: 7
-title: 'Ethereal stuff &#8211; volatile'
+title: 'Ethereal stuff – volatile'
 date: '2018-02-03T11:27:25+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=7'
+guid: '/?p=7'
 permalink: /programming/ethereal-stuff-volatile/
 categories:
     - C
@@ -19,7 +19,6 @@ tags:
     - Performance
     - Python
 ---
-
 In this article I’m going to share some details about the `volatile` keyword available in a number of programming languages like C++, C, Java. During my professional career, I have found out that the `volatile` type qualifier is frequently misunderstood and, what is even worse, incorrectly used (leading to nasty bugs).
 
 I’ll show the differences between C/C++ and Java languages and present some examples. However, this is not a definitive guide. The main purpose of this article is to give some overview and highlight potential problems.
@@ -41,7 +40,6 @@ To overcome that problem, engineers and architects have invented a lot of optimi
 Sometimes we don’t want compilers to optimize access to a given variable. For example, the following code snippet:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
 i = 0;
 i = 1;
 i = 2;
@@ -50,7 +48,6 @@ i = 2;
 could be optimized by C/C++ compiler in a way that it would be equivalent to:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
 i = 2;
 ```
 
@@ -65,7 +62,6 @@ The following code for an embedded device written in C was compiled by avr-gcc.
 The program is simple (and pretty useless, but it was created for the purpose of this article) – changes `PORTA` output when a hardware interrupt happens (caused by an external event).
 
 ```
-<pre class="brush: cpp; highlight: [1,4]; title: ; notranslate" title="">
 unsigned char int_flag = 0;
 ISR(INT0_vect) // interrupt handler
 {
@@ -92,7 +88,6 @@ And it works as expected until we set the optimization level to C3…
 Raising optimization level brings some problems – interrupts don’t make any changes to `PORTA` as if the while loop was not evaluated at all. We need to go deeper to find out what’s going on. Here is generated assembly of the main part:
 
 ```
-<pre class="brush: plain; highlight: [5]; title: ; notranslate" title="">
 LDS R24,0x0060 ; Load int_flag to R24
 TST R24        ; Test for Zero or Minus
 BREQ PC+0x05   ; Branch if equal
@@ -109,7 +104,6 @@ And indeed, it looks like there is no while loop! That’s because the compiler 
 Most of the code was optimized out, the compiler decided that the equivalent implementation would be:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
 if (int_flag) {
 PORTA = 1;
 int_flag = 0;
@@ -121,13 +115,12 @@ Definitely the result is not what we have expected. Why that optimization has be
 Let’s fix it by adding the `volatile` identifier to `int_flag` variable:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title=""> volatile unsigned char int_flag = 0; 
+ volatile unsigned char int_flag = 0; 
 ```
 
 Here is generated assembly:
 
 ```
-<pre class="brush: plain; highlight: [3,8]; title: ; notranslate" title="">
 LDI R25,0x00     ; Load immediate
 LDI R18,0x01     ; Load immediate
 LDS R24,0x0060   ; Load int_flag to R24
@@ -155,7 +148,6 @@ Reordering. The only guarantee is that only `volatile` reads/writes won’t be r
 The above explanation about reordering might sound odd, but it could be seen in the following example:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
 volatile bool ready = false;
 int message;
 
@@ -170,7 +162,6 @@ The code is quite easy: write a message and then let another thread get that mes
 I’ve compiled this code by gcc 5.4.1 with `-O2` and here is the result:
 
 ```
-<pre class="brush: plain; title: ; notranslate" title="">
 _Z3fooi:
 imull $53, %edi, %edi
 movb $1, ready(%rip)
@@ -185,7 +176,6 @@ Note that some compilers (e.g. Visual C++) may provide reordering guarantees for
 What about very popular „pattern”:
 
 ```
-<pre class="brush: cpp; highlight: [1]; title: ; notranslate" title="">
 volatile bool running = true;
 
 void stop() {
@@ -212,8 +202,7 @@ Another problem is that this code may not work as expected, at least in theory. 
 In case of multi-threading programming, we have alternatives which should be used instead of `volatile`s. In C++ use aforementioned atomic types defined in atomic header e.g:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
-#include &amp;lt;atomic&amp;gt;
+#include <atomic>
 // ...
 std::atomic_bool running{true};
 ```
@@ -221,8 +210,7 @@ std::atomic_bool running{true};
 C (in this particular case C11) also comes with similar types:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
-#include &amp;lt;atomic.h&amp;gt;
+#include <atomic.h>
 // ...
 atomic_bool running = ATOMIC_VAR_INIT(1);
 ```
@@ -248,7 +236,6 @@ Some call the `volatile` a weak form of synchronization. Although `volatile` in 
 One of the common usage is as follows:
 
 ```
-<pre class="brush: java; title: ; notranslate" title="">
 volatile boolean running = true;
 
 public void stop() { running = false; }

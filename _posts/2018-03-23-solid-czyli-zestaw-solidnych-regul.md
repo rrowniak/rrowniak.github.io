@@ -4,9 +4,8 @@ title: 'SOLID czyli zestaw solidnych reguł'
 date: '2018-03-23T15:12:12+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=182'
+guid: '/?p=182'
 permalink: /dobre-praktyki/solid-czyli-zestaw-solidnych-regul/
-image: /wp-content/uploads/2018/03/giammarco-boscaro-small-unsplash.jpg
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'
@@ -20,7 +19,6 @@ tags:
     - 'single responsibility'
     - SOLID
 ---
-
 Jednym z najbardziej rozpoznawalnych akronimów w inżynierii oprogramowania jest SOLID. Jednak po przeprowadzeniu setek rozmów rekrutacyjnych mogę stwierdzić, że z tą rozpoznawalnością bywa bardzo różnie. A szkoda, bo jest to zestaw reguł o dużym znaczeniu, warto więc wyjaśnić co to jest i dlaczego na rozmowach kwalifikacyjnych tak często pada pytanie o SOLID.
 
 Powstało wiele opracowań na temat SOLID (możesz je bez problemu znaleźć w sieci) w odróżnieniu natomiast od znakomitej ich części my zastanowimy się czy można przedawkować SOLID i jakie będą tego efekty.

@@ -4,9 +4,8 @@ title: 'Czy SCRUM to Złoty Graal zarządzania projektami?'
 date: '2018-07-14T20:10:02+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=339'
+guid: '/?p=339'
 permalink: /dobre-praktyki/czy-scrum-to-zloty-graal-zarzadzania-projektami/
-image: /wp-content/uploads/2018/07/Hammer.jpg
 categories:
     - 'Dobre praktyki'
     - Management
@@ -18,13 +17,12 @@ tags:
     - waterfall
     - 'zarzadzania projektami'
 ---
-
 Oczywiście odpowiedź brzmi NIE, to nie jest Złoty Graal. Co więcej, istnieje spora grupa projektów gdzie nasza metodyka się nie sprawdzi. W tym artykule prześledzimy w jakich sytuacjach SCRUM nie będzie najlepszym wyborem i zobaczymy inne możliwości. Zastanowimy się jak ocenić czy SCRUM będzie pasował czy nie.
 
-W [poprzedniej części](http://rrowniak.com/it/scrum-czyli-zwinna-realizacja-projektow/) pisałem o tym czym jest SCRUM i przedstawiłem pewne konsekwencje stosowania tej metodyki. W planach są następujące tematy:
+W [poprzedniej części](/dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/) pisałem o tym czym jest SCRUM i przedstawiłem pewne konsekwencje stosowania tej metodyki. W planach są następujące tematy:
 
 - *Pojedynek ideologii: agile (SCRUM) vs pięciolatka (waterfall, v-model)*. Porównamy modele „zwinne” z tymi klasycznymi. Zobaczymy jakie problem trapią jeden i drugi styl.
-- [*Implementacja SCRUM i zagrożenia*](http://rrowniak.com/it/implementacja-scrum-zagrozenia/). Jak wdrożyć SCRUM i jakie czyhają zagrożenia? Zastanowimy się nad pewnymi, często niewidocznymi dla niedoświadczonego oka, problemami które SCRUMa zamieniają w waterfall.
+- [*Implementacja SCRUM i zagrożenia*](/dobre-praktyki/implementacja-scrum-zagrozenia/). Jak wdrożyć SCRUM i jakie czyhają zagrożenia? Zastanowimy się nad pewnymi, często niewidocznymi dla niedoświadczonego oka, problemami które SCRUMa zamieniają w waterfall.
 - *A gdzie project manager?* No właśnie, co się stało z project managerem i dlaczego tak mało o nim mówimy?
 
 A teraz przejdźmy do meritum.

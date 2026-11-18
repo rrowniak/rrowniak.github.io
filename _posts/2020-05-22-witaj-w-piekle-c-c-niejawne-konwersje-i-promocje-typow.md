@@ -1,12 +1,11 @@
 ---
 id: 706
-title: 'Witaj w piekle: C &#038; C++ &#8211; niejawne konwersje i promocje typów'
+title: 'Witaj w piekle: C & C++ – niejawne konwersje i promocje typów'
 date: '2020-05-22T11:34:06+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=706'
+guid: '/?p=706'
 permalink: /dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow/
-image: /wp-content/uploads/2020/05/neonbrand-small-unsplash.jpg
 categories:
     - C
     - C++
@@ -18,15 +17,13 @@ tags:
     - Promocje
     - Typy
 ---
-
 Nie jest tajemnicą, że C i C++ zawiera sporo różnych pułapek czyhających nawet na doświadczonych programistów. Chciałbym przedstawić kilka wyjątkowo wrednych, trudnych do wykrycia, czasem subtelnych i prawie zawsze bardzo niebezpiecznych niespodzianek jakie zaserwuje nam kompilator. Co gorsza, na pierwszy rzut oka wszystko wygląda logicznie…
 
 Na początek kilka przykładów, które z jakiegoś powodu są uwielbiane przez technicznych rekruterów C++…
 
 ### Przykład 1
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 unsigned char one = 1;
 unsigned char max = 255;
      
@@ -38,20 +35,16 @@ if (sum == one + max) {
     std::cout << "Wait... WTF?" << std::endl;
 }
 ```
+### Przykład 2
 
-</div>### Przykład 2
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 unsigned char x = 0;
 unsigned char y = 1;
 printf("255, right? Oops: %u\n", x - y);
 ```
+### Przykład 3
 
-</div>### Przykład 3
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 unsigned int a = 1;
 signed int b = -2;
 
@@ -59,8 +52,7 @@ if (a + b > 0) {
     std::cout << "Wait... -1 > 0?" << std::endl;
 }
 ```
-
-</div>## Analiza
+## Analiza
 
 Aby zrozumieć powyższe *anomalie* trzeba zapoznać się z trzema konceptami wprowadzonymi przez standardy C i C++: promocje typów całkowitych, [niejawne konwersje](https://en.cppreference.com/w/cpp/language/implicit_conversion) i balansowanie. Oczywiście jest to tylko wierzchołek góry lodowej ale z mojego doświadczenia wiem, że nieznajomość właśnie tych reguł przyczynia się do największej ilości błędów tego rodzaju. Postaram się ująć obydwa języki (C i C++) w jedną całość jako że reguły te są niemal identyczne.
 
@@ -82,14 +74,12 @@ Uzbrojeni w tą wiedzę możemy przeanalizować *przykład nr 1*. Interesujący 
 
 Większość operatorów binarnych (np. `+`) działających na typach liczbowych przyjmuje dwa argumenty tego samego typu i zwraca ten sam typ. Typ ten nazywamy *common real type*. Koncepcyjnie moglibyśmy przedstawić taki operator jako
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 template <class T>
 T operator+(T a, T b)
 { return a + b; }
 ```
-
-</div>Więc jeśli wystąpi różnica typów argumentów mających tą samą rangę, tak jak w przykładzie 3, to musi zostać dokonana konwersja. W przypadku różnych rang mniejszych od `int` zostanie wykonana promocja i operator może otrzymać na wejściu dwa identyczne typy (`int` albo `unsigned int`). A co w innych przypadkach?
+Więc jeśli wystąpi różnica typów argumentów mających tą samą rangę, tak jak w przykładzie 3, to musi zostać dokonana konwersja. W przypadku różnych rang mniejszych od `int` zostanie wykonana promocja i operator może otrzymać na wejściu dwa identyczne typy (`int` albo `unsigned int`). A co w innych przypadkach?
 
 Balansowanie wykonywane jest wg. poniższego algorytmu (skup się!):
 
@@ -112,8 +102,7 @@ Na koniec kilka przykładów.
 
 1\.
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 double d = 1;
 int e = 2;
 unsigned int f = 3;
@@ -126,11 +115,9 @@ auto h = d * e / f;
 
 // h=? => ~0.666667  :)
 ```
+2\.
 
-</div>2\.
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 int a = -2;
 unsigned int b = 1;
     
@@ -138,13 +125,11 @@ auto c = a + b;
 
 // c=? => 4294967295
 ```
-
-</div>Jeśli w powyższym przykładzie zmienimy linię 1 na `int a = -1;` to dostaniemy poprawny wynik. Dlaczego?
+Jeśli w powyższym przykładzie zmienimy linię 1 na `int a = -1;` to dostaniemy poprawny wynik. Dlaczego?
 
 3\.
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 long int a = -2;
 unsigned int b = 1;
     
@@ -152,11 +137,9 @@ auto c = a + b;
 
 // c=? => -1
 ```
+4\.
 
-</div>4\.
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: cpp; title: ; notranslate" title="">
+```
 static_assert(sizeof(long) == sizeof(long long), " ");
 
 unsigned long f = 1;
@@ -166,8 +149,7 @@ auto h = f + g;
 std::cout << "-1?.... " << h << std::endl;
 // h (unsigned long long) --> 18446744073709551615
 ```
-
-</div>Ostatni przykład pokazuje ostatnią regułę balansowania w akcji.
+Ostatni przykład pokazuje ostatnią regułę balansowania w akcji.
 
 Mam nadzieję, że temat został choć odrobinę przybliżony. Nie jest to kompendium wiedzy ale raczej wstęp do tematyki. Z drugiej strony informacje zawarte w tym wpisie pozwolą na uniknięcie 90% nieprzyjemności jakie napotkamy w tym obszarze.
 
@@ -175,4 +157,14 @@ Mam nadzieję, że temat został choć odrobinę przybliżony. Nie jest to kompe
 
 [https://en.cppreference.com/w/cpp/language/implicit\_conversion](https://en.cppreference.com/w/cpp/language/implicit_conversion)
 
-<figure class="wp-block-embed is-type-link is-provider-jeff-hurchalla"><div class="wp-block-embed__wrapper">[\[C/C++\] Surprises and Undefined Behavior From Unsigned Integer Promotion](https://jeffhurchalla.com/2019/01/16/c-c-surprises-and-undefined-behavior-due-to-unsigned-integer-promotion/)</div></figure><https://stackoverflow.com/questions/46073295/implicit-type-promotion-rules>
+<figure class="wp-block-embed is-type-link is-provider-jeff-hurchalla">
+
+<div class="wp-block-embed__wrapper">
+
+[\[C/C++\] Surprises and Undefined Behavior From Unsigned Integer Promotion](https://jeffhurchalla.com/2019/01/16/c-c-surprises-and-undefined-behavior-due-to-unsigned-integer-promotion/)
+
+</div>
+
+</figure>
+
+<https://stackoverflow.com/questions/46073295/implicit-type-promotion-rules>

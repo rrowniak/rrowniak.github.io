@@ -1,10 +1,10 @@
 ---
 id: 9
-title: 'New word order &#8211; sorting'
+title: 'New word order – sorting'
 date: '2018-02-03T11:28:33+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=9'
+guid: '/?p=9'
 permalink: /programming/new-word-order-sorting/
 categories:
     - English
@@ -20,7 +20,6 @@ tags:
     - Python
     - sort
 ---
-
 Almost every modern language comes with sorting procedures. Is there any reason to dive into?
 
 Very often it doesn’t matter which sorting procedure we select. Especially when we’re sorting a relatively small set of data, say, less than 1000 records, and the performance is not critical. Moreover, some languages give no options but one sorting procedure (taking into consideration only basic language facilities).
@@ -44,7 +43,6 @@ In order to generate a representative set of data I prepared a special procedure
 The procedure is just a simple linear congruential generator.
 
 ```
-<pre class="brush: plain; title: ; notranslate" title="">
 x_1 = seed
 x_n+1 = (a x_n + c) mod m
 ```
@@ -52,7 +50,6 @@ x_n+1 = (a x_n + c) mod m
 with the following factors:
 
 ```
-<pre class="brush: plain; title: ; notranslate" title="">
 a = 48271
 c = 0
 m = 2147483647
@@ -64,7 +61,6 @@ Using this procedure I’ll generate 1 000 000 000 records (or less if that numb
 Each record is a structure containing two 64-bit unsigned integers. The first field acts as a simple identifier, the second field is a value to be sorted. In C and C++ the record looks as follows:
 
 ```
-<pre class="brush: cpp; title: ; notranslate" title="">
 struct {
 uint64_t id;
 uint64_t value;

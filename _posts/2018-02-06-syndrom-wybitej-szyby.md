@@ -4,7 +4,7 @@ title: 'Syndrom wybitej szyby'
 date: '2018-02-06T08:57:52+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=58'
+guid: '/?p=58'
 permalink: /it-pl/syndrom-wybitej-szyby/
 categories:
     - 'Dobre praktyki'
@@ -16,9 +16,6 @@ tags:
     - 'syndrom wybitej szyby'
     - zarządzanie
 ---
-
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/Broken_windows-1.jpg?resize=590%2C393)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/02/Broken_windows-1.jpg)
-
 Drogi Czytelniku chciałbym Ci opowiedzieć o bardzo ciekawym zjawisku z branży IT, określanym, dosyć zresztą zagadkowo, jako syndrom wybitej szyby. Zastanawiasz się zapewne: co to takiego..? Jakie są Twoje pierwsze skojarzenia? Być może staje Ci przed oczami stary, opuszczony dom na uboczu, albo grupa łobuzów rzucających kamieniami w wystawy sklepowe. Dobrze! Jesteś bardzo blisko! Jeśli twoja wyobraźnia poprowadzi Cię jeszcze o krok dalej, do mrocznych, owianych złą sławą zakamarków miasta znajdziesz się u celu. Rzeczywiście geneza tego syndromu bierze się z badań kryminalistycznych dotyczących dzielnic i przedmieść, gdzie panuje duża przestępczość, a wybijanie szyb jest ulubioną rozrywką stałych bywalców. Ulubioną, ale zapewne nie jedyną, należałoby dodać. Zastanawiasz się zapewne jaki związek ma kryminalistyka z branżą oprogramowania i czy w IT jest tak źle, że trzeba się uciekać do doświadczeń stróżów prawa, i to tych najgorszych? No cóż, może tak źle nie jest, ale zacznijmy od początku.
 
   

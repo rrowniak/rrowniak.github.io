@@ -1,12 +1,11 @@
 ---
 id: 647
-title: 'Architektura serwerów &#8211; wydajność przetwarzania zapytań cz.2'
+title: 'Architektura serwerów – wydajność przetwarzania zapytań cz.2'
 date: '2019-12-29T12:48:26+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=647'
+guid: '/?p=647'
 permalink: /performance/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-2/
-image: /wp-content/uploads/2019/12/mike-enerio-small-unsplash.jpg
 categories:
     - 'Architektura oprogramowania'
     - C
@@ -14,8 +13,7 @@ categories:
     - Linux
     - Performance
 ---
-
-Kontynuujemy nasze zmagania z przetwarzaniem zapytań. [W pierwszej części](http://rrowniak.com/architektura-oprogramowania/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/) zdefiniowaliśmy problem i podjęliśmy pierwsze próby implementacji rozwiązania. Szybko jednak okazało się, że istnieją lepsze metody. Dzisiaj będziemy eksperymentować z wielowątkowością. Oczywiście nie obejdzie się bez problemów…
+Kontynuujemy nasze zmagania z przetwarzaniem zapytań. [W pierwszej części](/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/) zdefiniowaliśmy problem i podjęliśmy pierwsze próby implementacji rozwiązania. Szybko jednak okazało się, że istnieją lepsze metody. Dzisiaj będziemy eksperymentować z wielowątkowością. Oczywiście nie obejdzie się bez problemów…
 
 Kod źródłowy eksperymentów można znaleźć [tutaj](https://github.com/rrowniak/blog/tree/master/processing_pipeline).
 
@@ -23,16 +21,13 @@ Przejdźmy do rzeczy – ostanie wyniki pokazały, że nasz procesor się nudzi.
 
 Nasza (naiwna) implementacja będzie wyglądać mniej więcej tak:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 for_each request in 100k_requests:
     create_thread(RequestProcessor::Process(request))
 ```
+Uruchamiamy więc nasz program:
 
-</div>Uruchamiamy więc nasz program:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; highlight: [3]; title: ; notranslate" title="">
+```
 $ ./processing_pipeline 2
 Running Experiment_2_thread_per_req
 Experiment interrupted - exception thrown: Resource temporarily unavailable
@@ -40,11 +35,9 @@ Only 32747 threads created
 Waited 3951.76 ms, avg 25305.2 trans/sec
 
 ```
+Hmm… Program przerwał działanie. Widzimy, że udało się stworzyć 32 747 wątków. Prawdopodobnie nie powiodło się stworzenie kolejnego wątku. Sprawdźmy tą hipotezę:
 
-</div>Hmm… Program przerwał działanie. Widzimy, że udało się stworzyć 32 747 wątków. Prawdopodobnie nie powiodło się stworzenie kolejnego wątku. Sprawdźmy tą hipotezę:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; highlight: [10]; title: ; notranslate" title="">
+```
 $ gdb ./processing_pipeline
 ...
 (gdb) catch throw
@@ -59,37 +52,30 @@ $ gdb ./processing_pipeline
 #7  0x0000000000404705 in Experiment_2_thread_per_req () at main.cpp:92
 #8  0x00000000004058ce in main (argc=2, argv=0x7fffffffdcb8) at main.cpp:294
 ```
-
-</div>Tak, próba stworzenia nowego obiektu `std::thread` nie powiodła się. Zapewne przekroczyliśmy jakiś limit. Pytanie tylko o jaki limit chodzi? Bo nie ma czegoś takiego jak limit wątków… W systemie Linux mamy kilka limitów które mogą ograniczać bezpośrednio lub pośrednio liczbę wątków i/lub procesów:
+Tak, próba stworzenia nowego obiektu `std::thread` nie powiodła się. Zapewne przekroczyliśmy jakiś limit. Pytanie tylko o jaki limit chodzi? Bo nie ma czegoś takiego jak limit wątków… W systemie Linux mamy kilka limitów które mogą ograniczać bezpośrednio lub pośrednio liczbę wątków i/lub procesów:
 
 - Globalny limit procesów (wątek też liczony jako proces) zdefiniowany w `/proc/sys/kernel/threads-max`. U mnie ustawiony jest na:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ cat /proc/sys/kernel/threads-max
 513640
 ```
+- Górny limit wartości jaki może przyjąć deskryptor (pid) procesu (i wątku) zdefiniowany w `/proc/sys/kernel/pid_max`, wartość jest [obliczana przez kernel](https://elixir.bootlin.com/linux/latest/source/kernel/pid.c) na podstawie prostej formuły: 1024 \* liczba\_rdzeni \* liczba\_wątków\_per\_rdzeń.
 
-</div>- Górny limit wartości jaki może przyjąć deskryptor (pid) procesu (i wątku) zdefiniowany w `/proc/sys/kernel/pid_max`, wartość jest [obliczana przez kernel](https://elixir.bootlin.com/linux/latest/source/kernel/pid.c) na podstawie prostej formuły: 1024 \* liczba\_rdzeni \* liczba\_wątków\_per\_rdzeń.
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ cat /proc/sys/kernel/pid_max
 32768
 ```
+- Maksymalna liczba zmapowanych obszarów pamięci w procesie (więcej tego typu limitów [tutaj](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)). Limit ten można odczytać w `/proc/sys/vm/max_map_count`:
 
-</div>- Maksymalna liczba zmapowanych obszarów pamięci w procesie (więcej tego typu limitów [tutaj](https://www.kernel.org/doc/Documentation/sysctl/vm.txt)). Limit ten można odczytać w `/proc/sys/vm/max_map_count`:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ cat /proc/sys/vm/max_map_count
 65530
 ```
-
-</div>A co to oznacza w praktyce? Zajrzyjmy w dokumentację:
+A co to oznacza w praktyce? Zajrzyjmy w dokumentację:
 
 ```
-<pre class="wp-block-preformatted">max_map_count:
+max_map_count:
 
 This file contains the maximum number of memory map areas a process
 may have. Memory map areas are used as a side-effect of calling
@@ -107,8 +93,7 @@ W skrócie można powiedzieć, że licznik zmapowanych obszarów pamięci powię
 
 - [RLIMIT\_AS, RLIMIT\_DATA](http://man7.org/linux/man-pages/man2/getrlimit.2.html) – limit wielkości wirtualnej przestrzeni i limit segmentu danych dla procesu (zmienne zainicjowane, niezainicjowane, sterta (heap). Limity te mogą być zmieniane jednaj wartości domyślne łatwo odczytać (podobnie jak `ulimit -a` ale mamy więcej detali):
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ cat /proc/self/limits
 Limit                     Soft Limit           Hard Limit           Units     
 Max cpu time              unlimited            unlimited            seconds   
@@ -128,21 +113,17 @@ Max nice priority         0                    0
 Max realtime priority     0                    0                    
 Max realtime timeout      unlimited            unlimited            us 
 ```
+- Limit wynikający z braku wirtualnej pamięci dla nowych wątków. Każdy nowy wątek dostaje stos dla którego system operacyjny przydziela pewien obszar pamięci w wirtualnej przestrzeni. Obecnie dla systemów 64 bitowych stosowany jest model kanoniczny, czyli wykorzystujemy tylko 48 bitów do adresacji. Więc cała przestrzeń to 2^64. Przestrzeń użytkownika to połowa z tego – 128 TB. Szczegóły [tutaj](https://www.kernel.org/doc/Documentation/x86/x86_64/mm.txt). Z drugiej strony stos zajmuje:
 
-</div>- Limit wynikający z braku wirtualnej pamięci dla nowych wątków. Każdy nowy wątek dostaje stos dla którego system operacyjny przydziela pewien obszar pamięci w wirtualnej przestrzeni. Obecnie dla systemów 64 bitowych stosowany jest model kanoniczny, czyli wykorzystujemy tylko 48 bitów do adresacji. Więc cała przestrzeń to 2^64. Przestrzeń użytkownika to połowa z tego – 128 TB. Szczegóły [tutaj](https://www.kernel.org/doc/Documentation/x86/x86_64/mm.txt). Z drugiej strony stos zajmuje:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ ulimit -s
 8192
 ```
-
-</div>Co oznacza 8192 kB \* 1024 = 8388608M = 8 MB. Teoretycznie mamy miejsce w wirtualnej pamięci na 128 TB / 8 MB = 16 777 216 wątków.
+Co oznacza 8192 kB \* 1024 = 8388608M = 8 MB. Teoretycznie mamy miejsce w wirtualnej pamięci na 128 TB / 8 MB = 16 777 216 wątków.
 
 - Inne limity zdefiniowane dla użytkownika jak np. `max user processes`.
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ ulimit -a
 core file size          (blocks, -c) 0
 data seg size           (kbytes, -d) unlimited
@@ -161,11 +142,9 @@ max user processes              (-u) 256820
 virtual memory          (kbytes, -v) unlimited
 file locks                      (-x) unlimited
 ```
+Ok, uzbrojeni w pewną wiedzę teoretyczną kontynuujmy nasze śledztwo. Jak zwykle warto zobaczyć jakie funkcje systemowe zostały wywołane, ile i z jakim skutkiem:
 
-</div>Ok, uzbrojeni w pewną wiedzę teoretyczną kontynuujmy nasze śledztwo. Jak zwykle warto zobaczyć jakie funkcje systemowe zostały wywołane, ile i z jakim skutkiem:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ strace -c ./processing_pipeline 2
 Running Experiment_2_thread_per_req
 Experiment interrupted - exception thrown: Resource temporarily unavailable
@@ -197,16 +176,13 @@ Waited 2993.39 ms, avg 33406.9 trans/sec
 100.00    0.001986                135174        26 total
 
 ```
+Widzimy, że wywołanie funkcji [`futex`](http://man7.org/linux/man-pages/man2/futex.2.html) dało negatywne rezultaty aż 18 razy. Jednak sama funkcja została wywołana tylko 291 razy co nie odpowiada ilości stworzonych wątków. Za to ciekawy trop daje nam funkcja systemowa `<a href="http://man7.org/linux/man-pages/man2/mprotect.2.html">mprotect</a>` – wywołana została 32 759 razy czyli prawie tyle co liczba naszych wątków (32 747). Ale najciekawsze jest to, że tylko jeden raz zwróciła błąd. Sprawdźmy co to za błąd:
 
-</div>Widzimy, że wywołanie funkcji [`futex`](http://man7.org/linux/man-pages/man2/futex.2.html) dało negatywne rezultaty aż 18 razy. Jednak sama funkcja została wywołana tylko 291 razy co nie odpowiada ilości stworzonych wątków. Za to ciekawy trop daje nam funkcja systemowa `<a href="http://man7.org/linux/man-pages/man2/mprotect.2.html">mprotect</a>` – wywołana została 32 759 razy czyli prawie tyle co liczba naszych wątków (32 747). Ale najciekawsze jest to, że tylko jeden raz zwróciła błąd. Sprawdźmy co to za błąd:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ strace -e trace=mprotect ./processing_pipeline 2 2>&1| grep "= -1"                                                                      
 mprotect(0x7fa762ba1000, 4096, PROT_NONE) = -1 ENOMEM (Cannot allocate memory)
 ```
-
-</div>Dokumentacja lakonicznie stwierdza:
+Dokumentacja lakonicznie stwierdza:
 
 > **ENOMEM** Internal kernel structures could not be allocated.
 
@@ -214,8 +190,7 @@ Ale możemy zrobić dwie rzeczy – rzucić okiem w kod źródłowy kernela albo
 
 Ale jedną rzecz łatwo zrobić – mamy już hipotezę o przekroczonym limicie mapowania pamięci, liczby potwierdzają nasze przypuszczenia – pozostał więc eksperyment do wykonania – zwiększmy ten limit i zobaczmy co się stanie:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 # echo 100000 > /proc/sys/vm/max_map_count
 --------------------------------------------------
 $ strace -c ./processing_pipeline 2
@@ -248,11 +223,9 @@ Waited 3990.99 ms, avg 25056.4 trans/sec
 ------ ----------- ----------- --------- --------- ----------------
 100.00    0.002870                206170        26 total
 ```
+Wyników chyba nie muszę komentować. Mamy przyczynę niepowodzenia. Jako ciekawostkę podam stos wywołań, który prowadzi do funkcji `mprotect`:
 
-</div>Wyników chyba nie muszę komentować. Mamy przyczynę niepowodzenia. Jako ciekawostkę podam stos wywołań, który prowadzi do funkcji `mprotect`:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; highlight: [3]; title: ; notranslate" title="">
+```
 (gdb) bt
 #0  0x00007ffff7050777 in mprotect () at ../sysdeps/unix/syscall-template.S:84
 #1  0x00007ffff7bc24fa in allocate_stack (...) at allocatestack.c:649
@@ -263,11 +236,9 @@ Waited 3990.99 ms, avg 25056.4 trans/sec
 #8  0x0000000000404705 in Experiment_2_thread_per_req () at main.cpp:92
 #9  0x00000000004058ce in main (argc=2, argv=0x7fffffffdcb8) at main.cpp:294
 ```
+Więc co teraz? Możemy manipulować limitami ale jest to bardzo zła droga w tym przypadku. Nadmierna liczba wątków negatywnie wpływa na wydajność. Trzeba to jakoś ograniczyć programowo. Najprostsze podejście może wyglądać tak:
 
-</div>Więc co teraz? Możemy manipulować limitami ale jest to bardzo zła droga w tym przypadku. Nadmierna liczba wątków negatywnie wpływa na wydajność. Trzeba to jakoś ograniczyć programowo. Najprostsze podejście może wyglądać tak:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: python; title: ; notranslate" title="">
+```
 max_thread_limit = 100
 while not done:
     thread_num = 0
@@ -277,29 +248,24 @@ while not done:
         thread_num++
     wait_for_all_threads()
 ```
+Odpalmy więc nasz program i zobaczmy jakie korzyści daje nam wielowątkowość:
 
-</div>Odpalmy więc nasz program i zobaczmy jakie korzyści daje nam wielowątkowość:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 ./processing_pipeline 3
 Running Experiment_3_thread_per_req_with_throttle for 100 threads
 Control result: 6.49994e+10
 Total sleep: 18920 ms, # yield: 49800, # requests: 100000
 Waited 25767.7 ms, avg 3880.83 trans/sec
 ```
+**WTF??? Wynik gorszy niż w przypadku przetwarzania sekwencyjnego** opisanego w [poprzednim artykule](/programming/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/)! Dla przypomnienia:
 
-</div>**WTF??? Wynik gorszy niż w przypadku przetwarzania sekwencyjnego** opisanego w [poprzednim artykule](http://rrowniak.com/architektura-oprogramowania/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-1/)! Dla przypomnienia:
-
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ ./processing_pipeline 1
 Running Experiment_1_single_threaded
 Control result: 6.49994e+10
 Total sleep: 18920 ms, # yield: 49800, # requests: 100000
 Waited 23612.7 ms, avg 4235 trans/sec
 ```
-
-</div>Czyli teraz mamy ponad 25 sekund! Co z tą wielowątkowością?
+Czyli teraz mamy ponad 25 sekund! Co z tą wielowątkowością?
 
 Otóż powyższy przykład pokazuje jak nieumiejętne korzystanie z tego narzędzia przynosi więcej szkód niż pożytku. Celowo pokazałem jakie problemy z limitami możemy napotkać. Niestety często podczas testów możemy tych problemów nie zauważyć gdyż same limity są dość wysoko ustawione a analiza takich zdarzeń może być trudna. Jak zwykle poinformuje nas o problemach niespecjalnie szczęśliwy klient. Druga sprawa to ślepa wiara w sprawczą moc wielowątkowości. Nasze zrównoleglenie nie pomogło, a przynajmniej nie to naiwne podejście. W kolejnej części zobaczymy co poszło nie tak i gdzie jest problem. Zobaczymy też jak można usprawnić nasz algorytm aby wielowątkowość okazała się skuteczna.

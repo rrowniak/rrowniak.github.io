@@ -4,16 +4,14 @@ title: 'Najbardziej poszukiwane umiejętności IT w świecie post-pandemicznym'
 date: '2021-01-17T19:31:44+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=789'
+guid: '/?p=789'
 permalink: /it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/
-image: /wp-content/uploads/2021/01/javier-allegue-barros-smallnsplash.jpg
 categories:
     - 'Dobre praktyki'
     - IT
     - Raport
     - Sieci
 ---
-
 Początek nowego roku to dobry moment na refleksję nad kierunkami rozwoju branży IT i jej zapotrzebowaniem na specjalistów. Przejrzałem sporą ilość raportów mniej lub bardziej znanych ośrodków analitycznych i w niniejszym wpisie chciałbym zarysować pewien wyłaniający się obraz najbliższej przyszłości w świecie technologii informatycznych.
 
 ## Zmiany
@@ -22,7 +20,7 @@ Zanim zaczniemy wymieniać konkretne umiejętności o które będą konkurować 
 
 Jedną z nowinek ma być automatyczne wspieranie i egzekwowanie rygorów sanitarnych takich jak mycie rąk lub noszenie maseczek w przestrzeni publicznej i korporacyjnej. Jest to część szerszej inicjatywy nazywanej internetem zachowań (Internet of Behaviors) mającej na celu zmianę (na lepsze) zachowań ludzkich w oparciu o monitoring i analizę danych. Nie owijając w bawełnę – inwigilacja. Jeszcze rok temu ten pomysł byłby zapewne sklasyfikowany jako nieudolna próba naśladownictwa pomysłów rodem z powieści Huxley’a. Dzisiaj już tak śmiesznie to nie wygląda i w niektórych krajach jak np. Chiny to chleb powszedni od wielu lat. Jeśli ta prognoza się ziści w skali globalnej to będziemy potrzebować odpowiedniej technologii takich jak rozpoznawanie obrazów, IoT, sztuczna inteligencja i analiza dużych zbiorów danych.
 
-Kolejną zmianą będzie wymóg działania w środowiskach rozproszonych, niepewnych, rozmytych. Środowisko rozproszone jest niejako przeciwieństwem do środowiska scentralizowanego, gdzie pracownik musi pojawić się siedzibie pracodawcy aby wykonywać swoje obowiązki, kandydat o pracę musi stawić się w określonym miejscu, klient musi widzieć się osobiście z przedstawicielem firmy, serwery korporacyjne są własnością firmy, dokumentacja to sterta papieru, itp. Do tego dochodzi niepewność, brak pełnej wiedzy podczas podejmowania decyzji i wymuszona gotowość adaptacyjna do zmieniających się realiów. Kiedyś nie do pomyślenia było aby firma produkująca zmywarki do naczyń mogła się szybko przeformować na produkcję specjalistycznego sprzętu medycznego. Dziś już takie przykłady mamy. Jakiś czas temu [opisywałem](http://rrowniak.com/it-pl/koronawirus-w-it/) jakie wsparcie technologiczne (absolutne minimum) jest potrzebne aby firma mogła sprawnie funkcjonować w obecnym świecie. Ale to nie wszystko gdyż dochodzi do tego kwestia odpowiedniej infrastruktury sieciowej, bezpieczeństwa, przenoszenia procesów do przestrzeni cyfrowej. Spowoduje to jeszcze większe zapotrzebowanie na specjalistów od wirtualizacji, rozwiązań „w chmurze”, inżynierów DevOps.
+Kolejną zmianą będzie wymóg działania w środowiskach rozproszonych, niepewnych, rozmytych. Środowisko rozproszone jest niejako przeciwieństwem do środowiska scentralizowanego, gdzie pracownik musi pojawić się siedzibie pracodawcy aby wykonywać swoje obowiązki, kandydat o pracę musi stawić się w określonym miejscu, klient musi widzieć się osobiście z przedstawicielem firmy, serwery korporacyjne są własnością firmy, dokumentacja to sterta papieru, itp. Do tego dochodzi niepewność, brak pełnej wiedzy podczas podejmowania decyzji i wymuszona gotowość adaptacyjna do zmieniających się realiów. Kiedyś nie do pomyślenia było aby firma produkująca zmywarki do naczyń mogła się szybko przeformować na produkcję specjalistycznego sprzętu medycznego. Dziś już takie przykłady mamy. Jakiś czas temu [opisywałem](/it-pl/koronawirus-w-it/) jakie wsparcie technologiczne (absolutne minimum) jest potrzebne aby firma mogła sprawnie funkcjonować w obecnym świecie. Ale to nie wszystko gdyż dochodzi do tego kwestia odpowiedniej infrastruktury sieciowej, bezpieczeństwa, przenoszenia procesów do przestrzeni cyfrowej. Spowoduje to jeszcze większe zapotrzebowanie na specjalistów od wirtualizacji, rozwiązań „w chmurze”, inżynierów DevOps.
 
 Dostęp do korporacyjnych zasobów cyfrowych musi być możliwy poprzez każde urządzenie elektroniczne jak klasyczne laptopy, tablety, smartfony. Z dowolnego miejsca na świecie. Przez korporacyjne zasoby cyfrowe mam na myśli komunikatory, pocztę, dokumentację, rejestry, spisy, bazy danych, wewnętrzne usługi, wszystko to, co potrzebne jest do normalnej pracy. Również usługi oferowane powinny być w maksymalnym stopniu przeniesione do świata wirtualnego. Takie podejście rodzi wiele wątpliwości natury bezpieczeństwa. Jak wspomina [cio.com](http://cio.com) w swoim [raporcie](https://www.cio.com/article/3235944/hiring-the-most-in-demand-tech-jobs-for-2021.html), wymogi bezpieczeństwa to nie tylko szyfrowane połączenia ale również odpowiednie procedury, które powinny zapewnić wystarczająco wysoki poziom bezpieczeństwa nie będąc przy tym uciążliwymi, audyty bezpieczeństwa, zgodność z wymogami wewnętrznymi i prawnymi. Widać wyraźnie, że wysokie zapotrzebowanie na ekspertów od bezpieczeństwa będzie niezmiennie trwać.
 
@@ -74,6 +72,6 @@ Zmiany, które zachodzą na naszych oczach spowodują gwałtowny wzrost znaczeni
 - <https://www.engagewithus.com/the-most-in-demand-tech-skills-for-2021/>
 - <https://blockew.com/top-10-in-demand-tech-skills-you-need-to-have/>
 - <https://www.gartner.com/smarterwithgartner/gartner-top-strategic-technology-trends-for-2021/>
-- <http://rrowniak.com/it-pl/koronawirus-w-it/>
+- [Koronawirus w IT](/it-pl/koronawirus-w-it/)
 - <https://www.cio.com/article/3235944/hiring-the-most-in-demand-tech-jobs-for-2021.html>
 - <https://www.globalknowledge.com/us-en/resources/resource-library/articles/the-10-most-important-it-skills-for-2020/>

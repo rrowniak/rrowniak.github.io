@@ -20,6 +20,14 @@ plugins:
   - jekyll-sitemap
 show_excerpts: true
 
+kramdown:
+  input: GFM
+  parse_block_html: true
+
+header_pages:
+  - about.md
+  - blog/index.html
+
 exclude:
   - Gemfile
   - Gemfile.lock

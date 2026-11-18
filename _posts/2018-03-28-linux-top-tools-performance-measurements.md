@@ -4,9 +4,8 @@ title: 'Linux top-tools: performance measurements'
 date: '2018-03-28T16:51:52+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=231'
+guid: '/?p=231'
 permalink: /performance/linux-top-tools-performance-measurements/
-image: /wp-content/uploads/2018/03/chris-liverani-small-unsplash.jpg
 categories:
     - English
     - Linux
@@ -23,7 +22,6 @@ tags:
     - powertop
     - top
 ---
-
 This article presents a short list of very useful tools which are used for getting some information about what’s going on in our Linux system. These tools show some of the system’s resources utilization and saturation. Top-tools share one common property, that is, give a snapshot of certain properties in real time. Also they work in command line mode so there is no need to have a graphics user interface, perfect for servers. Let’s see what we can get and measure.
 
 ## top
@@ -33,8 +31,6 @@ This is the most popular tool and probably it has come with your favorite Linux 
 `$ top`
 
 The result should be similar to the following print screen:
-
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/top_prtsc.jpg?resize=696%2C302)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/top_prtsc.jpg)
 
 Some tips and tricks:
 
@@ -58,8 +54,6 @@ Notice *sudo* – it might be needed for getting some additional information fro
 
 You should see something like that:
 
-[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/htop_prtsc.jpg?resize=696%2C413)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/htop_prtsc.jpg)
-
 There are a few interesting features:
 
 - select a process of interest and press **s** – you will see a list of system calls made by the process
@@ -81,8 +75,6 @@ And run it (notice *sudo* – it might be needed for getting some additional inf
 `$ sudo atop`
 
 The output:
-
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/atop_prtsc.jpg?resize=696%2C413)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/atop_prtsc.jpg)
 
 Things to remember:
 
@@ -106,8 +98,6 @@ And run it (notice *sudo* – it might be needed for getting some additional inf
 
 The output:
 
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/iotop_prtsc.jpg?resize=696%2C415)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/iotop_prtsc.jpg)
-
 This is quite simple tool so there is no many useful shortcuts.
 
 ## powertop
@@ -121,7 +111,6 @@ And run it (notice *sudo* – it might be needed for getting some additional inf
 `$ sudo powertop`
 
 The output:  
-[![](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/powertop_prtsc.jpg?resize=696%2C415)](https://i1.wp.com/rrowniak.com/wp-content/uploads/2018/03/powertop_prtsc.jpg)  
 The tool is fully interactive so you have to use menu. There are also some command line options to perform auto-tuning of your current power-related settings. But it hangs my computer so I have nothing interesting to say about that. Nevertheless, you can find many useful statistics like CPU [C-states](http://www.hardwaresecrets.com/everything-you-need-to-know-about-the-cpu-c-states-power-saving-modes/) (Idle stats), current CPU frequencies per core, power consumption by each device.
 
 ## iftop
@@ -135,8 +124,6 @@ And run it (notice *sudo* – it might be needed for getting some additional inf
 `$ sudo iftop`
 
 The output:
-
-[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/iftop_prtsc.jpg?resize=696%2C478)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/iftop_prtsc.jpg)
 
 Useful options:
 
@@ -157,8 +144,6 @@ Installing perf top on Ubuntu can be a little bit tricky:
 `sudo apt install linux-tools-common linux-tools-generic linux-tools-`uname -r``
 
 Let’s see how it looks:
-
-[![](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/perftop_printscr.jpg?resize=696%2C381)](https://i0.wp.com/rrowniak.com/wp-content/uploads/2018/03/perftop_printscr.jpg)
 
 This is a good candidate for series of posts so I won’t go further here.
 

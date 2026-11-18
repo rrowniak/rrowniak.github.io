@@ -4,7 +4,7 @@ title: 'Bitcoin: mity i legendy wrogów'
 date: '2018-02-21T12:14:44+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=76'
+guid: '/?p=76'
 permalink: /bitcoin/bitcoin-mity-i-legendy-wrogow/
 categories:
     - Bitcoin
@@ -13,10 +13,7 @@ tags:
     - blockchain
     - mity
 ---
-
-[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/photo-_small.jpeg?resize=553%2C415)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2018/02/photo-_small.jpeg)
-
-Dzisiaj weźmiemy pod lupę mity chętnie powielane przez wrogów Bitcoina. Poprzednio zajmowaliśmy się [obalaniem mitów tworzonych przez entuzjastów,](http://rrowniak.com/it/bitcoin-mity-i-legendy-wyznawcow/) a teraz zajmiemy zgoła odmienne stanowisko. A więc do roboty…
+Dzisiaj weźmiemy pod lupę mity chętnie powielane przez wrogów Bitcoina. Poprzednio zajmowaliśmy się [obalaniem mitów tworzonych przez entuzjastów,](/bitcoin/bitcoin-mity-i-legendy-wyznawcow/) a teraz zajmiemy zgoła odmienne stanowisko. A więc do roboty…
 
 ### Mity wrogów Bitcoina
 

@@ -4,7 +4,7 @@ title: 'std::vector vs sorted std::vector vs std::set'
 date: '2018-02-03T12:57:39+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=11'
+guid: '/?p=11'
 permalink: /programming/stdvector-vs-sorted-stdvector-vs-stdset/
 categories:
     - English
@@ -17,7 +17,6 @@ tags:
     - sort
     - sorting
 ---
-
 In this short article I’m going to make a comparison between std::vector, sorted std::vector and std::set. However, I’m going to focus only on one aspect – which collection is faster during lookup.
 
 Looks like the answer is rather trivial – std::map and sorted std::vector offer access to any element in O(log n) time while unsorted std::vector offers linear finding. To be precise – std::vector + std::find as std::vector doesn’t have built-in find function. Indeed, sorted collections are winners… Or maybe the answer is not so trivial?

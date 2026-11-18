@@ -1,10 +1,10 @@
 ---
 id: 853
-title: 'The new kid on the block &#8211; golang'
+title: 'The new kid on the block – golang'
 date: '2021-11-06T16:31:48+00:00'
 author: 'Rafał Równiak'
 layout: post
-guid: 'http://rrowniak.com/?p=853'
+guid: '/?p=853'
 permalink: /performance/the-new-kid-on-the-block-golang/
 categories:
     - Performance
@@ -18,13 +18,11 @@ tags:
     - Python
     - sorting
 ---
-
-Do you remember my [article](http://rrowniak.com/performance/new-word-order-sorting/) about the speed of sorting large data chunk in different languages? Of course you don’t. So, I advice you to go through that article as there is a description of the test procedure. However, today I’m going to extend this benchmark by testing *go* language. The results will be surprising…
+Do you remember my [article](/programming/new-word-order-sorting/) about the speed of sorting large data chunk in different languages? Of course you don’t. So, I advice you to go through that article as there is a description of the test procedure. However, today I’m going to extend this benchmark by testing *go* language. The results will be surprising…
 
 Let’s re-execute the test. This time I’ll be using a dedicated script `run_experiment.sh` which does all what’s needed and prints results in a friendly way:
 
-<div class="wp-block-syntaxhighlighter-code ">```
-<pre class="brush: plain; title: ; notranslate" title="">
+```
 $ ./run_experiment.sh 
 Starting tests...
 Language             Records #     Bulding time  Sorting time  Testing time  Total time        RSS memory usage
@@ -36,10 +34,9 @@ go                     100,000,000 B:   0.686 s, S:  29.685 s, T:   0.031 s, Tot
 java                   100,000,000 B:   1.793 s, S:  71.187 s, T:   0.078 s, Total:  78.480 s, Mem: 3.9 GB (4062140 kB)
 python                  20,000,000 B:  25.476 s, S:  50.473 s, T:   0.148 s, Total: 147.800 s, Mem: 9.0 GB (9466744 kB)
 ```
+Here is the visualization.
 
-</div>Here is the visualization.
-
-<figure class="wp-block-image size-large">[![](https://i2.wp.com/rrowniak.com/wp-content/uploads/2021/11/Results.png?resize=696%2C348)](https://i2.wp.com/rrowniak.com/wp-content/uploads/2021/11/Results.png)</figure>All sources including supporting scripts and gnuplot script are available on my [github](https://github.com/rrowniak/blog/tree/master/sorting_big).
+All sources including supporting scripts and gnuplot script are available on my [github](https://github.com/rrowniak/blog/tree/master/sorting_big).
 
 Ok, tests have passed, so now it’s time to review the results and draw the conclusions.
 
