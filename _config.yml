@@ -1,0 +1,28 @@
+title: Rafal's blog
+email: ""
+description: >-
+  Welcome to my IT blog! Here, you will find articles on a wide range of topics related to
+  technology and computer science. My blog covers everything from software architecture and
+  programming languages like C++ to performance optimization and Linux systems. Whether you're
+  a seasoned IT professional or just starting out in the field, I hope you'll find something of
+  interest on my blog. Follow me to stay up to date with the latest trends and best practices in
+  the world of technology.
+baseurl: ""
+url: "https://rrowniak.github.io"
+twitter_username: rrowniak
+github_username: rrowniak
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+show_excerpts: true
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
