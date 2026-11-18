@@ -1,4 +1,5 @@
 ---
+title: Home
 ---
 <!doctype html>
 <html lang="en" class="no-js">
@@ -8,28 +9,36 @@
     <meta name="robots" content="all,follow">
     <meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="">
+    <meta name="description" content="Underground Engineering — consulting and training in distributed architectures, cybersecurity, data engineering and AI.">
+    <meta name="theme-color" content="#212529">
+    <link rel="canonical" href="https://rrowniak.github.io/">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Underground Engineering">
+    <meta property="og:description" content="Consulting and training in distributed architectures, cybersecurity, data engineering and AI.">
+    <meta property="og:url" content="https://rrowniak.github.io/">
+    <meta property="og:image" content="https://rrowniak.github.io/img/background.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ site.twitter_username }}">
 
     <link rel="shortcut icon" href="img/baron.jpg">
+    <link rel="preload" as="image" href="img/background.jpg">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- common css -->
     <link rel="stylesheet" href="css/common.css">
     <!-- font-awesome icons  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- CSS Animations -->
-    <link rel="stylesheet" href="css/animate.min.css">
-    <!-- Mordernizr -->
-    <!-- <script src="js/modernizr-build.js"></script> -->
 
-    <title>Underground Engineering project</title>
+    <title>Underground Engineering — Architecture, Security &amp; Data</title>
   </head>
   <body data-spy="scroll" data-target="#navbarNav" data-offset="120">
-    <div class="parallax filter filter-color-red" id="all">
+    <div id="all">
         <!-- navbar  -->
-        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-dark navbar-dark">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
-          <a class="navbar-brand scrollTo" href="#">Underground Engineering</a>
+          <a class="navbar-brand scrollTo" href="#home">Underground Engineering</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -52,10 +61,9 @@
               </li>
             </ul>
               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                  <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/{{ site.github_username }}" aria-label="GitHub">
                        <i class="fa fa-github" aria-hidden="true"></i>
-                        <span class="sr-only">(current)</span>
                     </a>
                   </li>
               </ul>
@@ -64,22 +72,25 @@
         </nav>
 
         <!-- first section -->
-        <div class="first-section d-flex align-items-center justify-content-center animate__animated animate__fadeInDown" style="background-image: url('img/background.jpg');" id="home">
-            <div class="header bg-success rounded">
+        <div class="first-section" style="background-image: url('img/background.jpg');" id="home">
+            <div class="container">
+              <div class="header">
                 <h1>Welcome to Underground Engineering</h1>
-                <p>Unlock the full potential of your data and technology landscape with our comprehensive consulting and training expertise.</p>
-                <p><strong>Distributed Architectures.</strong> Attain unparalleled high availability and scalability with our expert guidance. Whether reviewing your existing solution or actively participating in the design phase, we ensure you steer clear of common pitfalls and challenges that often plague distributed systems.</p>
-                <p><strong>Cybersecurity.</strong> Safeguard you digital assets with the best practices and expert guidance. Our services encompass comprehensive security reviews of your systems. Additionally, we excel in seamless enterprise integrations through protocols such as SAML and OAuth, and we offer expert assistance in achieving various federal certifications.</p>
-                <p><strong>Data Mining & Transformation.</strong> Extract actionable insights from your data with our data mining and transformation services. Our experts turn raw data into valuable information, enhancing your decision-making capabilities.</p>
-                <p><strong>Data Presentation & Visualization.</strong> Illuminate your data with compelling visualizations. From traditional data to geospatial information, we excel in crafting intuitive presentations that unveil the story within your data.</p>
-                <p><strong>Machine Learning & AI.</strong> Harness the power of cutting-edge technology. Our machine learning and AI solutions empower you to leverage data-driven intelligence for enhanced productivity and innovation.</p>
+                <p class="lead">Consulting and training that turn complex data and distributed systems into working, secure products.</p>
+                <p class="hero-tags">
+                    <span class="badge">Distributed Architectures</span>
+                    <span class="badge">Cybersecurity</span>
+                    <span class="badge">Data &amp; AI</span>
+                </p>
+                <a class="btn btn-brand" href="#section-service">Explore our services</a>
+              </div>
             </div>
         </div>
 
         <!-- services section -->
         <div class="section-service bg-light" id="section-service">
             <div class="container ">
-                <div class="d-flex justify-content-center mb-4 animate__animated animate__fadeInDown">
+                <div class="d-flex justify-content-center mb-4">
                     <div class="header">
                         <h1>Services</h1>
                         <!-- <div class="separator">♦ ♦ ♦ ♦ ♦</div> -->
@@ -156,8 +167,8 @@
                     <h5 class="card-title">Job Market Insights</h5>
                     <h6 class="card-subtitle mb-2 text-info">Go, web scrapping, data processing, go-echarts</h6>
                     <p class="card-text"> In this project, we've meticulously collected data pertaining to the IT job landscape. Through rigorous processing and transformation, we've distilled this data into valuable statistics and insightful trends.</p>
-                    <a href="#" class="btn me-2"><i class="fa fas fa-link"></i> More...</a>
-                    <a href="#" class="btn "><i class="fa fab fa-github"></i> Github</a>
+                    <a href="#" class="btn me-2"><i class="fa fa-link"></i> More...</a>
+                    <a href="#" class="btn "><i class="fa fa-github"></i> Github</a>
                   </div>
                 </div>
               </div>
@@ -168,8 +179,8 @@
                     <h5 class="card-title">Real Estate Market Dynamics</h5>
                     <h6 class="card-subtitle mb-2 text-info">Python, selenium, web scrapping, data processing, openstreetmap, folium</h6>
                     <p class="card-text"> In this project, we've curated an extensive database of property listings sourced from web portals. We've meticulously computed GPS coordinates and compiled a comprehensive set of statistics. The culmination of our efforts is an engaging and interactive map, providing users with a seamless experience to explore and analyze various property details.</p>
-                    <a href="#" class="btn me-2"><i class="fa fas fa-link"></i> More...</a>
-                    <a href="#" class="btn "><i class="fa fab fa-github"></i> Github</a>
+                    <a href="#" class="btn me-2"><i class="fa fa-link"></i> More...</a>
+                    <a href="#" class="btn "><i class="fa fa-github"></i> Github</a>
                   </div>
                 </div>
               </div>
@@ -180,8 +191,8 @@
                     <h5 class="card-title">Population distribution 3d map</h5>
                         <h6 class="card-subtitle mb-2 text-info">Rust, OpenGL, data processing</h6>
                         <p class="card-text"> Visualize your data like never before with our state-of-the-art visualization solutions. We create interactive and intuitive visual representations that bring clarity to complex datasets, empowering you to grasp insights effortlessly</p>
-                        <a href="#" class="btn me-2"><i class="fa fas fa-link"></i> More...</a>
-                        <a href="#" class="btn "><i class="fa fab fa-github"></i> Github</a>
+                        <a href="#" class="btn me-2"><i class="fa fa-link"></i> More...</a>
+                        <a href="#" class="btn "><i class="fa fa-github"></i> Github</a>
                       </div>
                     </div>
                   </div>
@@ -276,8 +287,10 @@
                         <h3>Contact us</h3>
                         <p>Don't hesitate – reach out to us today. Your questions, ideas, and needs are important to us, and we're here to help. Contact us now, and let's start a conversation that could lead to exciting possibilities.</p>
                         <div style="text-align: left;">
-                          <li><strong>E-mail:</strong> rrowniak@gmail.com</li>
-                          <li><strong>Linkedin:</strong><a href="https://www.linkedin.com/in/rafalrowniak"> Rafal's profile</a></li>
+                          <ul class="list-unstyled mb-0">
+                            <li><strong>E-mail:</strong> <a href="mailto:rrowniak@gmail.com">rrowniak@gmail.com</a></li>
+                            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rafalrowniak">Rafal's profile</a></li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -297,7 +310,7 @@
                 <p class="social">
                 <!-- <a href="#" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a> -->
                 <!-- <a href="#" class="external instagram" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-instagram"></i></a> -->
-                <a href="#" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
+                <a href="https://twitter.com/{{ site.twitter_username }}" class="external twitter" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/in/rafalrowniak" class="external linkedin" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-linkedin"></i></a>
                 <a href="mailto:rrowniak@gmail.com" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
                 </p>
@@ -305,7 +318,7 @@
               <!-- /.6 -->
 
               <div class="col-sm-6">
-                <p>&copy; 2023 Rafał Równiak Underground Engineering.</p>
+                <p>&copy; {{ site.time | date: "%Y" }} Rafał Równiak Underground Engineering.</p>
               </div>
 
             </div>

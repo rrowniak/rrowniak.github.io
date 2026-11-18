@@ -2,7 +2,23 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
+
+@font-face {
+  font-family: "Bree Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Bree Serif Regular"), local("BreeSerif-Regular"), url("fonts/bree-serif-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bree Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Bree Serif Regular"), local("BreeSerif-Regular"), url("fonts/bree-serif-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 
 // Dark palette aligned with the main site: #212529 navbar, black hero, #198754 accent.
 $text-color:       #d6d6d6;
@@ -97,16 +113,118 @@ hr {
   padding-bottom: $spacing-unit / 2;
 }
 
-// Keep code blocks light so the built-in syntax colours stay readable.
+// Dark code blocks to match the page, with a GitHub-dark token palette.
 pre,
 code {
-  background-color: #f6f8fa;
+  background-color: #161b22;
   border-color: #30363d;
-  color: #24292e;
+  color: #c9d1d9;
 }
 
-.highlight {
-  background: #f6f8fa;
+.highlight,
+.highlighter-rouge .highlight {
+  background: #161b22;
+  color: #c9d1d9;
+}
+
+.highlight code,
+pre code {
+  background: transparent;
+}
+
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .cp {
+  color: #8b949e;
+  font-style: italic;
+}
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kr,
+.highlight .o,
+.highlight .ow {
+  color: #ff7b72;
+  font-weight: 600;
+}
+.highlight .kt,
+.highlight .nc,
+.highlight .nn {
+  color: #ffa657;
+}
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+  color: #79c0ff;
+}
+.highlight .s,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss {
+  color: #a5d6ff;
+}
+.highlight .na,
+.highlight .nb,
+.highlight .no,
+.highlight .nv,
+.highlight .bp {
+  color: #79c0ff;
+}
+.highlight .nf,
+.highlight .fm {
+  color: #d2a8ff;
+}
+.highlight .nt {
+  color: #7ee787;
+}
+.highlight .gh,
+.highlight .gu {
+  color: #79c0ff;
+  font-weight: 600;
+}
+.highlight .gp {
+  color: #8b949e;
+}
+.highlight .gs {
+  font-weight: 700;
+}
+.highlight .ge {
+  font-style: italic;
+}
+.highlight .gd {
+  color: #ffa198;
+  background-color: transparent;
+}
+.highlight .gi {
+  color: #56d364;
+  background-color: transparent;
+}
+.highlight .gr,
+.highlight .gt,
+.highlight .err {
+  color: #ffa198;
+  background-color: transparent;
+}
+.highlight .gd .x,
+.highlight .gi .x {
+  background-color: transparent;
+}
+.highlight .w {
+  color: #8b949e;
 }
 
 table th {
@@ -116,6 +234,16 @@ table th {
 
 table td {
   border-color: #2a2a2a;
+}
+
+.post-header,
+.post-content {
+  max-width: 42rem;
+}
+
+.post-content {
+  font-size: 1.125rem;
+  line-height: 1.72;
 }
 
 .post-content img {

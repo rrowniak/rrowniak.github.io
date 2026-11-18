@@ -25,6 +25,7 @@ kramdown:
   parse_block_html: true
 
 header_pages:
+  - index.html
   - about.md
   - blog/index.html
 
