@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/
+lang: pl
+locale: pl_PL
 id: 789
 title: 'Najbardziej poszukiwane umiejętności IT w świecie post-pandemicznym'
 date: '2021-01-17T19:31:44+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=789'
-permalink: /it-pl/najbardziej-poszukiwane-umiejetnosci-it-w-swiecie-post-pandemicznym/
 categories:
     - 'Dobre praktyki'
     - IT

@@ -1,11 +1,11 @@
 ---
+redirect_from: /programming/ethereal-stuff-volatile/
 id: 7
 title: 'Ethereal stuff – volatile'
 date: '2018-02-03T11:27:25+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=7'
-permalink: /programming/ethereal-stuff-volatile/
 categories:
     - C
     - C++

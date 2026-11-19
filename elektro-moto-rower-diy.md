@@ -1,11 +1,11 @@
 ---
-id: 630
 title: 'Pojazdy elektryczne DIY'
-date: '2020-08-16T15:20:29+00:00'
-author: 'Rafał Równiak'
+lang: pl
+locale: pl_PL
 layout: page
 permalink: /elektro-moto-rower-diy/
-guid: '/?page_id=630'
+description: >-
+  Jak zaprojektować i zbudować pojazd elektryczny z ogólnodostępnych materiałów — praktyczny przewodnik krok po kroku.
 ---
 Jak zaprojektować, wykonać a potem cieszyć się pojazdem elektrycznym? Czy jest to w ogóle możliwe? Ten projekt udowadnia, że tak. Co więcej, przedstawię szczegóły jak tego dokonać używając w większości ogólnodostępnych materiałów. Sporą ich część będziesz mógł kupić w zwykłym markecie budowlanym.
 

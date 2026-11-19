@@ -1,11 +1,11 @@
 ---
+redirect_from: /linux/tip-of-the-day-gcc-memory-sanitizer/
 id: 805
 title: 'Tip of the day: gcc address sanitizer'
 date: '2021-02-03T08:05:24+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=805'
-permalink: /linux/tip-of-the-day-gcc-memory-sanitizer/
 categories:
     - C
     - C++

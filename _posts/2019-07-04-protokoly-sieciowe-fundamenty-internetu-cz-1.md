@@ -1,11 +1,13 @@
 ---
+redirect_from: /sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/
+lang: pl
+locale: pl_PL
 id: 609
 title: 'Protokoły sieciowe – fundamenty Internetu cz.1'
 date: '2019-07-04T17:41:01+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=609'
-permalink: /sieci/protokoly-sieciowe-fundamenty-internetu-cz-1/
 categories:
     - Sieci
 tags:

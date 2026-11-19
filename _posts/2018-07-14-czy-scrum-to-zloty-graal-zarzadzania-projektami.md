@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/czy-scrum-to-zloty-graal-zarzadzania-projektami/
+lang: pl
+locale: pl_PL
 id: 339
 title: 'Czy SCRUM to Złoty Graal zarządzania projektami?'
 date: '2018-07-14T20:10:02+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=339'
-permalink: /dobre-praktyki/czy-scrum-to-zloty-graal-zarzadzania-projektami/
 categories:
     - 'Dobre praktyki'
     - Management

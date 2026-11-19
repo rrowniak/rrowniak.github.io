@@ -1,11 +1,13 @@
 ---
+redirect_from: /programming/gdb-na-linuksie-czyli-jak-ujarzmic-swoj-kod/
+lang: pl
+locale: pl_PL
 id: 499
 title: 'gdb na Linuksie czyli jak ujarzmić swój kod'
 date: '2019-01-27T10:33:43+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=499'
-permalink: /programming/gdb-na-linuksie-czyli-jak-ujarzmic-swoj-kod/
 categories:
     - 'Dobre praktyki'
     - Linux

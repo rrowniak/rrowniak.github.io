@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow/
+lang: pl
+locale: pl_PL
 id: 706
 title: 'Witaj w piekle: C & C++ – niejawne konwersje i promocje typów'
 date: '2020-05-22T11:34:06+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=706'
-permalink: /dobre-praktyki/witaj-w-piekle-c-c-niejawne-konwersje-i-promocje-typow/
 categories:
     - C
     - C++

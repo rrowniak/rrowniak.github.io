@@ -1,11 +1,11 @@
 ---
+redirect_from: /performance/linux-top-tools-performance-measurements/
 id: 231
 title: 'Linux top-tools: performance measurements'
 date: '2018-03-28T16:51:52+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=231'
-permalink: /performance/linux-top-tools-performance-measurements/
 categories:
     - English
     - Linux

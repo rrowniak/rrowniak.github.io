@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/koronawirus-w-it/
+lang: pl
+locale: pl_PL
 id: 694
 title: 'Koronawirus w IT'
 date: '2020-03-17T17:39:21+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=694'
-permalink: /it-pl/koronawirus-w-it/
 categories:
     - inne
     - IT

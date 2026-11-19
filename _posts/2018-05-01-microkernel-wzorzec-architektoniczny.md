@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/microkernel-wzorzec-architektoniczny/
+lang: pl
+locale: pl_PL
 id: 263
 title: 'Microkernel – wzorzec architektoniczny'
 date: '2018-05-01T07:30:43+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=263'
-permalink: /dobre-praktyki/microkernel-wzorzec-architektoniczny/
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'

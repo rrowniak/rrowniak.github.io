@@ -1,33 +1,51 @@
-title: Rafal's blog
-email: ""
+title: Underground Engineering
+tagline: Enterprise AI, cybersecurity and distributed architectures
 description: >-
-  Welcome to my IT blog! Here, you will find articles on a wide range of topics related to
-  technology and computer science. My blog covers everything from software architecture and
-  programming languages like C++ to performance optimization and Linux systems. Whether you're
-  a seasoned IT professional or just starting out in the field, I hope you'll find something of
-  interest on my blog. Follow me to stay up to date with the latest trends and best practices in
-  the world of technology.
-baseurl: ""
+  Consulting and training in enterprise AI adoption, AI-driven cybersecurity and
+  distributed architectures. Led by Rafał Równiak, a software architect and
+  security engineer with more than 20 years of hands-on experience.
 url: "https://rrowniak.github.io"
+baseurl: ""
+lang: en
+locale: en_US
+logo: /img/rrowniak.jpeg
+author: Underground Engineering
+
 twitter_username: rrowniak
 github_username: rrowniak
+linkedin_username: rafalrowniak
 
 # Build settings
-theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Flat, keyword-clean post URLs. Existing category-prefixed URLs are preserved
+# through `redirect_from` in each post.
+permalink: /:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Rafał Równiak
+      image: /img/og-default.jpg
+      locale: en_US
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+
 show_excerpts: true
 
 kramdown:
   input: GFM
   parse_block_html: true
-
-header_pages:
-  - index.html
-  - about.md
-  - blog/index.html
 
 exclude:
   - Gemfile

@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-2-bit-i-para/
+lang: pl
+locale: pl_PL
 id: 479
 title: 'Historia informatyki cz.2: bit i para'
 date: '2019-01-06T13:04:20+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=479'
-permalink: /it-pl/historia-informatyki-cz-2-bit-i-para/
 categories:
     - IT
 ---

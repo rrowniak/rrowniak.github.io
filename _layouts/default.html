@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+{% include head.html %}
+  </head>
+  <body>
+{% include nav.html %}
+    <main id="content">
+{{ content }}
+    </main>
+{% include footer.html %}
+    <script src="{{ rel }}js/jquery-3.7.1.min.js"></script>
+    <script src="{{ rel }}js/bootstrap.min.js"></script>
+  </body>
+</html>

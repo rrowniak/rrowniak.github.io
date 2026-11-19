@@ -1,11 +1,11 @@
 ---
+redirect_from: /bitcoin/investigating-cryptocurrences/
 id: 13
 title: 'Behind the scenes: Bitcoin'
 date: '2018-02-09T17:55:59+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=13'
-permalink: /bitcoin/investigating-cryptocurrences/
 categories:
     - 'Architektura oprogramowania'
     - Bitcoin

@@ -1,11 +1,11 @@
 ---
+redirect_from: /linux/learning-awk-by-examples/
 id: 818
 title: 'Learning awk by examples'
 date: '2021-10-14T07:18:01+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=818'
-permalink: /linux/learning-awk-by-examples/
 categories:
     - Linux
 tags:

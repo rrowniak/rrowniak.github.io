@@ -1,11 +1,11 @@
 ---
+redirect_from: /performance/yet-another-top-friend-irqtop/
 id: 280
 title: 'Yet another top-friend: irqtop'
 date: '2018-06-12T06:07:45+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=280'
-permalink: /performance/yet-another-top-friend-irqtop/
 categories:
     - English
     - Linux

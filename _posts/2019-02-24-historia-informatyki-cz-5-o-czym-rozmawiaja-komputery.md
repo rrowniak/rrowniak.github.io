@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-5-o-czym-rozmawiaja-komputery/
+lang: pl
+locale: pl_PL
 id: 563
 title: 'Historia informatyki cz.5: o czym rozmawiają komputery'
 date: '2019-02-24T15:30:21+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=563'
-permalink: /it-pl/historia-informatyki-cz-5-o-czym-rozmawiaja-komputery/
 categories:
     - IT
 tags:

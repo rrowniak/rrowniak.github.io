@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/
+lang: pl
+locale: pl_PL
 id: 312
 title: 'SCRUM czyli zwinna realizacja projektów'
 date: '2018-07-03T06:48:49+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=312'
-permalink: /dobre-praktyki/scrum-czyli-zwinna-realizacja-projektow/
 categories:
     - 'Dobre praktyki'
     - Management

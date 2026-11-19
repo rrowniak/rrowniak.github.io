@@ -1,11 +1,11 @@
 ---
+redirect_from: /programming/stdvector-vs-sorted-stdvector-vs-stdset/
 id: 11
 title: 'std::vector vs sorted std::vector vs std::set'
 date: '2018-02-03T12:57:39+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=11'
-permalink: /programming/stdvector-vs-sorted-stdvector-vs-stdset/
 categories:
     - English
     - Performance

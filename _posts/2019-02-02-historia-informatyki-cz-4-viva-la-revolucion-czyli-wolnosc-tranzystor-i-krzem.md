@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-4-viva-la-revolucion-czyli-wolnosc-tranzystor-i-krzem/
+lang: pl
+locale: pl_PL
 id: 536
 title: 'Historia informatyki cz.4: viva la revolución czyli wolność, tranzystor i krzem'
 date: '2019-02-02T15:35:19+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=536'
-permalink: /it-pl/historia-informatyki-cz-4-viva-la-revolucion-czyli-wolnosc-tranzystor-i-krzem/
 categories:
     - IT
 ---

@@ -1,13 +1,13 @@
 ---
-id: 683
 title: Publikacje
-date: '2020-01-14T19:25:57+00:00'
-author: 'Rafał Równiak'
+lang: pl
 layout: page
 permalink: /publikacje/
-guid: '/?page_id=683'
+description: >-
+  Artykuły Rafała Równiaka opublikowane w magazynie Elektronika dla Wszystkich —
+  moduł uruchomieniowy i miernik rezystancji wewnętrznej.
 ---
-Lista moich publikacji.
+Lista moich publikacji prasowych.
 
 ## Moduł uruchomieniowy
 

@@ -1,11 +1,13 @@
 ---
+redirect_from: /performance/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-3/
+lang: pl
+locale: pl_PL
 id: 660
 title: 'Architektura serwerów – wydajność przetwarzania zapytań cz.3'
 date: '2020-01-06T12:43:49+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=660'
-permalink: /performance/architektura-serwerow-wydajnosc-przetwarzania-zapytan-cz-3/
 categories:
     - 'Architektura oprogramowania'
     - C

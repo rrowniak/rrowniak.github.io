@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/syndrom-wybitej-szyby/
+lang: pl
+locale: pl_PL
 id: 58
 title: 'Syndrom wybitej szyby'
 date: '2018-02-06T08:57:52+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=58'
-permalink: /it-pl/syndrom-wybitej-szyby/
 categories:
     - 'Dobre praktyki'
     - IT

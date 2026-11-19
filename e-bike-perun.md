@@ -1,11 +1,11 @@
 ---
-id: 768
 title: 'E-bike Perun'
-date: '2020-10-13T09:55:24+00:00'
-author: 'Rafał Równiak'
+lang: pl
+locale: pl_PL
 layout: page
 permalink: /e-bike-perun/
-guid: '/?page_id=768'
+description: >-
+  Projekt i budowa elektrycznego jednośladu Perun o mocy ok. 10 kW — konstrukcja, podzespoły, osiągi i wrażenia z jazdy.
 ---
 Jest to projekt potężnego jednośladu elektrycznego o mocy ok 10 kW (13.4 HP), który wymyka się klasycznej klasyfikacji. Można przyjąć, że pojazd ten ma cechy roweru i motocykla jednocześnie.
 

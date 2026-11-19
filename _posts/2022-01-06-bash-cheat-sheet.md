@@ -1,11 +1,11 @@
 ---
+redirect_from: /dobre-praktyki/bash-cheat-sheet/
 id: 865
 title: 'Bash cheat-sheet'
 date: '2022-01-06T11:13:41+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=865'
-permalink: /dobre-praktyki/bash-cheat-sheet/
 categories:
     - 'Dobre praktyki'
     - Linux

@@ -1,11 +1,11 @@
 ---
+redirect_from: /linux/tip-of-the-day-ssh-key-based-authentication/
 id: 845
 title: 'Tip of the day: SSH Key-Based Authentication'
 date: '2021-10-15T08:32:14+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=845'
-permalink: /linux/tip-of-the-day-ssh-key-based-authentication/
 categories:
     - Linux
 tags:

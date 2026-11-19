@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/solid-czyli-zestaw-solidnych-regul/
+lang: pl
+locale: pl_PL
 id: 182
 title: 'SOLID czyli zestaw solidnych reguł'
 date: '2018-03-23T15:12:12+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=182'
-permalink: /dobre-praktyki/solid-czyli-zestaw-solidnych-regul/
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'

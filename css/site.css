@@ -1,0 +1,100 @@
+.page-shell {
+  padding: 7rem 0 4rem;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: .5rem;
+}
+
+.post,
+.page {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.post img,
+.page img {
+  max-width: 100%;
+  height: auto;
+}
+
+.post h2 {
+  margin-top: 2.5rem;
+}
+
+.post h3 {
+  margin-top: 2rem;
+}
+
+.post pre {
+  background: #f6f8fa;
+  border: 1px solid #e1e4e8;
+  border-radius: .4rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.post :not(pre) > code {
+  background: #f6f8fa;
+  color: #b3005e;
+  padding: .1em .35em;
+  border-radius: .25rem;
+  font-size: .9em;
+}
+
+.post table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.post th,
+.post td {
+  border: 1px solid #dee2e6;
+  padding: .45rem .6rem;
+  text-align: left;
+}
+
+.post th {
+  background: #f8f9fa;
+}
+
+.post blockquote {
+  border-left: 4px solid var(--brand);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #495057;
+}
+
+.post-cta {
+  background: #f1f8f4;
+  border-left: 4px solid var(--brand);
+  padding: 1rem 1.25rem;
+  border-radius: .25rem;
+}
+
+.related ul {
+  padding-left: 1.2rem;
+}
+
+.post-list li {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.post-list li:last-child {
+  border-bottom: 0;
+}
+
+.section-footer p.social a.github {
+  background-color: #333333;
+}

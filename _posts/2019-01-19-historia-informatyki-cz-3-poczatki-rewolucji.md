@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-3-poczatki-rewolucji/
+lang: pl
+locale: pl_PL
 id: 491
 title: 'Historia informatyki cz.3: początki rewolucji'
 date: '2019-01-19T12:04:02+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=491'
-permalink: /it-pl/historia-informatyki-cz-3-poczatki-rewolucji/
 categories:
     - IT
 tags:

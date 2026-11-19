@@ -1,0 +1,15 @@
+{%- comment -%}
+  Prefix for links to site-root paths ("", "../", "…") so that pages work both
+  when served from a domain root and when opened directly from disk (file://).
+  Every page here lives at the root or one directory below it.
+{%- endcomment -%}
+{%- assign rel_url = page.url -%}
+{%- assign rel_last = rel_url | slice: -1, 1 -%}
+{%- assign rel_len = rel_url | split: "/" | size -%}
+{%- if rel_last == "/" -%}
+  {%- assign rel_depth = rel_len | minus: 1 -%}
+{%- else -%}
+  {%- assign rel_depth = rel_len | minus: 2 -%}
+{%- endif -%}
+{%- assign rel = "" -%}
+{%- for i in (1..rel_depth) -%}{%- assign rel = rel | append: "../" -%}{%- endfor -%}

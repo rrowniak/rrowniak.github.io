@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-1-wspiac-sie-na-ramiona-olbrzymow/
+lang: pl
+locale: pl_PL
 id: 463
 title: 'Historia informatyki cz.1: wspiąć się na ramiona olbrzymów'
 date: '2018-12-30T17:30:46+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=463'
-permalink: /it-pl/historia-informatyki-cz-1-wspiac-sie-na-ramiona-olbrzymow/
 categories:
     - IT
 tags:

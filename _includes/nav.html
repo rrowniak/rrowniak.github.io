@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{{ rel }}">Underground Engineering</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        {%- include rel.html -%}
+        {%- assign nav_items = "Services:/services/,Blog:/blog/,About:/about/,Publications:/publikacje/" | split: "," -%}
+        {%- for item in nav_items -%}
+          {%- assign parts = item | split: ":" -%}
+          {%- assign url = parts[1] -%}
+          <li class="nav-item">
+            <a class="nav-link{% if page.url == url %} active{% endif %}" href="{{ rel }}{{ url | remove_first: '/' }}">{{ parts[0] }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/{{ site.github_username }}" aria-label="GitHub profile" rel="me">
+            <i class="fa fa-github" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.linkedin.com/in/{{ site.linkedin_username }}" aria-label="LinkedIn profile" rel="me">
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

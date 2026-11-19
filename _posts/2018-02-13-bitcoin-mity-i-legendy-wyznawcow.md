@@ -1,11 +1,13 @@
 ---
+redirect_from: /bitcoin/bitcoin-mity-i-legendy-wyznawcow/
+lang: pl
+locale: pl_PL
 id: 93
 title: 'Bitcoin: mity i legendy wyznawców'
 date: '2018-02-13T06:53:34+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=93'
-permalink: /bitcoin/bitcoin-mity-i-legendy-wyznawcow/
 categories:
     - Bitcoin
 tags:

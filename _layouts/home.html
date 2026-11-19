@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<div class="page-shell">
+  <div class="container">
+    {%- if page.title %}
+    <header class="page-header">
+      <h1>{{ page.title | escape }}</h1>
+      {%- if page.subtitle %}<p class="lead text-muted">{{ page.subtitle | escape }}</p>{%- endif %}
+    </header>
+    {%- endif %}
+    {{ content }}
+    <ul class="post-list list-unstyled">
+      {%- for post in site.posts %}
+      <li>
+        <h2 class="h5 mb-1"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+        <p class="post-meta text-muted small">
+          {{ post.date | date: "%Y-%m-%d" }}
+          {%- if post.lang and post.lang != 'en' %} &middot; {{ post.lang | upcase }}{% endif %}
+        </p>
+        {%- if site.show_excerpts %}
+        <p class="mb-0">{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 40 }}</p>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>

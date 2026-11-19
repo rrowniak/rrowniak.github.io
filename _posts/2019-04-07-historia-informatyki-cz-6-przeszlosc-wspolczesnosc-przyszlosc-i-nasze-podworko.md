@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/historia-informatyki-cz-6-przeszlosc-wspolczesnosc-przyszlosc-i-nasze-podworko/
+lang: pl
+locale: pl_PL
 id: 583
 title: 'Historia informatyki cz.6: przeszłość, współczesność, przyszłość i nasze podwórko'
 date: '2019-04-07T17:47:16+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=583'
-permalink: /it-pl/historia-informatyki-cz-6-przeszlosc-wspolczesnosc-przyszlosc-i-nasze-podworko/
 categories:
     - inne
     - IT

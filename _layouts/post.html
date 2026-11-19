@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{%- include rel.html -%}
+<div class="page-shell">
+  <div class="container">
+    <article class="post">
+      <header class="page-header">
+        <h1>{{ page.title | escape }}</h1>
+        <p class="post-meta text-muted">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+          {%- if page.lang and page.lang != 'en' %} &middot; <span class="badge badge-secondary">{{ page.lang | upcase }}</span>{%- endif %}
+          {%- if page.categories.size > 0 %} &middot;
+            {%- for category in page.categories %}{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor -%}
+          {%- endif %}
+        </p>
+      </header>
+      {{ content }}
+
+      <p class="post-cta mt-5">
+        Found this useful? I offer <a href="{{ rel }}services/">consulting and training</a>
+        in enterprise AI, cybersecurity and distributed architectures.
+      </p>
+
+      {%- assign primary_category = page.categories | first -%}
+      {%- if primary_category -%}
+        {%- assign related = site.categories[primary_category] | where_exp: "p", "p.url != page.url" -%}
+        {%- if related.size > 0 %}
+      <section class="related">
+        <h2>Related posts</h2>
+        <ul>
+          {%- for post in related limit: 5 %}
+          <li><a href="{{ rel }}{{ post.url | remove_first: '/' }}">{{ post.title | escape }}</a></li>
+          {%- endfor %}
+        </ul>
+      </section>
+        {%- endif -%}
+      {%- endif %}
+
+      <p class="mt-4"><a href="{{ rel }}blog/">&larr; All posts</a></p>
+    </article>
+  </div>
+</div>

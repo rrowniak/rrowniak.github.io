@@ -1,11 +1,13 @@
 ---
+redirect_from: /bitcoin/bitcoin-fakty/
+lang: pl
+locale: pl_PL
 id: 118
 title: 'Bitcoin: fakty'
 date: '2018-03-17T08:16:52+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=118'
-permalink: /bitcoin/bitcoin-fakty/
 categories:
     - Bitcoin
 tags:

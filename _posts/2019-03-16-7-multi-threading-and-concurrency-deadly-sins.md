@@ -1,11 +1,11 @@
 ---
+redirect_from: /it-pl/7-multi-threading-and-concurrency-deadly-sins/
 id: 15
 title: '7 multi-threading and concurrency deadly sins'
 date: '2019-03-16T19:29:49+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=15'
-permalink: /it-pl/7-multi-threading-and-concurrency-deadly-sins/
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'

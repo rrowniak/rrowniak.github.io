@@ -1,11 +1,13 @@
 ---
+redirect_from: /it-pl/przeglad-rynku-pracy-it-01-22/
+lang: pl
+locale: pl_PL
 id: 873
 title: 'Przegląd rynku pracy IT 01/22'
 date: '2022-01-11T17:49:28+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=873'
-permalink: /it-pl/przeglad-rynku-pracy-it-01-22/
 categories:
     - IT
     - Raport

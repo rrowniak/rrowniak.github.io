@@ -1,11 +1,13 @@
 ---
+redirect_from: /bitcoin/bitcoin-mity-i-legendy-wrogow/
+lang: pl
+locale: pl_PL
 id: 76
 title: 'Bitcoin: mity i legendy wrogów'
 date: '2018-02-21T12:14:44+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=76'
-permalink: /bitcoin/bitcoin-mity-i-legendy-wrogow/
 categories:
     - Bitcoin
 tags:

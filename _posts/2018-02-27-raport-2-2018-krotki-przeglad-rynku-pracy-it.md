@@ -1,11 +1,13 @@
 ---
+redirect_from: /raport/raport-2-2018-krotki-przeglad-rynku-pracy-it/
+lang: pl
+locale: pl_PL
 id: 148
 title: 'Raport 2/2018: krótki przegląd rynku pracy IT'
 date: '2018-02-27T19:40:02+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=148'
-permalink: /raport/raport-2-2018-krotki-przeglad-rynku-pracy-it/
 categories:
     - Raport
 tags:

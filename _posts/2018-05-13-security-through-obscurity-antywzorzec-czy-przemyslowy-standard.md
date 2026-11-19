@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/security-through-obscurity-antywzorzec-czy-przemyslowy-standard/
+lang: pl
+locale: pl_PL
 id: 290
 title: 'Security through obscurity: antywzorzec czy przemysłowy standard?'
 date: '2018-05-13T15:55:43+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=290'
-permalink: /dobre-praktyki/security-through-obscurity-antywzorzec-czy-przemyslowy-standard/
 categories:
     - 'Architektura oprogramowania'
     - 'Dobre praktyki'

@@ -1,11 +1,11 @@
 ---
-id: 771
 title: 'E-bike Aitwar'
-date: '2020-10-13T09:55:18+00:00'
-author: 'Rafał Równiak'
+lang: pl
+locale: pl_PL
 layout: page
 permalink: /e-bike-aitwar/
-guid: '/?page_id=771'
+description: >-
+  Projekt i budowa elektrycznego jednośladu Aitwar — konstrukcja, podzespoły, osiągi i wrażenia z jazdy.
 ---
 Jest to projekt zwinnego jednośladu o mocy do 3 kW (4 HP), który świetnie nadaje się do leśnych wycieczek i zwiedzania malowniczych miejsc normalnie trudno dostępnych.
 

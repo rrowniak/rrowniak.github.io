@@ -1,11 +1,13 @@
 ---
+redirect_from: /dobre-praktyki/implementacja-scrum-zagrozenia/
+lang: pl
+locale: pl_PL
 id: 340
 title: 'Implementacja SCRUM: zagrożenia'
 date: '2018-10-19T18:53:24+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=340'
-permalink: /dobre-praktyki/implementacja-scrum-zagrozenia/
 categories:
     - 'Dobre praktyki'
     - Management

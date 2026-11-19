@@ -1,11 +1,11 @@
 ---
+redirect_from: /programming/new-word-order-sorting/
 id: 9
 title: 'New word order – sorting'
 date: '2018-02-03T11:28:33+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=9'
-permalink: /programming/new-word-order-sorting/
 categories:
     - English
     - IT
@@ -30,7 +30,7 @@ But what if we have gigabytes to be sorted? Let’s check out that case.
 
 Before we go further, I’d like to clarify some things.
 
-In this test I use only basic facilities of a given language so specialized libraries are not present here. Moreover, in real life you should consider using appropriate tools when dealing with gigabytes of data. Good examples are specialized libraries like [Numpy](http://www.numpy.org/) or [Panda](http://pandas.pydata.org/), memory cached systems ([Memcached](https://memcached.org/), [Redis](https://redis.io/)), NoSQL databases, embedded databases ([Berkeley DB](http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html), [LevelDB](leveldb.org/)), big data processing tools like [Apache Spark](http://spark.apache.org/), [Hadoop framework](https://hadoop.apache.org/) to name a few.
+In this test I use only basic facilities of a given language so specialized libraries are not present here. Moreover, in real life you should consider using appropriate tools when dealing with gigabytes of data. Good examples are specialized libraries like [Numpy](http://www.numpy.org/) or [Panda](http://pandas.pydata.org/), memory cached systems ([Memcached](https://memcached.org/), [Redis](https://redis.io/)), NoSQL databases, embedded databases ([Berkeley DB](http://www.oracle.com/technetwork/database/database-technologies/berkeleydb/downloads/index.html), [LevelDB](https://github.com/google/leveldb)), big data processing tools like [Apache Spark](http://spark.apache.org/), [Hadoop framework](https://hadoop.apache.org/) to name a few.
 
 This is neither a scientific experiment nor a proof of superiority one language over the others. This is only a brief description and short test of built-in sorting procedures.
 

@@ -1,11 +1,13 @@
 ---
+redirect_from: /bez-kategorii-pl/pierwszy-wpis/
+lang: pl
+locale: pl_PL
 id: 44
 title: 'Pierwszy wpis'
 date: '2018-02-03T14:50:28+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=44'
-permalink: /bez-kategorii-pl/pierwszy-wpis/
 categories:
     - 'Bez kategorii'
 ---

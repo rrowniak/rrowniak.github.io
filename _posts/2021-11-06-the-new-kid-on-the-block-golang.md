@@ -1,11 +1,11 @@
 ---
+redirect_from: /performance/the-new-kid-on-the-block-golang/
 id: 853
 title: 'The new kid on the block – golang'
 date: '2021-11-06T16:31:48+00:00'
 author: 'Rafał Równiak'
 layout: post
 guid: '/?p=853'
-permalink: /performance/the-new-kid-on-the-block-golang/
 categories:
     - Performance
 tags:
